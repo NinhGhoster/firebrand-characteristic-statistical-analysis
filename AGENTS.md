@@ -11,6 +11,8 @@ The file `branchlet raw data.xlsx` contains data on firebrands.
     - Analyzed the structure of `branchlet raw data.xlsx`.
     - Renamed columns 'Volume (mm³)' to 'Volume (mm3)' and 'Surface Area (mm²)' to 'Surface Area (mm2)' across all sheets to ensure compatibility and consistency.
     - Verified the change by inspecting multiple sheets (Pine, Acacia, candle bark density).
+    - Initialized Git repository and tracked `AGENTS.md`, `branchlet raw data.xlsx`, and flat data files.
+
 
 ## Environment
 - **Python Environment**: Uses Conda environment `stas_test` which has `pandas` and `openpyxl` installed.
