@@ -1,6 +1,6 @@
-File (ID),Volume (mm³),Surface Area (mm²),Length (mm),Width (mm),Height (mm),Mass (g)
+File (ID),Volume (mm3),Surface Area (mm2),Length (mm),Width (mm),Height (mm),Mass (g)
 0524_20_mesh_1.ply,18.039,71.612,5.471,7.283,2.193,0.005
 0524_20_mesh_2.ply,1285.266,822.233,14.864,17.038,13.809,
-0524_20_mesh_3.ply,33.298,75.300,7.664,5.007,3.729,0.009
+0524_20_mesh_3.ply,33.298,75.3,7.664,5.007,3.729,0.009
 0524_20_mesh_4.ply,0.945,70.372,6.055,6.525,1.439,0.007
 0524_20_mesh_5.ply,5.655,59.613,6.138,6.324,2.208,0.004
