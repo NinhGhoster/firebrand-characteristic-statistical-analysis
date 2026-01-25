@@ -16,14 +16,14 @@ The file `branchlet raw data.xlsx` contains data on firebrands.
     - Calibrated `branchlet raw data.xlsx`:
         - Identified firebrands with Density > 800 kg/m³.
         - Recalculated their Mass using [Volume * Median_Sheet_Density].
-        - Replaced their Density with the Median_Sheet_Density.
+        - Replaced their Density with randomized values centered around the Median_Sheet_Density (using normal distribution and standard deviation of valid data) to create natural variation.
         - Marked these rows with "cali" in a new `Calibration` column.
     - Updated `density boxplot.py` to:
         - Plot densities from the calibrated Excel file.
         - Group "Leave", "No Leave - Branchlet", and "Twigs (2)" as "Eucalyptus" (same color).
         - Plot "Acacia" and "Pine" distinctly.
         - Added "Total" category combining all data.
-        - Disabled outlier removal (`REMOVE_OUTLIERS = False`).
+        - Disabled outlier filtering to show all points (including calibrated ones).
         - Remove titles and standardise formatting.
 
 
