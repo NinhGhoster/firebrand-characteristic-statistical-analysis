@@ -19,14 +19,16 @@ The file `branchlet raw data.xlsx` contains data on firebrands.
         - Replaced their Density with randomized values centered around the Median_Sheet_Density (using normal distribution and standard deviation of valid data) to create natural variation.
         - Marked these rows with "cali" in a new `Calibration` column.
     - Updated `density boxplot.py` to:
+    - Updated `density boxplot.py` to:
         - Plot densities from the calibrated Excel file.
         - Group "Leaves - branchlet", "No leaves - branchlet", and "Individual twigs" as distinct colors but grouped under Eucalyptus in legend.
         - Plot "Acacia" and "Pine" distinctly, using the same color as "Individual twigs" as requested.
         - Added "Total" category combining all data (no color).
-        - Disabled outlier filtering (`showfliers=False`).
-        - Moved Mean/Median text outside the boxes.
-        - Renamed labels and axes ("Sample Source" -> "Species").
-        - Improved overall design (aspect ratio, grid, fonts).
+        - **Updated Design**:
+            - Enabled `notch=True` for boxplots.
+            - Moved Mean/Median text labels to the RIGHT side of the boxes relative to y-position.
+            - Refined legend to clearly show color mappings.
+            - Maintained `showfliers=False` to hide outliers.
 
 
 

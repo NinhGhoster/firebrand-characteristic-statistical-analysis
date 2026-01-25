@@ -137,47 +137,53 @@ if density_data_for_boxplot:
     ax.xaxis.grid(False)
 
     # --- Annotations ---
-    # Put mean and median OUTSIDE the box.
-    # We will place them above the upper whisker for clarity.
+    # Put mean and median numbers on the right side of the box
     
-    for i, (median_line, mean_point, box_data) in enumerate(zip(boxplot['medians'], boxplot['means'], density_data_for_boxplot)):
+    for i, (median_line, mean_point) in enumerate(zip(boxplot['medians'], boxplot['means'])):
         median_val = median_line.get_ydata()[0]
         mean_val = mean_point.get_ydata()[0]
         
-        # Calculate stats for positioning
-        # Since showfliers=False, the visible top is roughly Q3 + 1.5*IQR (or max within range)
-        q1 = box_data.quantile(0.25)
-        q3 = box_data.quantile(0.75)
-        iqr = q3 - q1
-        upper_whisker = min(box_data.max(), q3 + 1.5 * iqr)
+        # Position text to the right
+        text_x_pos = i + 1.35 # Slightly offset to the right
         
-        # Position text above the whisker
-        text_y_start = upper_whisker + (upper_whisker * 0.05) # 5% padding
+        # Display simplified numbers
+        text_str = f"{mean_val:.1f}\n{median_val:.1f}"
         
-        # Center text horizontally on the box
-        x_pos = i + 1
+        # Place roughly between mean and median vertically
+        text_y_pos = (mean_val + median_val) / 2
         
-        # Display Mean and Median stacked
-        text_str = f"Mean: {mean_val:.1f}\nMed: {median_val:.1f}"
-        
-        ax.text(x_pos, text_y_start, text_str,
-                horizontalalignment='center',
-                verticalalignment='bottom',
+        ax.text(text_x_pos, text_y_pos, text_str,
+                horizontalalignment='left',
+                verticalalignment='center',
                 fontsize=9,
                 color='black',
                 bbox=dict(facecolor='white', alpha=0.7, edgecolor='none', pad=1))
 
     # --- LEGEND ---
-    # Custom Legend as requested
-    # 1. Leaves - branchlet (Color A)
-    # 2. No leaves - branchlet (Color B)
-    # 3. Individual twigs (Color C) - Covers Individual twigs, Acacia, Pine
+    # 1. Eucalyptus (Group) - Represents the first three colors
+    # 2. Individual twigs (Color C) - Actually overlaps with Eucalyptus group color logic issue...
+    # Wait, user said: "Three first boxplot is one name 'Eucalyptus', but different color, add these color name to legend accordingly."
+    # AND "The third boxplot (Eucalyptus), Acacia, Pine are the same color with label 'Individual twigs'." 
+    # This contradicts. Let's follow:
+    # Legend: 
+    # - Leaves - branchlet (Color A)
+    # - No leaves - branchlet (Color B)
+    # - Individual twigs (Color C) -> This applies to 3rd box (Individual twigs), Acacia, and Pine.
+    # But user also said "Three first boxplot is one name 'Eucalyptus'". This might mean X-axis label grouping? 
+    # Or Legend Grouping?
+    # "first three boxplot is 'Eucalyptus', but different color, add these color name to legend accordingly"
+    # -> Legend: Eucalyptus (Leaves - branchlet), Eucalyptus (No leaves...), Eucalyptus (Individual twigs)?
+    # Let's stick to the color mapping requested earlier which was clearer:
+    # A = Leaves, B = No Leaves, C = Twigs/Acacia/Pine.
+    # Legend Labels:
+    # "Leaves - branchlet" (A)
+    # "No leaves - branchlet" (B)
+    # "Individual twigs" (C)
     
     legend_elements = [
         mpatches.Patch(facecolor=color_leaves, edgecolor='black', label='Leaves - branchlet'),
         mpatches.Patch(facecolor=color_no_leaves, edgecolor='black', label='No leaves - branchlet'),
         mpatches.Patch(facecolor=color_twigs, edgecolor='black', label='Individual twigs'),
-        # Adding Mean/Median markers to legend for completeness
         plt.Line2D([0], [0], color='black', linewidth=2, label='Median'),
         plt.Line2D([0], [0], marker='D', color='w', label='Mean', markerfacecolor='red', markeredgecolor='black', markersize=6)
     ]
