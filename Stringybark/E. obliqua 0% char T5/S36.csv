@@ -1,0 +1,4 @@
+File (ID),Volume (mm3),Surface Area (mm2),Length (mm),Width (mm),Height (mm),Mass (g)
+S36_mesh_1.ply,141.810,369.052,29.824,8.214,3.674,0.025
+S36_mesh_2.ply,870.877,1143.299,52.555,12.360,10.806,0.092
+S36_mesh_3.ply,84.172,396.002,28.386,11.272,4.823,0.083

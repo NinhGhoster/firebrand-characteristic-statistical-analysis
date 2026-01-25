@@ -1,0 +1,4 @@
+File (ID),Volume (mm3),Surface Area (mm2),Length (mm),Width (mm),Height (mm),Mass (g)
+S22_mesh_1.ply,152.274,42.739,8.617,5.444,2.402,0.005
+S22_mesh_2.ply,428.750,70.374,11.221,7.560,3.949,0.062
+S22_mesh_3.ply,193.757,74.205,15.483,7.315,1.844,0.011
