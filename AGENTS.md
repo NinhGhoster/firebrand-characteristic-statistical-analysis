@@ -22,6 +22,8 @@ The file `branchlet raw data.xlsx` contains data on firebrands.
         - Plot densities from the calibrated Excel file.
         - Group "Leave", "No Leave - Branchlet", and "Twigs (2)" as "Eucalyptus" (same color).
         - Plot "Acacia" and "Pine" distinctly.
+        - Added "Total" category combining all data.
+        - Disabled outlier removal (`REMOVE_OUTLIERS = False`).
         - Remove titles and standardise formatting.
 
 

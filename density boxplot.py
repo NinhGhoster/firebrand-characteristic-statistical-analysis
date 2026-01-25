@@ -7,7 +7,7 @@ import io
 
 # --- Feature Toggle ---
 # Set this to True to remove outliers, or False to keep and display them.
-REMOVE_OUTLIERS = True
+REMOVE_OUTLIERS = False
 
 # --- Function to remove outliers ---
 def remove_outliers(data_series):
@@ -87,31 +87,29 @@ else:
     acacia_data = acacia_data_raw
     pine_data = pine_data_raw
 
+# Create Total category
+total_data = pd.concat([leave_data, no_leave_branchlet_data, twigs_2_data, acacia_data, pine_data], ignore_index=True)
+
 # --- Arrange Data and Labels in the correct order ---
-# The desired order for the boxplots: Leave, No Leave - Branchlet, Twigs (2), Acacia, Pine
-# Capitalize first letter of keys for labels
 ordered_data_map = {
     "Leave": leave_data,
     "No Leave - Branchlet": no_leave_branchlet_data,
     "Twigs (2)": twigs_2_data,
     "Acacia": acacia_data,
-    "Pine": pine_data
+    "Pine": pine_data,
+    "Total": total_data
 }
 
 density_data_for_boxplot = list(ordered_data_map.values())
 short_labels_filtered = list(ordered_data_map.keys())
 
 # --- Define Colors ---
-# Color Logic:
-# Leave, No Leave - Branchlet, Twigs (2) -> Same 'Eucalyptus' color (e.g., #ff9999)
-# Acacia -> different color (e.g., #66b3ff)
-# Pine -> different color (e.g., #99ff99)
-
 euc_color = '#ff9999'
 acacia_color = '#66b3ff'
 pine_color = '#99ff99'
+total_color = '#c2c2f0' # Light purple for Total
 
-colors = [euc_color, euc_color, euc_color, acacia_color, pine_color]
+colors = [euc_color, euc_color, euc_color, acacia_color, pine_color, total_color]
 
 # --- Plotting Code ---
 if density_data_for_boxplot:
