@@ -20,11 +20,13 @@ The file `branchlet raw data.xlsx` contains data on firebrands.
         - Marked these rows with "cali" in a new `Calibration` column.
     - Updated `density boxplot.py` to:
         - Plot densities from the calibrated Excel file.
-        - Group "Leave", "No Leave - Branchlet", and "Twigs (2)" as "Eucalyptus" (same color).
-        - Plot "Acacia" and "Pine" distinctly.
-        - Added "Total" category combining all data.
-        - Disabled outlier filtering to show all points (including calibrated ones).
-        - Remove titles and standardise formatting.
+        - Group "Leaves - branchlet", "No leaves - branchlet", and "Individual twigs" as distinct colors but grouped under Eucalyptus in legend.
+        - Plot "Acacia" and "Pine" distinctly, using the same color as "Individual twigs" as requested.
+        - Added "Total" category combining all data (no color).
+        - Disabled outlier filtering (`showfliers=False`).
+        - Moved Mean/Median text outside the boxes.
+        - Renamed labels and axes ("Sample Source" -> "Species").
+        - Improved overall design (aspect ratio, grid, fonts).
 
 
 

@@ -1,27 +1,8 @@
 # Import necessary libraries
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np # Import numpy for concatenating series
+import numpy as np
 import matplotlib.patches as mpatches
-import io
-
-# --- Feature Toggle ---
-# Set this to True to remove outliers, or False to keep and display them.
-REMOVE_OUTLIERS = False
-
-# --- Function to remove outliers ---
-def remove_outliers(data_series):
-    """
-    Removes outliers from a pandas Series using the IQR method.
-    """
-    if data_series.empty:
-        return data_series
-    Q1 = data_series.quantile(0.25)
-    Q3 = data_series.quantile(0.75)
-    IQR = Q3 - Q1
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-    return data_series[(data_series >= lower_bound) & (data_series <= upper_bound)]
 
 # --- Function to load a single dataset ---
 def load_density_data(df, sheet_name):
@@ -63,149 +44,156 @@ try:
             print(f"Sheet '{sheet}' not found.")
             return pd.Series([], dtype=float)
 
-    leave_data_raw = get_sheet_data("leave")
-    no_leave_branchlet_data_raw = get_sheet_data("no leave - branchlet")
-    twigs_2_data_raw = get_sheet_data("twigs (2)")
-    acacia_data_raw = get_sheet_data("Acacia")
-    pine_data_raw = get_sheet_data("Pine")
+    # Load Raw Data
+    leave_data = get_sheet_data("leave")
+    no_leave_branchlet_data = get_sheet_data("no leave - branchlet")
+    twigs_2_data = get_sheet_data("twigs (2)")
+    acacia_data = get_sheet_data("Acacia")
+    pine_data = get_sheet_data("Pine")
 
 except Exception as e:
     print(f"Error loading Excel file: {e}")
     exit()
 
-# Conditionally remove outliers based on the toggle
-if REMOVE_OUTLIERS:
-    leave_data = remove_outliers(leave_data_raw)
-    no_leave_branchlet_data = remove_outliers(no_leave_branchlet_data_raw)
-    twigs_2_data = remove_outliers(twigs_2_data_raw)
-    acacia_data = remove_outliers(acacia_data_raw)
-    pine_data = remove_outliers(pine_data_raw)
-else:
-    leave_data = leave_data_raw
-    no_leave_branchlet_data = no_leave_branchlet_data_raw
-    twigs_2_data = twigs_2_data_raw
-    acacia_data = acacia_data_raw
-    pine_data = pine_data_raw
-
 # Create Total category
 total_data = pd.concat([leave_data, no_leave_branchlet_data, twigs_2_data, acacia_data, pine_data], ignore_index=True)
 
-# --- Arrange Data and Labels in the correct order ---
+# --- Arrange Data and Labels ---
+# Mapping to new names as requested
 ordered_data_map = {
-    "Leave": leave_data,
-    "No Leave - Branchlet": no_leave_branchlet_data,
-    "Twigs (2)": twigs_2_data,
+    "Leaves -\nbranchlet": leave_data,
+    "No leaves -\nbranchlet": no_leave_branchlet_data,
+    "Individual\ntwigs": twigs_2_data,
     "Acacia": acacia_data,
     "Pine": pine_data,
     "Total": total_data
 }
 
 density_data_for_boxplot = list(ordered_data_map.values())
-short_labels_filtered = list(ordered_data_map.keys())
+labels = list(ordered_data_map.keys())
 
 # --- Define Colors ---
-euc_color = '#ff9999'
-acacia_color = '#66b3ff'
-pine_color = '#99ff99'
-total_color = '#c2c2f0' # Light purple for Total
+# Requirements:
+# 1. Leaves - branchlet: Color A
+# 2. No leaves - branchlet: Color B
+# 3. Individual twigs: Color C
+# 4. Acacia: Color C (Same as Individual Twigs)
+# 5. Pine: Color C (Same as Individual Twigs)
+# 6. Total: No Color (White)
 
-colors = [euc_color, euc_color, euc_color, acacia_color, pine_color, total_color]
+color_leaves = '#ff9999'   # Reddish
+color_no_leaves = '#66b3ff' # Blueish
+color_twigs = '#99ff99'    # Greenish
+color_total = 'white'
+
+colors = [color_leaves, color_no_leaves, color_twigs, color_twigs, color_twigs, color_total]
 
 # --- Plotting Code ---
 if density_data_for_boxplot:
-    fig, ax = plt.subplots(figsize=(16, 9))
+    # Improve design: Aspect ratio and style
+    plt.style.use('seaborn-v0_8-whitegrid') # Cleaner grid style
+    fig, ax = plt.subplots(figsize=(12, 8)) # Adjusted ratio
 
-    # Create a notched boxplot, showing/hiding outliers based on the setting
-    boxplot = ax.boxplot(density_data_for_boxplot, notch=True, patch_artist=True, showmeans=True, meanline=False, showfliers=(not REMOVE_OUTLIERS))
+    # Create notched boxplot
+    # showfliers=False to "remove data points" (outliers)
+    # patch_artist=True to fill colors
+    boxplot = ax.boxplot(density_data_for_boxplot, 
+                         notch=True, 
+                         patch_artist=True, 
+                         showmeans=True, 
+                         meanline=False, 
+                         showfliers=False,
+                         widths=0.6)
 
-    # Apply colors to the boxes
-    for patch, color in zip(boxplot['boxes'], colors):
-        patch.set_facecolor(color)
+    # Apply colors
+    for i, patch in enumerate(boxplot['boxes']):
+        patch.set_facecolor(colors[i])
+        patch.set_edgecolor('black') # distinct borders
+        patch.set_alpha(0.8) # Slight transparency for modern look
 
-    # Set plot titles and labels
-    # REMOVED TITLE as requested
-    # ax.set_title(plot_title, fontsize=16)
+    # Customizing whiskers, caps, medians, means
+    for element in ['whiskers', 'caps']:
+        plt.setp(boxplot[element], color='black', linewidth=1.5)
     
-    ax.set_ylabel('Density (kg/m³)', fontsize=12)
-    ax.set_xlabel('Sample Source', fontsize=12)
-    ax.yaxis.grid(True)
-
-    # Set y-axis limits automatically
-    # Combine all data to find max
-    all_data = pd.concat(density_data_for_boxplot, ignore_index=True)
-    if not all_data.empty:
-        # You might want to adjust this limit based on your data range
-        ax.set_ylim(0, 1000) 
-
-    # Set the x-axis ticks and labels
-    ax.set_xticks(range(1, len(short_labels_filtered) + 1))
-    ax.set_xticklabels(short_labels_filtered, rotation=0, ha="center")
-
-    # Customize median and mean markers
-    mean_marker = dict(markerfacecolor='red', markeredgecolor='red', marker='D')
-    for median in boxplot['medians']:
-        median.set(color='black', linewidth=2)
+    plt.setp(boxplot['medians'], color='black', linewidth=2)
+    
+    # Mean markers
+    mean_marker = dict(markerfacecolor='red', markeredgecolor='black', marker='D', markersize=6)
     for mean_point in boxplot['means']:
         mean_point.set(**mean_marker)
 
-    # Add text annotations with 3 significant digits
-    for i, (median_line, mean_point) in enumerate(zip(boxplot['medians'], boxplot['means'])):
-        if i >= len(density_data_for_boxplot): break # Safety check
-        
-        # Get data for this box
-        data_series = density_data_for_boxplot[i]
-        if data_series.empty: continue
+    # Labels and Titles
+    # ax.set_title removed
+    ax.set_ylabel('Density (kg/m³)', fontsize=14, fontweight='bold')
+    ax.set_xlabel('Species', fontsize=14, fontweight='bold')
+    
+    # X-axis Ticks
+    ax.set_xticks(range(1, len(labels) + 1))
+    ax.set_xticklabels(labels, rotation=0, fontsize=11)
+    ax.tick_params(axis='y', labelsize=11)
 
+    # Improved Grid
+    ax.yaxis.grid(True, linestyle='--', alpha=0.7)
+    ax.xaxis.grid(False)
+
+    # --- Annotations ---
+    # Put mean and median OUTSIDE the box.
+    # We will place them above the upper whisker for clarity.
+    
+    for i, (median_line, mean_point, box_data) in enumerate(zip(boxplot['medians'], boxplot['means'], density_data_for_boxplot)):
         median_val = median_line.get_ydata()[0]
         mean_val = mean_point.get_ydata()[0]
         
-        # Position the text to the right of the box
-        text_x_pos = i + 1.1 # Closer to the box
+        # Calculate stats for positioning
+        # Since showfliers=False, the visible top is roughly Q3 + 1.5*IQR (or max within range)
+        q1 = box_data.quantile(0.25)
+        q3 = box_data.quantile(0.75)
+        iqr = q3 - q1
+        upper_whisker = min(box_data.max(), q3 + 1.5 * iqr)
         
-        # Use '.3g' to format to 3 significant figures
-        try:
-             ax.text(text_x_pos, median_val, f'{median_val:.3g}',
-                    verticalalignment='center', size='small', color='black', weight='semibold',
-                    bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', boxstyle='round,pad=0.2'))
+        # Position text above the whisker
+        text_y_start = upper_whisker + (upper_whisker * 0.05) # 5% padding
+        
+        # Center text horizontally on the box
+        x_pos = i + 1
+        
+        # Display Mean and Median stacked
+        text_str = f"Mean: {mean_val:.1f}\nMed: {median_val:.1f}"
+        
+        ax.text(x_pos, text_y_start, text_str,
+                horizontalalignment='center',
+                verticalalignment='bottom',
+                fontsize=9,
+                color='black',
+                bbox=dict(facecolor='white', alpha=0.7, edgecolor='none', pad=1))
 
-             ax.text(text_x_pos, mean_val, f' {mean_val:.3g}',
-                    verticalalignment='bottom', size='small', color='red', weight='semibold',
-                    bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', boxstyle='round,pad=0.2'))
-        except (IndexError, ValueError):
-            pass
-
-
-    # Legend Setup
-    mean_proxy = plt.Line2D([0], [0], marker='D', color='w', label='Mean',
-                              markerfacecolor='red', markersize=8)
-    median_proxy = plt.Line2D([0], [0], color='black', lw=2, label='Median')
-
-    # Custom Legend for Species
-    euc_patch = mpatches.Patch(color=euc_color, label='Eucalyptus')
-    acacia_patch = mpatches.Patch(color=acacia_color, label='Acacia')
-    pine_patch = mpatches.Patch(color=pine_color, label='Pine')
+    # --- LEGEND ---
+    # Custom Legend as requested
+    # 1. Leaves - branchlet (Color A)
+    # 2. No leaves - branchlet (Color B)
+    # 3. Individual twigs (Color C) - Covers Individual twigs, Acacia, Pine
     
-    legend_handles = [median_proxy, mean_proxy, euc_patch, acacia_patch, pine_patch]
+    legend_elements = [
+        mpatches.Patch(facecolor=color_leaves, edgecolor='black', label='Leaves - branchlet'),
+        mpatches.Patch(facecolor=color_no_leaves, edgecolor='black', label='No leaves - branchlet'),
+        mpatches.Patch(facecolor=color_twigs, edgecolor='black', label='Individual twigs'),
+        # Adding Mean/Median markers to legend for completeness
+        plt.Line2D([0], [0], color='black', linewidth=2, label='Median'),
+        plt.Line2D([0], [0], marker='D', color='w', label='Mean', markerfacecolor='red', markeredgecolor='black', markersize=6)
+    ]
 
-    legend1 = ax.legend(handles=legend_handles, loc='upper right', bbox_to_anchor=(1, 1))
-    ax.add_artist(legend1)
+    ax.legend(handles=legend_elements, loc='upper right', fontsize=10, frameon=True, framealpha=0.9)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
-    plt.savefig("density_boxplot_groups.png")
-    # plt.show() # Commented out for headless environment script execution if needed
+    plt.tight_layout()
+    plt.savefig("density_boxplot_revised.png", dpi=300)
+    print("Plot generated: density_boxplot_revised.png")
 
     # Print Statistics
-    stats_title = "\n--- Statistics for Density"
-    if REMOVE_OUTLIERS:
-        stats_title += " (Outliers Removed)"
-    stats_title += " ---"
-    print(stats_title)
-    
+    print("\n--- Statistics for Density ---")
     for label, data in ordered_data_map.items():
-        print(f"\n{label}:")
+        print(f"\n{label.replace(chr(10), ' ')}:") # Remove newlines for print
         if not data.empty:
             print(data.describe())
-        else:
-            print("No data available.")
+
 else:
-    print("No valid density data found in any of the provided files to generate a boxplot.")
+    print("No valid density data found.")
