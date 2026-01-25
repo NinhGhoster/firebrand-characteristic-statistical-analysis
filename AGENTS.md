@@ -13,6 +13,16 @@ The file `branchlet raw data.xlsx` contains data on firebrands.
     - Verified the change by inspecting multiple sheets (Pine, Acacia, candle bark density).
     - Initialized Git repository and successfully tracked all files including `AGENTS.md`, `branchlet raw data.xlsx`, CSV files, and all data subdirectories (`Pine`, `Acacia`, `Twigs` etc.).
     - Renamed columns 'Volume (mm³)' to 'Volume (mm3)' and 'Surface Area (mm²)' to 'Surface Area (mm2)' in all 247 CSV files recursively to match Excel structure.
+    - Calibrated `branchlet raw data.xlsx`:
+        - Identified firebrands with Density > 800 kg/m³.
+        - Recalculated their Mass using [Volume * Median_Sheet_Density].
+        - Replaced their Density with the Median_Sheet_Density.
+        - Marked these rows with "cali" in a new `Calibration` column.
+    - Updated `density boxplot.py` to:
+        - Plot densities from the calibrated Excel file.
+        - Group "Leave", "No Leave - Branchlet", and "Twigs (2)" as "Eucalyptus" (same color).
+        - Plot "Acacia" and "Pine" distinctly.
+        - Remove titles and standardise formatting.
 
 
 
