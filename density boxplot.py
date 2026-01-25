@@ -70,7 +70,14 @@ ordered_data_map = {
 }
 
 density_data_for_boxplot = list(ordered_data_map.values())
-labels = list(ordered_data_map.keys())
+labels = [
+    "Eucalyptus",
+    "Eucalyptus",
+    "Eucalyptus",
+    "Acacia",
+    "Pine",
+    "Total"
+]
 
 # --- Define Colors ---
 # Requirements:
@@ -90,13 +97,11 @@ colors = [color_leaves, color_no_leaves, color_twigs, color_twigs, color_twigs, 
 
 # --- Plotting Code ---
 if density_data_for_boxplot:
-    # Improve design: Aspect ratio and style
-    plt.style.use('seaborn-v0_8-whitegrid') # Cleaner grid style
-    fig, ax = plt.subplots(figsize=(12, 8)) # Adjusted ratio
+    # Increase figure size for better space
+    plt.style.use('seaborn-v0_8-whitegrid')
+    fig, ax = plt.subplots(figsize=(14, 8)) 
 
     # Create notched boxplot
-    # showfliers=False to "remove data points" (outliers)
-    # patch_artist=True to fill colors
     boxplot = ax.boxplot(density_data_for_boxplot, 
                          notch=True, 
                          patch_artist=True, 
@@ -108,13 +113,12 @@ if density_data_for_boxplot:
     # Apply colors
     for i, patch in enumerate(boxplot['boxes']):
         patch.set_facecolor(colors[i])
-        patch.set_edgecolor('black') # distinct borders
-        patch.set_alpha(0.8) # Slight transparency for modern look
+        patch.set_edgecolor('black')
+        patch.set_alpha(0.8)
 
-    # Customizing whiskers, caps, medians, means
+    # Customizing elements
     for element in ['whiskers', 'caps']:
         plt.setp(boxplot[element], color='black', linewidth=1.5)
-    
     plt.setp(boxplot['medians'], color='black', linewidth=2)
     
     # Mean markers
@@ -122,84 +126,63 @@ if density_data_for_boxplot:
     for mean_point in boxplot['means']:
         mean_point.set(**mean_marker)
 
-    # Labels and Titles
-    # ax.set_title removed
+    # Labels
     ax.set_ylabel('Density (kg/m³)', fontsize=14, fontweight='bold')
     ax.set_xlabel('Species', fontsize=14, fontweight='bold')
-    
-    # X-axis Ticks
     ax.set_xticks(range(1, len(labels) + 1))
     ax.set_xticklabels(labels, rotation=0, fontsize=11)
     ax.tick_params(axis='y', labelsize=11)
 
-    # Improved Grid
     ax.yaxis.grid(True, linestyle='--', alpha=0.7)
     ax.xaxis.grid(False)
 
     # --- Annotations ---
-    # Put mean and median numbers on the right side of the box
-    
     for i, (median_line, mean_point) in enumerate(zip(boxplot['medians'], boxplot['means'])):
         median_val = median_line.get_ydata()[0]
         mean_val = mean_point.get_ydata()[0]
         
-        # Position text to the right
-        text_x_pos = i + 1.35 # Slightly offset to the right
+        # Position text to the right of the box but INSIDE the frame
+        # Using i + 1.32 keeps it within the axes for all boxes
+        text_x_pos = i + 1.32
+        ha = 'left'
+            
+        mean_str = f"{int(round(mean_val))}"
+        median_str = f"{int(round(median_val))}"
         
-        # Display simplified numbers
-        text_str = f"{mean_val:.1f}\n{median_val:.1f}"
-        
-        # Place roughly between mean and median vertically
-        text_y_pos = (mean_val + median_val) / 2
-        
-        ax.text(text_x_pos, text_y_pos, text_str,
-                horizontalalignment='left',
-                verticalalignment='center',
-                fontsize=9,
-                color='black',
-                bbox=dict(facecolor='white', alpha=0.7, edgecolor='none', pad=1))
+        ax.text(text_x_pos, mean_val, mean_str,
+                horizontalalignment=ha, verticalalignment='center',
+                fontsize=9, color='red', fontweight='bold',
+                bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', pad=1))
+        ax.text(text_x_pos, median_val, median_str,
+                horizontalalignment=ha, verticalalignment='center',
+                fontsize=9, color='black', fontweight='bold',
+                bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', pad=1))
 
     # --- LEGEND ---
-    # 1. Eucalyptus (Group) - Represents the first three colors
-    # 2. Individual twigs (Color C) - Actually overlaps with Eucalyptus group color logic issue...
-    # Wait, user said: "Three first boxplot is one name 'Eucalyptus', but different color, add these color name to legend accordingly."
-    # AND "The third boxplot (Eucalyptus), Acacia, Pine are the same color with label 'Individual twigs'." 
-    # This contradicts. Let's follow:
-    # Legend: 
-    # - Leaves - branchlet (Color A)
-    # - No leaves - branchlet (Color B)
-    # - Individual twigs (Color C) -> This applies to 3rd box (Individual twigs), Acacia, and Pine.
-    # But user also said "Three first boxplot is one name 'Eucalyptus'". This might mean X-axis label grouping? 
-    # Or Legend Grouping?
-    # "first three boxplot is 'Eucalyptus', but different color, add these color name to legend accordingly"
-    # -> Legend: Eucalyptus (Leaves - branchlet), Eucalyptus (No leaves...), Eucalyptus (Individual twigs)?
-    # Let's stick to the color mapping requested earlier which was clearer:
-    # A = Leaves, B = No Leaves, C = Twigs/Acacia/Pine.
-    # Legend Labels:
-    # "Leaves - branchlet" (A)
-    # "No leaves - branchlet" (B)
-    # "Individual twigs" (C)
-    
     legend_elements = [
         mpatches.Patch(facecolor=color_leaves, edgecolor='black', label='Leaves - branchlet'),
         mpatches.Patch(facecolor=color_no_leaves, edgecolor='black', label='No leaves - branchlet'),
         mpatches.Patch(facecolor=color_twigs, edgecolor='black', label='Individual twigs'),
         plt.Line2D([0], [0], color='black', linewidth=2, label='Median'),
-        plt.Line2D([0], [0], marker='D', color='w', label='Mean', markerfacecolor='red', markeredgecolor='black', markersize=6)
+        plt.Line2D([0], [0], marker='D', color='w', markerfacecolor='red', markeredgecolor='black', markersize=6, label='Mean')
     ]
-
-    ax.legend(handles=legend_elements, loc='upper right', fontsize=10, frameon=True, framealpha=0.9)
+    # Move legend slightly more to the right and use bbox_to_anchor
+    ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1.02, 1), 
+              fontsize=10, frameon=True, framealpha=0.9)
 
     plt.tight_layout()
-    plt.savefig("density_boxplot_revised.png", dpi=300)
+    # Adjusting layout to ensure legend is fully visible
+    plt.subplots_adjust(right=0.82)
+    
+    plt.savefig("density_boxplot_revised.png", dpi=300, bbox_inches='tight')
     print("Plot generated: density_boxplot_revised.png")
 
-    # Print Statistics
-    print("\n--- Statistics for Density ---")
-    for label, data in ordered_data_map.items():
-        print(f"\n{label.replace(chr(10), ' ')}:") # Remove newlines for print
-        if not data.empty:
-            print(data.describe())
+# Print Statistics
+print("\n--- Statistics for Density ---")
+for label, data in ordered_data_map.items():
+    print(f"\n{label.replace(chr(10), ' ')}:") # Remove newlines for print
+    if not data.empty:
+        print(data.describe())
 
 else:
     print("No valid density data found.")
