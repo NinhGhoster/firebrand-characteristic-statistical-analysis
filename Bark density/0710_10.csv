@@ -1,4 +1,4 @@
-File (ID),Volume (mm³),Surface Area (mm²),Length (mm),Width (mm),Height (mm),Mass (g)
+File (ID),Volume (mm3),Surface Area (mm2),Length (mm),Width (mm),Height (mm),Mass (g)
 0710_10_mesh_1.ply,283.741,1045.503,44.717,20.845,8.452,0.038
 0710_10_mesh_2.ply,12.743,569.648,37.992,10.655,8.052,0.014
 0710_10_mesh_3.ply,559.063,1966.433,54.353,26.572,18.157,0.048

@@ -1,0 +1,926 @@
+Model Selection Report (Without Experiment Order)
+Generated on: 2026-02-20 20:42:21.259543 
+
+
+======================================================
+Testing Parameter: volume | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 8932.18
+ Family: lognormal  ( log )
+Formula:          volume ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   8932.2    8945.6   -4463.1    8926.2       636 
+
+
+Dispersion parameter for lognormal family (): 3.08e+03 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      6.50210    0.12603   51.59   <2e-16 ***
+conditiontwig_2  0.03934    0.07697    0.51    0.609    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response   SE  df asymp.LCL asymp.UCL
+ 50kW           667 84.0 Inf       521       853
+ twig_2         693 76.8 Inf       558       862
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio    SE  df null z.ratio p.value
+ 50kW / twig_2 0.961 0.074 Inf    1  -0.511  0.6093
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio    SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2 0.961 0.074 Inf     0.827      1.12
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: surface_area | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 8951.73
+ Family: lognormal  ( log )
+Formula:          surface_area ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   8951.7    8965.1   -4472.9    8945.7       636 
+
+
+Dispersion parameter for lognormal family ():  517 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      6.05508    0.05807  104.27   <2e-16 ***
+conditiontwig_2  0.03928    0.04791    0.82    0.412    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response   SE  df asymp.LCL asymp.UCL
+ 50kW           426 24.8 Inf       380       478
+ twig_2         443 20.1 Inf       406       485
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio     SE  df null z.ratio p.value
+ 50kW / twig_2 0.961 0.0461 Inf    1  -0.820  0.4123
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio     SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2 0.961 0.0461 Inf     0.875      1.06
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: vol_sa_ratio | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod1b
+  -> AIC: 851.19
+ Family: Gamma  ( log )
+Formula:          vol_sa_ratio ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    851.2     864.6    -422.6     845.2       636 
+
+
+Dispersion estimate for Gamma family (sigma^2): 0.644 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)     -0.24833    0.06403  -3.879 0.000105 ***
+conditiontwig_2 -0.05109    0.07372  -0.693 0.488287    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response     SE  df asymp.LCL asymp.UCL
+ 50kW         0.780 0.0499 Inf     0.688     0.884
+ twig_2       0.741 0.0271 Inf     0.690     0.796
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio     SE  df null z.ratio p.value
+ 50kW / twig_2  1.05 0.0776 Inf    1   0.693  0.4883
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio     SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2  1.05 0.0776 Inf     0.911      1.22
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: sa_vol_ratio | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 2692.98
+ Family: lognormal  ( log )
+Formula:          sa_vol_ratio ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   2693.0    2706.4   -1343.5    2687.0       636 
+
+
+Dispersion parameter for lognormal family (): 4.58 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      1.14087    0.06538   17.45   <2e-16 ***
+conditiontwig_2  0.05756    0.05139    1.12    0.263    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 50kW          3.13 0.205 Inf      2.75      3.56
+ twig_2        3.31 0.173 Inf      2.99      3.67
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio     SE  df null z.ratio p.value
+ 50kW / twig_2 0.944 0.0485 Inf    1  -1.120  0.2627
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio     SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2 0.944 0.0485 Inf     0.854      1.04
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: length | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 5172.31
+ Family: lognormal  ( log )
+Formula:          length ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   5172.3    5185.7   -2583.2    5166.3       636 
+
+
+Dispersion parameter for lognormal family (): 19.8 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      3.21117    0.04326   74.22   <2e-16 ***
+conditiontwig_2  0.02891    0.04032    0.72    0.473    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 50kW          24.8 1.070 Inf      22.8      27.0
+ twig_2        25.5 0.812 Inf      24.0      27.2
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio     SE  df null z.ratio p.value
+ 50kW / twig_2 0.972 0.0392 Inf    1  -0.717  0.4734
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio     SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2 0.972 0.0392 Inf     0.898      1.05
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: width | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 3538.9
+ Family: lognormal  ( log )
+Formula:          width ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   3538.9    3552.3   -1766.5    3532.9       636 
+
+
+Dispersion parameter for lognormal family (): 4.52 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      2.18505    0.03154   69.28   <2e-16 ***
+conditiontwig_2  0.04790    0.03241    1.48    0.139    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 50kW          8.89 0.280 Inf      8.36      9.46
+ twig_2        9.33 0.193 Inf      8.96      9.71
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio     SE  df null z.ratio p.value
+ 50kW / twig_2 0.953 0.0309 Inf    1  -1.478  0.1395
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio     SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2 0.953 0.0309 Inf     0.895      1.02
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: height | Dataset: 150kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 3103.18
+ Family: lognormal  ( log )
+Formula:          height ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   3103.2    3116.6   -1548.6    3097.2       636 
+
+
+Dispersion parameter for lognormal family (): 3.43 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      1.70585    0.03682   46.33   <2e-16 ***
+conditiontwig_2  0.06327    0.03616    1.75   0.0801 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 50kW          5.51 0.203 Inf      5.12      5.92
+ twig_2        5.87 0.144 Inf      5.59      6.15
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast      ratio     SE  df null z.ratio p.value
+ 50kW / twig_2 0.939 0.0339 Inf    1  -1.750  0.0801
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast      ratio     SE  df asymp.LCL asymp.UCL
+ 50kW / twig_2 0.939 0.0339 Inf     0.874      1.01
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: volume | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 10367.74
+ Family: lognormal  ( log )
+Formula:          volume ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  10367.7   10381.6   -5180.9   10361.7       738 
+
+
+Dispersion parameter for lognormal family (): 2.3e+03 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      6.51108    0.09940   65.51   <2e-16 ***
+conditiontwig_2 -0.13220    0.05972   -2.21   0.0269 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response   SE  df asymp.LCL asymp.UCL
+ 100kW          673 66.8 Inf       554       817
+ twig_2         589 56.2 Inf       489       710
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast       ratio     SE  df null z.ratio p.value
+ 100kW / twig_2  1.14 0.0682 Inf    1   2.214  0.0269
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / twig_2  1.14 0.0682 Inf      1.02      1.28
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: surface_area | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 10346.74
+ Family: lognormal  ( log )
+Formula:          surface_area ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  10346.7   10360.6   -5170.4   10340.7       738 
+
+
+Dispersion parameter for lognormal family ():  486 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      6.07863    0.04664  130.34   <2e-16 ***
+conditiontwig_2 -0.01642    0.03891   -0.42    0.673    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response   SE  df asymp.LCL asymp.UCL
+ 100kW          436 20.4 Inf       398       478
+ twig_2         429 18.0 Inf       395       466
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast       ratio     SE  df null z.ratio p.value
+ 100kW / twig_2  1.02 0.0396 Inf    1   0.422  0.6730
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / twig_2  1.02 0.0396 Inf     0.942       1.1
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: vol_sa_ratio | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod1a
+  -> AIC: 958.52
+ Family: Gamma  ( inverse )
+Formula:          vol_sa_ratio ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    958.5     972.3    -476.3     952.5       738 
+
+
+Dispersion estimate for Gamma family (sigma^2): 0.565 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      1.25692    0.05870  21.414   <2e-16 ***
+conditiontwig_2  0.09216    0.07469   1.234    0.217    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response     SE  df asymp.LCL asymp.UCL
+ 100kW        0.796 0.0372 Inf     0.729     0.876
+ twig_2       0.741 0.0254 Inf     0.695     0.795
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the inverse scale 
+
+Pairwise Comparisons:
+ contrast       estimate     SE  df z.ratio p.value
+ 100kW - twig_2  -0.0922 0.0747 Inf  -1.234  0.2172
+
+Note: contrasts are still on the inverse scale. Consider using
+      regrid() if you want contrasts of back-transformed estimates. 
+
+Confidence Intervals:
+ contrast       estimate     SE  df asymp.LCL asymp.UCL
+ 100kW - twig_2  -0.0922 0.0747 Inf    -0.239    0.0542
+
+Note: contrasts are still on the inverse scale. Consider using
+      regrid() if you want contrasts of back-transformed estimates. 
+Confidence level used: 0.95 
+
+======================================================
+Testing Parameter: sa_vol_ratio | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 2906.2
+ Family: lognormal  ( log )
+Formula:          sa_vol_ratio ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   2906.2    2920.0   -1450.1    2900.2       738 
+
+
+Dispersion parameter for lognormal family (): 3.47 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      1.02554    0.04840  21.187   <2e-16 ***
+conditiontwig_2  0.02550    0.04032   0.632    0.527    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         2.79 0.135 Inf      2.54      3.07
+ twig_2        2.86 0.131 Inf      2.62      3.13
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast       ratio     SE  df null z.ratio p.value
+ 100kW / twig_2 0.975 0.0393 Inf    1  -0.632  0.5271
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / twig_2 0.975 0.0393 Inf     0.901      1.05
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: length | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 5967.54
+ Family: lognormal  ( log )
+Formula:          length ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   5967.5    5981.4   -2980.8    5961.5       738 
+
+
+Dispersion parameter for lognormal family (): 19.1 
+
+Conditional model:
+                 Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      3.225607   0.034661   93.06   <2e-16 ***
+conditiontwig_2 -0.001399   0.033131   -0.04    0.966    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         25.2 0.872 Inf      23.5      26.9
+ twig_2        25.1 0.753 Inf      23.7      26.7
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast       ratio     SE  df null z.ratio p.value
+ 100kW / twig_2     1 0.0332 Inf    1   0.042  0.9663
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / twig_2     1 0.0332 Inf     0.938      1.07
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: width | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 4022.99
+ Family: lognormal  ( log )
+Formula:          width ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   4023.0    4036.8   -2008.5    4017.0       738 
+
+
+Dispersion parameter for lognormal family (): 4.23 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      2.18089    0.02404   90.72   <2e-16 ***
+conditiontwig_2  0.03089    0.02615    1.18    0.237    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         8.85 0.213 Inf      8.45      9.28
+ twig_2        9.13 0.178 Inf      8.79      9.49
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast       ratio     SE  df null z.ratio p.value
+ 100kW / twig_2  0.97 0.0254 Inf    1  -1.181  0.2374
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / twig_2  0.97 0.0254 Inf     0.921      1.02
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: height | Dataset: 150kW vs 100kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 3545.09
+ Family: lognormal  ( log )
+Formula:          height ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   3545.1    3558.9   -1769.5    3539.1       738 
+
+
+Dispersion parameter for lognormal family (): 3.24 
+
+Conditional model:
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      1.76851    0.02736   64.63   <2e-16 ***
+conditiontwig_2 -0.02055    0.02866   -0.72    0.473    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         5.86 0.160 Inf      5.56      6.19
+ twig_2        5.74 0.132 Inf      5.49      6.01
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast       ratio     SE  df null z.ratio p.value
+ 100kW / twig_2  1.02 0.0293 Inf    1   0.717  0.4733
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / twig_2  1.02 0.0293 Inf     0.965      1.08
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: volume | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 5901.28
+ Family: lognormal  ( log )
+Formula:          volume ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   5901.3    5913.4   -2947.6    5895.3       413 
+
+
+Dispersion parameter for lognormal family (): 2.78e+03 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    6.61682    0.13007   50.87   <2e-16 ***
+condition50kW -0.17198    0.08228   -2.09   0.0366 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response   SE  df asymp.LCL asymp.UCL
+ 100kW          748 97.2 Inf       579       965
+ 50kW           629 88.8 Inf       477       830
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast     ratio     SE  df null z.ratio p.value
+ 100kW / 50kW  1.19 0.0977 Inf    1   2.090  0.0366
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast     ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / 50kW  1.19 0.0977 Inf      1.01       1.4
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: surface_area | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 5833.63
+ Family: lognormal  ( log )
+Formula:          surface_area ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   5833.6    5845.7   -2913.8    5827.6       413 
+
+
+Dispersion parameter for lognormal family ():  517 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    6.10989    0.05717  106.88   <2e-16 ***
+condition50kW -0.05542    0.05245   -1.06    0.291    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response   SE  df asymp.LCL asymp.UCL
+ 100kW          450 25.7 Inf       403       504
+ 50kW           426 27.7 Inf       375       484
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast     ratio     SE  df null z.ratio p.value
+ 100kW / 50kW  1.06 0.0554 Inf    1   1.057  0.2907
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast     ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / 50kW  1.06 0.0554 Inf     0.954      1.17
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: vol_sa_ratio | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod1a
+  -> AIC: 549.82
+ Family: Gamma  ( inverse )
+Formula:          vol_sa_ratio ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+    549.8     561.9    -271.9     543.8       413 
+
+
+Dispersion estimate for Gamma family (sigma^2): 0.51 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    1.25692    0.05577  22.537   <2e-16 ***
+condition50kW  0.02497    0.09191   0.272    0.786    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response     SE  df asymp.LCL asymp.UCL
+ 100kW        0.796 0.0353 Inf     0.732     0.871
+ 50kW         0.780 0.0445 Inf     0.702     0.878
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the inverse scale 
+
+Pairwise Comparisons:
+ contrast     estimate     SE  df z.ratio p.value
+ 100kW - 50kW   -0.025 0.0919 Inf  -0.272  0.7859
+
+Note: contrasts are still on the inverse scale. Consider using
+      regrid() if you want contrasts of back-transformed estimates. 
+
+Confidence Intervals:
+ contrast     estimate     SE  df asymp.LCL asymp.UCL
+ 100kW - 50kW   -0.025 0.0919 Inf    -0.205     0.155
+
+Note: contrasts are still on the inverse scale. Consider using
+      regrid() if you want contrasts of back-transformed estimates. 
+Confidence level used: 0.95 
+
+======================================================
+Testing Parameter: sa_vol_ratio | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 1566
+ Family: lognormal  ( log )
+Formula:          sa_vol_ratio ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   1566.0    1578.1    -780.0    1560.0       413 
+
+
+Dispersion parameter for lognormal family (): 3.11 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    0.97076    0.05709  17.004   <2e-16 ***
+condition50kW -0.04485    0.05350  -0.838    0.402    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         2.64 0.151 Inf      2.36      2.95
+ 50kW          2.52 0.174 Inf      2.21      2.89
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast     ratio    SE  df null z.ratio p.value
+ 100kW / 50kW  1.05 0.056 Inf    1   0.838  0.4018
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast     ratio    SE  df asymp.LCL asymp.UCL
+ 100kW / 50kW  1.05 0.056 Inf     0.942      1.16
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: length | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 3333.32
+ Family: lognormal  ( log )
+Formula:          length ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   3333.3    3345.4   -1663.7    3327.3       413 
+
+
+Dispersion parameter for lognormal family (): 18.6 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    3.21422    0.03961   81.14   <2e-16 ***
+condition50kW -0.03097    0.04374   -0.71    0.479    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         24.9 0.986 Inf        23      26.9
+ 50kW          24.1 1.120 Inf        22      26.4
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast     ratio     SE  df null z.ratio p.value
+ 100kW / 50kW  1.03 0.0451 Inf    1   0.708  0.4789
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast     ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / 50kW  1.03 0.0451 Inf     0.947      1.12
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: width | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 2204.83
+ Family: lognormal  ( log )
+Formula:          width ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   2204.8    2216.9   -1099.4    2198.8       413 
+
+
+Dispersion parameter for lognormal family (): 3.92 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    2.15783    0.02530   85.29   <2e-16 ***
+condition50kW -0.01938    0.03413   -0.57     0.57    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         8.65 0.219 Inf      8.23      9.09
+ 50kW          8.49 0.267 Inf      7.98      9.03
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast     ratio     SE  df null z.ratio p.value
+ 100kW / 50kW  1.02 0.0348 Inf    1   0.568  0.5703
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast     ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / 50kW  1.02 0.0348 Inf     0.954      1.09
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+======================================================
+Testing Parameter: height | Dataset: 100kW vs 50kW
+======================================================
+  -> WINNER: mod2
+  -> AIC: 2010.72
+ Family: lognormal  ( log )
+Formula:          height ~ condition
+Data: df
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   2010.7    2022.8   -1002.4    2004.7       413 
+
+
+Dispersion parameter for lognormal family (): 3.35 
+
+Conditional model:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    1.78094    0.03097   57.51   <2e-16 ***
+condition50kW -0.08412    0.03923   -2.14    0.032 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated Marginal Means:
+ condition response    SE  df asymp.LCL asymp.UCL
+ 100kW         5.94 0.184 Inf      5.59      6.31
+ 50kW          5.46 0.213 Inf      5.06      5.89
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+Pairwise Comparisons:
+ contrast     ratio     SE  df null z.ratio p.value
+ 100kW / 50kW  1.09 0.0427 Inf    1   2.144  0.0320
+
+Tests are performed on the log scale 
+
+Confidence Intervals:
+ contrast     ratio     SE  df asymp.LCL asymp.UCL
+ 100kW / 50kW  1.09 0.0427 Inf      1.01      1.17
+
+Confidence level used: 0.95 
+Intervals are back-transformed from the log scale 
+
+
+======================================================
+Summary of Pairwise Comparisons (P-Values)
+Signif. codes:  ns (p >= 0.05); * (p < 0.05); ** (p < 0.01); *** (p < 0.001)
+======================================================
+             150kW vs 50kW        150kW vs 100kW       100kW vs 50kW       
+volume       mod2 ns (p = 0.609)  mod2 * (p = 0.027)   mod2 * (p = 0.037)  
+surface_area mod2 ns (p = 0.412)  mod2 ns (p = 0.673)  mod2 ns (p = 0.291) 
+vol_sa_ratio mod1b ns (p = 0.488) mod1a ns (p = 0.217) mod1a ns (p = 0.786)
+sa_vol_ratio mod2 ns (p = 0.263)  mod2 ns (p = 0.527)  mod2 ns (p = 0.402) 
+length       mod2 ns (p = 0.473)  mod2 ns (p = 0.966)  mod2 ns (p = 0.479) 
+width        mod2 ns (p = 0.139)  mod2 ns (p = 0.237)  mod2 ns (p = 0.57)  
+height       mod2 ns (p = 0.08)   mod2 ns (p = 0.473)  mod2 * (p = 0.032)  
+
+End of Report

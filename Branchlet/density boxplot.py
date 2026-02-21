@@ -19,6 +19,10 @@ def load_density_data(df, sheet_name):
             
         if density_col_name:
             density_column = df[density_col_name].dropna()
+            
+            # Remove outliers > 800 as per user request
+            density_column = density_column[density_column <= 800]
+
             if not density_column.empty:
                 return density_column
             else:
