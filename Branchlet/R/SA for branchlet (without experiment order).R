@@ -248,11 +248,46 @@ select_best_model <- function(df, param_name, dataset_name) {
   ## Extract p-value for plot and summary table
   pw_sum <- summary(pw)
   p_val <- pw_sum$p.value[1]
-  p_label <- ifelse(p_val < 0.001, "p < 0.001", paste0("p = ", round(p_val, 3)))
 
-  ## Generate and Save Plot (Title = Parameter, Subtitle = NULL, Caption = p-value)
-  p <- plot(emm) +
-    labs(title = param_name, subtitle = NULL, caption = p_label)
+  ## Relabel condition levels for publication
+  label_map <- c(
+    "leave"              = "Leaves",
+    "noleave_branchlet"  = "No leaves",
+    "twig_2"             = "150 kW",
+    "50kW"               = "50 kW",
+    "100kW"              = "100 kW"
+  )
+  emm_df <- as.data.frame(emm)
+  emm_df$condition <- as.character(emm_df$condition)
+  for (old_lab in names(label_map)) {
+    emm_df$condition[emm_df$condition == old_lab] <- label_map[[old_lab]]
+  }
+  emm_df$condition <- factor(emm_df$condition)
+
+  ## Generate and Save Plot (no title, no caption)
+  ## Detect column names dynamically (varies by model family/link)
+  mean_col <- if ("response" %in% names(emm_df)) "response" else "emmean"
+  lcl_col <- if ("asymp.LCL" %in% names(emm_df)) "asymp.LCL" else "lower.CL"
+  ucl_col <- if ("asymp.UCL" %in% names(emm_df)) "asymp.UCL" else "upper.CL"
+
+  ## Parameter-specific x-axis labels
+  param_labels <- c(
+    "volume"       = expression("EMM volume (mm"^3 * ")"),
+    "surface_area" = expression("EMM surface area (mm"^2 * ")"),
+    "length"       = "EMM length (mm)",
+    "width"        = "EMM width (mm)",
+    "height"       = "EMM height (mm)",
+    "vol_sa_ratio" = "EMM volume/surface area ratio",
+    "sa_vol_ratio" = "EMM surface area/volume ratio"
+  )
+  x_label <- if (param_name %in% names(param_labels)) param_labels[[param_name]] else paste("EMM", param_name)
+
+  p <- ggplot(emm_df, aes(x = .data[[mean_col]], y = condition)) +
+    geom_point(size = 3) +
+    geom_errorbarh(aes(xmin = .data[[lcl_col]], xmax = .data[[ucl_col]]), height = 0.2) +
+    labs(x = x_label, y = "Type") +
+    theme_bw() +
+    theme(axis.title.y = element_text(angle = 0, vjust = 0.5))
 
   ## Construct safe filename
   safe_dataset_name <- gsub(" ", "_", dataset_name)

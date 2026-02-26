@@ -15,7 +15,7 @@ The project is organized by the type of firebrand material being analyzed:
 
 ### Branchlet
 - **Density**: Average density evaluated via `density boxplot.py` is approximately 322 kg/m³.
-- **Statistical Models**: Automated model selection scripts compare AIC/RMSE across 6 parameters and multiple datasets, including the effects of experiment order. Count data analysis is performed using Poisson and Negative Binomial distributions.
+- **Statistical Models**: Automated model selection scripts compare AIC/RMSE across 6 parameters and multiple datasets, including the effects of experiment order. Count data analysis is performed using Poisson and Negative Binomial distributions. Publication-ready EMM plots show parameter-specific x-axis labels with units and a horizontal "Type" y-axis.
 
 ### Stringybark
 - **Density**: *E. obliqua* (mean ~180 kg/m³) versus *E. radiata* (mean ~344 kg/m³). Analyzed in `density_stringybark_boxplot.py`.

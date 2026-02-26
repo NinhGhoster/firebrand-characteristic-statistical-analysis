@@ -64,7 +64,7 @@ This repository contains firebrand data analysis for multiple samples under diff
             - Automated model selection (AIC/RMSE) for 6 parameters across 6 datasets.
             - Automated count data analysis (Poisson vs NB) with overdispersion check.
             - Generated `model_selection_report.txt` with pairwise comparison summary table.
-            - Generated plots with parameter titles and pairwise p-values.
+            - Generated publication-ready EMM plots: x-axis shows "EMM parameter (units)", y-axis shows "Type" (horizontal label). Condition labels: Leaves, No leaves, Twigs/Eucalyptus (with experiment order) or 50 kW, 100 kW, 150 kW (without experiment order).
             - Added `No Leave vs Twig` dataset.
     - **2026-02-15**:
         - **Stringybark**:
@@ -73,6 +73,11 @@ This repository contains firebrand data analysis for multiple samples under diff
             - Automated count analysis (Poisson vs NB) with overdispersion check.
             - Generated `model_selection_report.txt` with pairwise comparison summary table.
             - Combined figures: single overlaid graph per factor (height, fire intensity, condition) with log y-axis and color-coded parameters.
+    - **2026-02-26**:
+        - **Branchlet**:
+            - Revised all EMM figures for publication: removed titles/p-value captions, relabeled axes (EMM + parameter with units, Type), consistent kW spacing.
+            - Dynamic column detection for emmeans output (handles `response`/`emmean`/`rate` variants).
+            - Condition labels: Leaves, No leaves, Twigs, Eucalyptus, 50 kW, 100 kW, 150 kW.
 
 ## Environment
 - **Conda Environment**: `stas_test` (contains `pandas`, `openpyxl`, `matplotlib`).
