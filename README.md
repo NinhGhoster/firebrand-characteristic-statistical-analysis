@@ -20,10 +20,11 @@ The project is organized by the type of firebrand material being analyzed:
 ### Stringybark
 - **Density**: *E. obliqua* (mean ~180 kg/m³) versus *E. radiata* (mean ~344 kg/m³). Analyzed in `density_stringybark_boxplot.py`.
 - **Heatmap Analysis**: Visualizes firebrand distribution across trunk height. Findings show *E. obliqua* 10-50% char T9 exhibits the highest reach (S44).
-- **Statistical Models**: Automated model selection (Gamma vs. Lognormal) evaluating parameters against predictors like `height_section`, `condition`, and `fire_intensity`. Generates combined figures with log y-axis scaling.
+- **Statistical Models**: Automated model selection (Gamma vs. Lognormal) evaluating 8 parameters (incl. vol/SA ratios) against `height_section`, `condition`, and `fire_intensity`. Per-parameter EMM plots by condition, fire intensity, and trunk section.
 
 ### Candlebark
 - **Density**: Mean density is approximately 263 kg/m³. Evaluated primarily for flat samples in `density_candlebark_boxplot.py`.
+- **Statistical Models**: Automated model selection (Gamma/GAM) evaluating 7 parameters across Fire Intensity, Shape (Flat vs Cylindrical), and Sample Length. Per-parameter EMM plots.
 
 ### Combined Bark Analysis
 - The root script `density_combined_bark.py` combines Stringybark and Candlebark density data into unified visual boxplot comparisons.
@@ -33,14 +34,15 @@ The project is organized by the type of firebrand material being analyzed:
 ### R Scripts (Statistical Analysis)
 - `Branchlet/R/SA for branchlet (with experiment order).R`
 - `Branchlet/R/SA for branchlet (without experiment order).R`
-- `Stringybark/statistical analysis for stringybark.R`
+- `Stringybark/R/SA for stringybark.R`
+- `Candlebark/R/SA for candlebark.R`
 
 ### Python Scripts (Data Processing & Visualization)
 - `density_combined_bark.py`: Master script in root for combined Bark density plotting.
 - `Branchlet/density boxplot.py`: Branchlet density boxplots.
 - `Stringybark/density_stringybark_boxplot.py`: Stringybark density boxplots.
 - `Stringybark/create_firebrands_heatmap.py`: Generates firebrand distribution heatmaps.
-- `Candle bark/density_candlebark_boxplot.py`: Candlebark density boxplots.
+- `Candlebark/density_candlebark_boxplot.py`: Candlebark density boxplots.
 - Various utilities for standardizing dataset headers and formatting (e.g., `standardize_csv_headers.py`, `safe_standardize_xlsx.py`, `verify_formulas.py`).
 
 ## Environment Setup

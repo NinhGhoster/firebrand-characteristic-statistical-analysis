@@ -283,18 +283,21 @@ select_best_model <- function(df, param_name, dataset_name) {
   x_label <- if (param_name %in% names(param_labels)) param_labels[[param_name]] else paste("EMM", param_name)
 
   p <- ggplot(emm_df, aes(x = .data[[mean_col]], y = condition)) +
-    geom_point(size = 3) +
+    geom_point(size = 2) +
     geom_errorbarh(aes(xmin = .data[[lcl_col]], xmax = .data[[ucl_col]]), height = 0.2) +
     labs(x = x_label, y = "Type") +
-    theme_bw() +
-    theme(axis.title.y = element_text(angle = 0, vjust = 0.5))
+    theme_bw(base_size = 10) +
+    theme(
+      axis.title.y = element_text(angle = 0, vjust = 0.5),
+      plot.margin = margin(5, 10, 5, 5)
+    )
 
   ## Construct safe filename
   safe_dataset_name <- gsub(" ", "_", dataset_name)
   safe_dataset_name <- gsub("/", "_", safe_dataset_name)
   filename <- paste0(figures_dir, "/", safe_dataset_name, "_", param_name, ".png")
 
-  ggsave(filename, plot = p, width = 8, height = 6)
+  ggsave(filename, plot = p, width = 5, height = 2.5)
   cat(paste0("  -> Plot saved to: ", filename, "\n"))
 
   return(paste0(best_model_name, " ", get_sig_string(p_val)))

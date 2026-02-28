@@ -25,10 +25,11 @@ This repository contains firebrand data analysis for multiple samples under diff
   - E. obliqua 10-50% char T9 has the highest reach (S44).
 
 ### Candlebark
-- **File**: `Candle bark/candlebark.xlsx`
+- **File**: `Candlebark/candlebark.xlsx`
 - **Density Analysis**: 
   - Analyzes sheets with "Density (kg/m3)" columns (excludes _AUTO sheets).
-  - Primarily "Flat" samples (Curve samples lacked density data).
+  - Primarily "Flat" samples (Cylindrical samples lacked density data).
+- **Statistical Models**: Automated model selection (Gamma/GAM, AIC/RMSE) for 7 parameters × 3 datasets (Fire Intensity, Shape, Sample Length). Curve relabelled to "Cylindrical". Publication-ready EMM plots with compact dimensions.
   - **Candlebark**: Mean Density ~263 kg/m³.
 
 ### Combined Bark Analysis
@@ -68,16 +69,29 @@ This repository contains firebrand data analysis for multiple samples under diff
             - Added `No Leave vs Twig` dataset.
     - **2026-02-15**:
         - **Stringybark**:
-            - Automated model selection (Gamma/Lognormal, AIC/RMSE) for 6 parameters × 2 datasets (Obliqua Char Levels, Species O vs R).
+            - Automated model selection (Gamma/Lognormal, AIC/RMSE) for 8 parameters (incl. vol_sa_ratio, sa_vol_ratio) × 2 datasets (Obliqua Char Levels, Species O vs R).
             - Formula: `param ~ height_section + condition + fire_intensity`.
             - Automated count analysis (Poisson vs NB) with overdispersion check.
             - Generated `model_selection_report.txt` with pairwise comparison summary table.
-            - Combined figures: single overlaid graph per factor (height, fire intensity, condition) with log y-axis and color-coded parameters.
     - **2026-02-26**:
         - **Branchlet**:
             - Revised all EMM figures for publication: removed titles/p-value captions, relabeled axes (EMM + parameter with units, Type), consistent kW spacing.
             - Dynamic column detection for emmeans output (handles `response`/`emmean`/`rate` variants).
             - Condition labels: Leaves, No leaves, Twigs, Eucalyptus, 50 kW, 100 kW, 150 kW.
+    - **2026-02-28**:
+        - **Stringybark**:
+            - Added `vol_sa_ratio` and `sa_vol_ratio` to parameters.
+            - Renamed axis label "Height section" → "Trunk section".
+            - Per-parameter EMM plots: by condition, fire_intensity, and trunk section (line + ribbon).
+            - Removed combined log-scale overlaid figures.
+            - Publication-ready: compact 5×2.5 dims, EMM labels with units, Type y-axis, no titles.
+        - **Candlebark**:
+            - Relabelled shape "Curve" → "Cylindrical".
+            - Consistent spacing: 50 kW, 100 kW, 150 kW; 20 cm, 40 cm, 60 cm.
+            - Fixed data path (`Candle bark` → `Candlebark`) and `60cm` → `60 cm` filter.
+            - Per-parameter EMM plots: by condition and fire_intensity.
+            - Removed combined log-scale overlaid figures.
+            - Publication-ready: compact 5×2.5 dims, EMM labels with units, Type y-axis, no titles.
 
 ## Environment
 - **Conda Environment**: `stas_test` (contains `pandas`, `openpyxl`, `matplotlib`).
@@ -89,8 +103,9 @@ This repository contains firebrand data analysis for multiple samples under diff
 - `Branchlet/R/SA for branchlet (without experiment order).R`: Automated branchlet statistical analysis (without experiment order).
 - `Stringybark/density_stringybark_boxplot.py`: Stringybark density analysis.
 - `Stringybark/create_firebrands_heatmap.py`: Stringybark heatmap.
-- `Stringybark/statistical analysis for stringybark.R`: Automated Stringybark model selection + combined figures.
-- `Candle bark/density_candlebark_boxplot.py`: Candlebark density analysis.
+- `Stringybark/R/SA for stringybark.R`: Automated Stringybark model selection + per-parameter EMM figures.
+- `Candlebark/R/SA for candlebark.R`: Automated Candlebark model selection + per-parameter EMM figures.
+- `Candlebark/density_candlebark_boxplot.py`: Candlebark density analysis.
 - `density_combined_bark.py`: **MASTER SCRIPT** for combined Bark density (Stringybark + Candlebark).
 
 ## Output Locations

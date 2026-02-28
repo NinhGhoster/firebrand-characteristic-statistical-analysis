@@ -63,11 +63,15 @@ df1 <- df1 %>%
 
     ## Derive Fire Intensity based on section number (repeating pattern 1, 2, 0 mod 3)
     fire_intensity = factor(case_when(
-      height_section %% 3 == 1 ~ "150kW",
-      height_section %% 3 == 2 ~ "100kW",
-      height_section %% 3 == 0 ~ "50kW",
+      height_section %% 3 == 1 ~ "150 kW",
+      height_section %% 3 == 2 ~ "100 kW",
+      height_section %% 3 == 0 ~ "50 kW",
       TRUE ~ NA_character_
-    ), levels = c("50kW", "100kW", "150kW"))
+    ), levels = c("50 kW", "100 kW", "150 kW")),
+
+    ## Derived ratios
+    vol_sa_ratio = volume / surface_area,
+    sa_vol_ratio = surface_area / volume
   )
 
 glimpse(df1)
@@ -89,11 +93,15 @@ df2 <- df2 %>%
 
     ## Derive Fire Intensity based on section number (repeating pattern 1, 2, 0 mod 3)
     fire_intensity = factor(case_when(
-      height_section %% 3 == 1 ~ "150kW",
-      height_section %% 3 == 2 ~ "100kW",
-      height_section %% 3 == 0 ~ "50kW",
+      height_section %% 3 == 1 ~ "150 kW",
+      height_section %% 3 == 2 ~ "100 kW",
+      height_section %% 3 == 0 ~ "50 kW",
       TRUE ~ NA_character_
-    ), levels = c("50kW", "100kW", "150kW"))
+    ), levels = c("50 kW", "100 kW", "150 kW")),
+
+    ## Derived ratios
+    vol_sa_ratio = volume / surface_area,
+    sa_vol_ratio = surface_area / volume
   )
 
 glimpse(df2)
@@ -103,7 +111,7 @@ glimpse(df2)
 ## ------------------------------------------------------------------
 
 ## Parameters to test
-params <- c("volume", "surface_area", "length", "width", "height", "mass")
+params <- c("volume", "surface_area", "length", "width", "height", "mass", "vol_sa_ratio", "sa_vol_ratio")
 
 ## Define datasets to iterate over (named list for clear output)
 dataset_list <- list(
@@ -255,14 +263,40 @@ select_best_model <- function(df, param_name, dataset_name) {
   }
 
   ## Generate and save per-parameter emmeans plot (by condition)
-  p_label <- ifelse(p_val < 0.001, "p < 0.001", paste0("p = ", round(p_val, 3)))
-  emm_plot <- plot(emm) +
-    labs(title = param_name, subtitle = dataset_name, caption = p_label)
+  emm_df <- as.data.frame(emm)
+
+  ## Detect column names dynamically
+  mean_col <- if ("response" %in% names(emm_df)) "response" else "emmean"
+  lcl_col <- if ("asymp.LCL" %in% names(emm_df)) "asymp.LCL" else "lower.CL"
+  ucl_col <- if ("asymp.UCL" %in% names(emm_df)) "asymp.UCL" else "upper.CL"
+
+  ## Parameter-specific x-axis labels
+  param_labels <- c(
+    "volume"       = expression("EMM volume (mm"^3 * ")"),
+    "surface_area" = expression("EMM surface area (mm"^2 * ")"),
+    "length"       = "EMM length (mm)",
+    "width"        = "EMM width (mm)",
+    "height"       = "EMM height (mm)",
+    "mass"         = "EMM mass (g)",
+    "vol_sa_ratio" = "EMM volume/surface area ratio",
+    "sa_vol_ratio" = "EMM surface area/volume ratio"
+  )
+  x_label <- if (param_name %in% names(param_labels)) param_labels[[param_name]] else paste("EMM", param_name)
+
+  emm_plot <- ggplot(emm_df, aes(x = .data[[mean_col]], y = condition)) +
+    geom_point(size = 2) +
+    geom_errorbarh(aes(xmin = .data[[lcl_col]], xmax = .data[[ucl_col]]), height = 0.2) +
+    labs(x = x_label, y = "Type") +
+    theme_bw(base_size = 10) +
+    theme(
+      axis.title.y = element_text(angle = 0, vjust = 0.5),
+      plot.margin = margin(5, 10, 5, 5)
+    )
 
   safe_dataset_name <- gsub(" ", "_", dataset_name)
   safe_dataset_name <- gsub("[()]", "", safe_dataset_name)
   filename <- paste0(figures_dir, "/", safe_dataset_name, "_", param_name, ".png")
-  ggsave(filename, plot = emm_plot, width = 8, height = 6)
+  ggsave(filename, plot = emm_plot, width = 5, height = 2.5)
   cat(paste0("  -> Plot saved to: ", filename, "\n"))
 
   ## Generate and save per-parameter emmeans plot (by fire_intensity)
@@ -279,18 +313,55 @@ select_best_model <- function(df, param_name, dataset_name) {
         p_val_fi <- jt_fi$p.value[jt_fi$`model term` == "fire_intensity"]
       }
 
-      p_label_fi <- ifelse(p_val_fi < 0.001, "p < 0.001", paste0("p = ", round(p_val_fi, 3)))
-      emm_fi_plot <- plot(emm_fi) +
-        labs(
-          title = paste0(param_name, " (by Fire Intensity)"),
-          subtitle = dataset_name, caption = p_label_fi
+      emm_fi_df <- as.data.frame(emm_fi)
+      fi_mean_col <- if ("response" %in% names(emm_fi_df)) "response" else "emmean"
+      fi_lcl_col <- if ("asymp.LCL" %in% names(emm_fi_df)) "asymp.LCL" else "lower.CL"
+      fi_ucl_col <- if ("asymp.UCL" %in% names(emm_fi_df)) "asymp.UCL" else "upper.CL"
+
+      emm_fi_plot <- ggplot(emm_fi_df, aes(x = .data[[fi_mean_col]], y = fire_intensity)) +
+        geom_point(size = 2) +
+        geom_errorbarh(aes(xmin = .data[[fi_lcl_col]], xmax = .data[[fi_ucl_col]]), height = 0.2) +
+        labs(x = x_label, y = "Type") +
+        theme_bw(base_size = 10) +
+        theme(
+          axis.title.y = element_text(angle = 0, vjust = 0.5),
+          plot.margin = margin(5, 10, 5, 5)
         )
 
       filename_fi <- paste0(figures_dir, "/", safe_dataset_name, "_", param_name, "_fire_intensity.png")
-      ggsave(filename_fi, plot = emm_fi_plot, width = 8, height = 6)
+      ggsave(filename_fi, plot = emm_fi_plot, width = 5, height = 2.5)
       cat(paste0("  -> Plot saved to: ", filename_fi, "\n"))
     },
     error = function(e) cat("  Fire intensity emmeans error:", e$message, "\n")
+  )
+
+  ## Generate and save per-parameter emmeans plot (by height_section)
+  tryCatch(
+    {
+      emm_hs <- emmeans(best_model, ~height_section,
+        at = list(height_section = seq(1, 44, 0.5)),
+        type = "response"
+      )
+      emm_hs_df <- as.data.frame(emm_hs)
+      hs_mean_col <- if ("response" %in% names(emm_hs_df)) "response" else "emmean"
+      hs_lcl_col <- if ("asymp.LCL" %in% names(emm_hs_df)) "asymp.LCL" else "lower.CL"
+      hs_ucl_col <- if ("asymp.UCL" %in% names(emm_hs_df)) "asymp.UCL" else "upper.CL"
+
+      emm_hs_plot <- ggplot(emm_hs_df, aes(x = height_section, y = .data[[hs_mean_col]])) +
+        geom_line() +
+        geom_ribbon(aes(ymin = .data[[hs_lcl_col]], ymax = .data[[hs_ucl_col]]),
+          alpha = 0.2
+        ) +
+        scale_x_continuous(limits = c(0, 45), expand = c(0, 0)) +
+        labs(x = "Trunk section", y = x_label) +
+        theme_bw(base_size = 10) +
+        theme(plot.margin = margin(5, 10, 5, 5))
+
+      filename_hs <- paste0(figures_dir, "/", safe_dataset_name, "_", param_name, "_height_section.png")
+      ggsave(filename_hs, plot = emm_hs_plot, width = 5, height = 2.5)
+      cat(paste0("  -> Plot saved to: ", filename_hs, "\n"))
+    },
+    error = function(e) cat("  Trunk section emmeans error:", e$message, "\n")
   )
 
   return(list(sig = paste0(best_model_name, " ", get_sig_string(p_val)), model = best_model))
@@ -442,16 +513,27 @@ analyze_counts <- function(df, dataset_name) {
     pw_p <- jt$p.value[jt$`model term` == "condition"]
   }
 
-  p_label <- ifelse(pw_p < 0.001, "p < 0.001", paste0("p = ", round(pw_p, 3)))
+  ## Build count EMM plot
+  emm_ct_df <- as.data.frame(emm)
+  ct_mean_col <- if ("rate" %in% names(emm_ct_df)) "rate" else if ("response" %in% names(emm_ct_df)) "response" else "emmean"
+  ct_lcl_col <- if ("asymp.LCL" %in% names(emm_ct_df)) "asymp.LCL" else "lower.CL"
+  ct_ucl_col <- if ("asymp.UCL" %in% names(emm_ct_df)) "asymp.UCL" else "upper.CL"
 
-  p <- plot(emm) +
-    labs(title = "Points per Height Section", subtitle = dataset_name, caption = p_label)
+  p <- ggplot(emm_ct_df, aes(x = .data[[ct_mean_col]], y = condition)) +
+    geom_point(size = 2) +
+    geom_errorbarh(aes(xmin = .data[[ct_lcl_col]], xmax = .data[[ct_ucl_col]]), height = 0.2) +
+    labs(x = "EMM count", y = "Type") +
+    theme_bw(base_size = 10) +
+    theme(
+      axis.title.y = element_text(angle = 0, vjust = 0.5),
+      plot.margin = margin(5, 10, 5, 5)
+    )
 
   ## Save
   safe_dataset_name <- gsub(" ", "_", dataset_name)
   safe_dataset_name <- gsub("[()]", "", safe_dataset_name)
   filename <- paste0(figures_dir, "/", safe_dataset_name, "_count.png")
-  ggsave(filename, plot = p, width = 8, height = 6)
+  ggsave(filename, plot = p, width = 5, height = 2.5)
   cat(paste0("  -> Plot saved to: ", filename, "\n"))
 
   return(paste0(best_model_name, " ", get_sig_string(pw_p)))
@@ -463,158 +545,6 @@ for (d_name in names(dataset_list)) {
   results_matrix["n_points", d_name] <- p_res
 }
 
-## ------------------------------------------------------------------
-## Combined Figures — 3 per dataset (Height, Fire Intensity, Condition)
-## ------------------------------------------------------------------
-
-for (d_name in names(dataset_list)) {
-  safe_name <- gsub(" ", "_", d_name)
-  safe_name <- gsub("[()]", "", safe_name)
-
-  ## Collect emmeans data for all parameters that have models
-  emm_height_all <- data.frame()
-  emm_intensity_all <- data.frame()
-  emm_condition_all <- data.frame()
-
-  ## Helper: standardize tidy() output column names across different link functions
-  standardize_emm_df <- function(df) {
-    ## tidy() may produce 'estimate' or 'response' depending on the link function
-    if ("response" %in% names(df) && !"estimate" %in% names(df)) {
-      df <- rename(df, estimate = response)
-    }
-    ## Confidence interval columns may also vary
-    if ("asymp.LCL" %in% names(df) && !"conf.low" %in% names(df)) {
-      df <- rename(df, conf.low = asymp.LCL, conf.high = asymp.UCL)
-    }
-    return(df)
-  }
-
-  for (p in params) {
-    mod <- best_models[[d_name]][[p]]
-    if (is.null(mod)) next
-
-    ## 1. Height Section (continuous) — line + ribbon
-    tryCatch(
-      {
-        emm_h <- emmeans(mod, ~height_section,
-          at = list(height_section = seq(1, 44, 0.5)),
-          type = "response"
-        )
-        emm_h_df <- tidy(emm_h, conf.int = TRUE)
-        emm_h_df <- standardize_emm_df(emm_h_df)
-        emm_h_df$parameter <- p
-        emm_height_all <- bind_rows(emm_height_all, emm_h_df)
-      },
-      error = function(e) cat("  Height EMM error for", p, ":", e$message, "\n")
-    )
-
-    ## 2. Fire Intensity (categorical) — point + errorbar
-    tryCatch(
-      {
-        emm_fi <- emmeans(mod, ~fire_intensity, type = "response")
-        emm_fi_df <- tidy(emm_fi, conf.int = TRUE)
-        emm_fi_df <- standardize_emm_df(emm_fi_df)
-        emm_fi_df$parameter <- p
-        emm_intensity_all <- bind_rows(emm_intensity_all, emm_fi_df)
-      },
-      error = function(e) cat("  Fire Intensity EMM error for", p, ":", e$message, "\n")
-    )
-
-    ## 3. Condition (categorical) — point + errorbar
-    tryCatch(
-      {
-        emm_c <- emmeans(mod, ~condition, type = "response")
-        emm_c_df <- tidy(emm_c, conf.int = TRUE)
-        emm_c_df <- standardize_emm_df(emm_c_df)
-        emm_c_df$parameter <- p
-        emm_condition_all <- bind_rows(emm_condition_all, emm_c_df)
-      },
-      error = function(e) cat("  Condition EMM error for", p, ":", e$message, "\n")
-    )
-  }
-
-  ## Enforce consistent factor level ordering for condition and fire_intensity
-  cond_levels <- if (d_name == "Obliqua (Char Levels)") {
-    c("O_0%", "10-50%", "50-90%", "90%")
-  } else {
-    c("O_0%", "R_0%")
-  }
-  fi_levels <- c("50kW", "100kW", "150kW")
-
-  if (nrow(emm_condition_all) > 0) {
-    emm_condition_all$condition <- factor(emm_condition_all$condition, levels = cond_levels)
-  }
-  if (nrow(emm_intensity_all) > 0) {
-    emm_intensity_all$fire_intensity <- factor(emm_intensity_all$fire_intensity, levels = fi_levels)
-  }
-
-  ## --- Plot 1: Height Section (all params, single graph) ---
-  if (nrow(emm_height_all) > 0) {
-    p1 <- ggplot(emm_height_all, aes(x = height_section, color = parameter, fill = parameter)) +
-      geom_line(aes(y = estimate)) +
-      geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1, color = NA) +
-      scale_x_continuous(limits = c(0, 45), expand = c(0, 0)) +
-      scale_y_log10() +
-      labs(
-        x = "Height Section",
-        y = "Estimated Mean (log scale)",
-        color = "Parameter", fill = "Parameter",
-        title = paste0(d_name, " — Effect of Height Section")
-      ) +
-      theme_bw()
-
-    ggsave(paste0(figures_dir, "/", safe_name, "_by_height.png"),
-      plot = p1, width = 10, height = 6
-    )
-    cat("  -> Saved:", paste0(safe_name, "_by_height.png"), "\n")
-  }
-
-  ## --- Plot 2: Fire Intensity (all params, single graph) ---
-  if (nrow(emm_intensity_all) > 0) {
-    p2 <- ggplot(emm_intensity_all, aes(x = fire_intensity, color = parameter)) +
-      geom_point(aes(y = estimate), size = 3, position = position_dodge(width = 0.4)) +
-      geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
-        width = 0.2, alpha = 0.5,
-        position = position_dodge(width = 0.4)
-      ) +
-      scale_y_log10() +
-      labs(
-        x = "Fire Intensity",
-        y = "Estimated Mean (log scale)",
-        color = "Parameter",
-        title = paste0(d_name, " — Effect of Fire Intensity")
-      ) +
-      theme_bw()
-
-    ggsave(paste0(figures_dir, "/", safe_name, "_by_fire_intensity.png"),
-      plot = p2, width = 10, height = 6
-    )
-    cat("  -> Saved:", paste0(safe_name, "_by_fire_intensity.png"), "\n")
-  }
-
-  ## --- Plot 3: Condition (all params, single graph) ---
-  if (nrow(emm_condition_all) > 0) {
-    p3 <- ggplot(emm_condition_all, aes(x = condition, color = parameter)) +
-      geom_point(aes(y = estimate), size = 3, position = position_dodge(width = 0.4)) +
-      geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
-        width = 0.2, alpha = 0.5,
-        position = position_dodge(width = 0.4)
-      ) +
-      scale_y_log10() +
-      labs(
-        x = "Condition",
-        y = "Estimated Mean (log scale)",
-        color = "Parameter",
-        title = paste0(d_name, " — Effect of Condition")
-      ) +
-      theme_bw()
-
-    ggsave(paste0(figures_dir, "/", safe_name, "_by_condition.png"),
-      plot = p3, width = 10, height = 6
-    )
-    cat("  -> Saved:", paste0(safe_name, "_by_condition.png"), "\n")
-  }
-}
 
 ## ------------------------------------------------------------------
 ## Export Summary Table to Report
