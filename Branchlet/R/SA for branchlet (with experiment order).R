@@ -120,7 +120,7 @@ for (ds_info in hist_datasets) {
   is_species <- grepl("Eucalyptus|Acacia|Pine", ds_info$name)
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "No leaves",
+    "noleave_branchlet"  = "Branchlet",
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   plot_df <- ds_info$df
@@ -321,7 +321,7 @@ select_best_model <- function(df, param_name, dataset_name) {
   is_species <- grepl("Eucalyptus", dataset_name, ignore.case = TRUE)
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "No leaves",
+    "noleave_branchlet"  = "Branchlet",
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   emm_df <- as.data.frame(emm)
@@ -512,7 +512,7 @@ analyze_counts <- function(df, dataset_name) {
   is_species <- grepl("Eucalyptus", dataset_name, ignore.case = TRUE)
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "No leaves",
+    "noleave_branchlet"  = "Branchlet",
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   emm_df <- as.data.frame(emm)
