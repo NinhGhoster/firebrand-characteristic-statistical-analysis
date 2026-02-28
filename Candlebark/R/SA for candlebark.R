@@ -101,8 +101,14 @@ for (ds_info in list(
   list(df = df_shape, name = "Shape", group = "shape"),
   list(df = df_length, name = "Sample_Length", group = "sample_length")
 )) {
+  fd_bw <- 2 * IQR(ds_info$df$vol_sa_ratio, na.rm = TRUE) / sum(!is.na(ds_info$df$vol_sa_ratio))^(1 / 3)
+
   hist_plot <- ggplot(ds_info$df, aes(x = vol_sa_ratio)) +
-    geom_histogram(bins = 30, fill = "grey40", color = "white") +
+    geom_histogram(binwidth = fd_bw, fill = "grey40", color = "white") +
+    stat_bin(
+      binwidth = fd_bw, geom = "text", aes(label = after_stat(ifelse(count > 0, count, ""))),
+      vjust = -0.3, size = 2.5
+    ) +
     facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1) +
     labs(x = "Volume/surface area ratio", y = "Count") +
     theme_bw(base_size = 10) +
