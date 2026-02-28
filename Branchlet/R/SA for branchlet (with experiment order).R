@@ -118,9 +118,10 @@ hist_datasets <- list(
 for (ds_info in hist_datasets) {
   ## Relabel condition levels to match EMM plots
   is_species <- grepl("Eucalyptus|Acacia|Pine", ds_info$name)
+  is_leave_vs_noleave <- grepl("Leave_vs_No_Leave", ds_info$name, ignore.case = TRUE)
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "Branchlet",
+    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "No leaves", "Branchlet"),
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   plot_df <- ds_info$df
@@ -319,9 +320,10 @@ select_best_model <- function(df, param_name, dataset_name) {
   ## Relabel condition levels for publication
   ## For species comparisons, twig_2 -> Eucalyptus; otherwise twig_2 -> Twigs
   is_species <- grepl("Eucalyptus", dataset_name, ignore.case = TRUE)
+  is_leave_vs_noleave <- grepl("Leave vs No Leave", dataset_name, ignore.case = TRUE)
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "Branchlet",
+    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "No leaves", "Branchlet"),
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   emm_df <- as.data.frame(emm)
@@ -510,9 +512,10 @@ analyze_counts <- function(df, dataset_name) {
 
   ## Relabel condition levels for publication
   is_species <- grepl("Eucalyptus", dataset_name, ignore.case = TRUE)
+  is_leave_vs_noleave <- grepl("Leave vs No Leave", dataset_name, ignore.case = TRUE)
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "Branchlet",
+    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "No leaves", "Branchlet"),
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   emm_df <- as.data.frame(emm)

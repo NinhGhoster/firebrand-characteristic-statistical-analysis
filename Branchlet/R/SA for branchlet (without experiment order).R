@@ -252,7 +252,7 @@ select_best_model <- function(df, param_name, dataset_name) {
   ## Relabel condition levels for publication
   label_map <- c(
     "leave"              = "Leaves",
-    "noleave_branchlet"  = "Branchlet",
+    "noleave_branchlet"  = "No leaves",
     "twig_2"             = "150 kW",
     "50kW"               = "50 kW",
     "100kW"              = "100 kW"
