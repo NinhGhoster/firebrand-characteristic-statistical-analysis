@@ -90,6 +90,30 @@ cat("  Shape (60 cm only):", nrow(df_shape), "rows\n")
 cat("  Sample Length (Flat only):", nrow(df_length), "rows\n")
 
 ## ------------------------------------------------------------------
+## V/SA Histogram
+## ------------------------------------------------------------------
+
+figures_dir <- "Candlebark/R/figures"
+if (!dir.exists(figures_dir)) dir.create(figures_dir, recursive = TRUE)
+
+for (ds_info in list(
+  list(df = df_fire, name = "Fire_Intensity", group = "fire_intensity"),
+  list(df = df_shape, name = "Shape", group = "shape"),
+  list(df = df_length, name = "Sample_Length", group = "sample_length")
+)) {
+  hist_plot <- ggplot(ds_info$df, aes(x = vol_sa_ratio)) +
+    geom_histogram(bins = 30, fill = "grey40", color = "white") +
+    facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1) +
+    labs(x = "Volume/surface area ratio", y = "Count") +
+    theme_bw(base_size = 10) +
+    theme(plot.margin = margin(5, 10, 5, 5))
+
+  hist_file <- paste0(figures_dir, "/", ds_info$name, "_vol_sa_ratio_histogram.png")
+  ggsave(hist_file, plot = hist_plot, width = 5, height = 4)
+  cat("-> Histogram saved to:", hist_file, "\n")
+}
+
+## ------------------------------------------------------------------
 ## Parameters and Datasets
 ## ------------------------------------------------------------------
 

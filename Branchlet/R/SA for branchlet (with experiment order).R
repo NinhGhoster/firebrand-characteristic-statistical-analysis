@@ -100,8 +100,33 @@ glimpse(df5)
 glimpse(df6)
 
 ## ------------------------------------------------------------------
-## Automated Model Selection for Multiple Parameters
+## V/SA Histogram
 ## ------------------------------------------------------------------
+
+figures_dir <- "Branchlet/R/figures"
+if (!dir.exists(figures_dir)) dir.create(figures_dir, recursive = TRUE)
+
+hist_datasets <- list(
+  list(df = df1, name = "Leave_vs_No_Leave", group = "condition"),
+  list(df = df2, name = "Leave_vs_Twig", group = "condition"),
+  list(df = df3, name = "No_Leave_vs_Twig", group = "condition"),
+  list(df = df4, name = "Eucalyptus_vs_Pine", group = "condition"),
+  list(df = df5, name = "Eucalyptus_vs_Acacia", group = "condition"),
+  list(df = df6, name = "Acacia_vs_Pine", group = "condition")
+)
+
+for (ds_info in hist_datasets) {
+  hist_plot <- ggplot(ds_info$df, aes(x = vol_sa_ratio)) +
+    geom_histogram(bins = 30, fill = "grey40", color = "white") +
+    facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1) +
+    labs(x = "Volume/surface area ratio", y = "Count") +
+    theme_bw(base_size = 10) +
+    theme(plot.margin = margin(5, 10, 5, 5))
+
+  hist_file <- paste0(figures_dir, "/", ds_info$name, "_vol_sa_ratio_histogram.png")
+  ggsave(hist_file, plot = hist_plot, width = 5, height = 4)
+  cat("-> Histogram saved to:", hist_file, "\n")
+}
 
 ## Define parameters to test
 params <- c("volume", "surface_area", "vol_sa_ratio", "sa_vol_ratio", "length", "width", "height", "mass")

@@ -107,6 +107,29 @@ df2 <- df2 %>%
 glimpse(df2)
 
 ## ------------------------------------------------------------------
+## V/SA Histogram
+## ------------------------------------------------------------------
+
+figures_dir <- "Stringybark/R/figures"
+if (!dir.exists(figures_dir)) dir.create(figures_dir, recursive = TRUE)
+
+for (ds_info in list(
+  list(df = df1, name = "Obliqua_Char_Levels", group = "condition"),
+  list(df = df2, name = "Species_O_vs_R", group = "condition")
+)) {
+  hist_plot <- ggplot(ds_info$df, aes(x = vol_sa_ratio)) +
+    geom_histogram(bins = 30, fill = "grey40", color = "white") +
+    facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1) +
+    labs(x = "Volume/surface area ratio", y = "Count") +
+    theme_bw(base_size = 10) +
+    theme(plot.margin = margin(5, 10, 5, 5))
+
+  hist_file <- paste0(figures_dir, "/", ds_info$name, "_vol_sa_ratio_histogram.png")
+  ggsave(hist_file, plot = hist_plot, width = 5, height = 4)
+  cat("-> Histogram saved to:", hist_file, "\n")
+}
+
+## ------------------------------------------------------------------
 ## Automated Model Selection for Multiple Parameters
 ## ------------------------------------------------------------------
 
@@ -121,7 +144,6 @@ dataset_list <- list(
 
 ## Define output paths
 report_file <- "Stringybark/R/model_selection_report.txt"
-figures_dir <- "Stringybark/R/figures"
 
 ## Initialize report file (overwrite if exists)
 cat("Stringybark Model Selection Report\n", file = report_file)
