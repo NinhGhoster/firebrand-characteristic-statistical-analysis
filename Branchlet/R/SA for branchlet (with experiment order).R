@@ -116,11 +116,27 @@ hist_datasets <- list(
 )
 
 for (ds_info in hist_datasets) {
-  fd_bw <- 2 * IQR(ds_info$df$vol_sa_ratio, na.rm = TRUE) / sum(!is.na(ds_info$df$vol_sa_ratio))^(1 / 3)
+  ## Relabel condition levels to match EMM plots
+  is_species <- grepl("Eucalyptus|Acacia|Pine", ds_info$name)
+  label_map <- c(
+    "leave"              = "Leaves",
+    "noleave_branchlet"  = "No leaves",
+    "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
+  )
+  plot_df <- ds_info$df
+  for (old_lab in names(label_map)) {
+    levels(plot_df$condition)[levels(plot_df$condition) == old_lab] <- label_map[[old_lab]]
+  }
 
-  hist_plot <- ggplot(ds_info$df, aes(x = vol_sa_ratio)) +
+  fd_bw <- 2 * IQR(plot_df$vol_sa_ratio, na.rm = TRUE) / sum(!is.na(plot_df$vol_sa_ratio))^(1 / 3)
+
+  ## Use quantile-based x limit to avoid outliers stretching the axis
+  x_upper <- quantile(plot_df$vol_sa_ratio, 0.99, na.rm = TRUE) * 1.1
+
+  hist_plot <- ggplot(plot_df, aes(x = vol_sa_ratio)) +
     geom_histogram(binwidth = fd_bw, fill = "grey40", color = "white") +
-    facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1) +
+    facet_wrap(~condition, ncol = 1) +
+    coord_cartesian(xlim = c(0, x_upper)) +
     labs(x = "Volume/surface area ratio", y = "Count") +
     theme_bw(base_size = 10) +
     theme(plot.margin = margin(5, 10, 5, 5))

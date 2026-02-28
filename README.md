@@ -1,4 +1,4 @@
-# firebrand-characteristic-statistical-analysis
+# Firebrand characteristic statistical analysis
 
 This repository contains the data, analysis scripts, and statistical findings for Chapter 2: Firebrand Characteristics Data Analysis. It encompasses data regarding various firebrand samples, primarily focusing on physical properties such as dimensions, mass, density, and observed characteristics under different test conditions.
 
