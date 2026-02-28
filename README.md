@@ -29,6 +29,24 @@ The project is organized by the type of firebrand material being analyzed:
 ### Combined Bark Analysis
 - The root script `density_combined_bark.py` combines Stringybark and Candlebark density data into unified visual boxplot comparisons.
 
+## Statistical Methodology
+
+### Model Selection
+For each parameter, two candidate models are compared via AIC:
+- **Gamma GLMM** (`glmmTMB`, log link) — assumes a linear relationship on the log scale
+- **GAM** (`mgcv`) — allows smooth, nonlinear relationships with continuous predictors (e.g., trunk section)
+
+The model with the lower AIC is selected per parameter. This means **different parameters may use different models**, which is standard practice (Burnham & Anderson, 2002). Both models produce comparable estimated marginal means (EMMs) on the response scale, so results are directly comparable across parameters regardless of which model was selected.
+
+Count data (`n_points`) is analyzed separately using Poisson vs. Negative Binomial GLMs, with overdispersion testing to select the appropriate distribution.
+
+### Why V/SA Ratio (Not SA/V)
+Both V/SA (volume ÷ surface area) and SA/V (surface area ÷ volume) are mathematical reciprocals containing the same information. However, **V/SA is used** because:
+
+1. **Better statistical properties** — V/SA is bounded in a narrow, well-behaved range (typically 0.2–0.8 for firebrands). SA/V can explode to extreme values for thin particles (e.g., >2000), creating heavy-tailed distributions that violate model assumptions.
+2. **Clearer trends** — V/SA shows clear, monotonic trends across trunk sections and conditions with tight confidence intervals. SA/V produces flat, noisy patterns with large CI blowouts due to extreme outlier influence.
+3. **Physical interpretability** — V/SA captures firebrand "compactness" or "thickness": higher V/SA = bulkier particle. This relates directly to burning time and transport potential.
+
 ## Available Scripts
 
 ### R Scripts (Statistical Analysis)
