@@ -536,7 +536,7 @@ analyze_counts <- function(df, dataset_name) {
     labs(x = "EMM count", y = "Type") +
     theme_bw(base_size = 10) +
     theme(
-      axis.title.y = element_text(angle = 0, vjust = 0.5),
+      axis.title.y = element_text(angle = 90, vjust = 0.5),
       plot.margin = margin(5, 10, 5, 5)
     )
 

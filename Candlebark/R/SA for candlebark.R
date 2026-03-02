@@ -345,7 +345,7 @@ select_best_model <- function(df, param_name, dataset_name, condition_var) {
         labs(x = x_label, y = "Type") +
         theme_bw(base_size = 10) +
         theme(
-          axis.title.y = element_text(angle = 0, vjust = 0.5),
+          axis.title.y = element_text(angle = 90, vjust = 0.5),
           plot.margin = margin(5, 10, 5, 5)
         )
 
@@ -528,7 +528,7 @@ analyze_counts <- function(df, dataset_name, condition_var) {
     labs(x = "EMM count", y = "Type") +
     theme_bw(base_size = 10) +
     theme(
-      axis.title.y = element_text(angle = 0, vjust = 0.5),
+      axis.title.y = element_text(angle = 90, vjust = 0.5),
       plot.margin = margin(5, 10, 5, 5)
     )
 
