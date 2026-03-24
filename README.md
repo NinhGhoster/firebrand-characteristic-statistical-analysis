@@ -6,10 +6,11 @@ This repository contains the data, analysis scripts, and statistical findings fo
 
 The project is organized by the type of firebrand material being analyzed:
 
-- **Branchlet/**: Contains raw data (`branchlet raw data.xlsx`) and statistical analysis scripts (`R/`) for Branchlet firebrands. Analyzes properties under different conditions such as Leaves, No Leaves, Twigs, Acacia, and Pine.
-- **Stringybark/**: Contains data (`stringybark.xlsx`), density analysis, and heatmap visualization scripts for *Eucalyptus obliqua* and *Eucalyptus radiata* stringybark firebrands.
-- **Candle bark/**: Contains data (`candlebark.xlsx`) and density analysis scripts primarily analyzing flat samples of Candlebark.
+- **Branchlet/**: Contains raw data (`branchlet raw data.xlsx`) and statistical analysis scripts (`R/`) for Branchlet firebrands. Analyzes properties under different conditions such as Leaves, No Leaves, Twigs, Acacia, and Pine. Includes a combined 3-panel histogram of V/SA ratio distributions.
+- **Stringybark/**: Contains data (`stringybark.xlsx`), density analysis, and heatmap visualization scripts for *Eucalyptus obliqua* and *Eucalyptus radiata* stringybark firebrands. Condition labels use hazard ratings: Extreme (0% char), Very High (10–50% char), High (50–90% char), Moderate (90% char).
+- **Candlebark/**: Contains data (`candlebark.xlsx`) and density analysis scripts analyzing flat (1,053 samples) and cylindrical (1,263 samples) Candlebark across three fire intensities and three sample lengths.
 - **Bark density/** & **Bulk density/**: Directories containing additional density-related data.
+- **Results_Draft.md**: Draft results section for Chapter 2, containing sample counts, EMM descriptions, and figure-specific write-ups for all three fuel types.
 
 ## Key Findings & Data Analysis
 
@@ -19,11 +20,13 @@ The project is organized by the type of firebrand material being analyzed:
 
 ### Stringybark
 - **Density**: *E. obliqua* (mean ~180 kg/m³) versus *E. radiata* (mean ~344 kg/m³). Analyzed in `density_stringybark_boxplot.py`.
-- **Heatmap Analysis**: Visualizes firebrand distribution across trunk height. Findings show *E. obliqua* 10-50% char T9 exhibits the highest reach (S44).
+- **Sample Counts**: 1,556 total firebrands — 34 from *E. radiata* (9 trunk sections) and 1,522 from four *E. obliqua* trees: Extreme (322, 35 sections), Very High (696, 41 sections), High (203, 27 sections), Moderate (301, 16 sections).
+- **Heatmap Analysis**: Visualizes firebrand distribution across trunk height. Findings show Very High (10-50% char T9) exhibits the highest reach (S44).
 - **Statistical Models**: Automated model selection (Gamma vs. Lognormal) evaluating 8 parameters (incl. vol/SA ratios) against `height_section`, `condition`, and `fire_intensity`. Per-parameter EMM plots by condition, fire intensity, and trunk section.
 
 ### Candlebark
 - **Density**: Mean density is approximately 263 kg/m³. Evaluated primarily for flat samples in `density_candlebark_boxplot.py`.
+- **Sample Counts**: 2,316 total firebrands — 1,053 flat and 1,263 cylindrical, across three fire intensities (50 kW: 671; 100 kW: 967; 150 kW: 678) and three sample lengths (20 cm: 171; 40 cm: 356; 60 cm: 1,789).
 - **Statistical Models**: Automated model selection (Gamma/GAM) evaluating 7 parameters across Fire Intensity, Shape (Flat vs Cylindrical), and Sample Length. Per-parameter EMM plots.
 
 ### Combined Bark Analysis
@@ -52,6 +55,7 @@ Both V/SA (volume ÷ surface area) and SA/V (surface area ÷ volume) are mathema
 ### R Scripts (Statistical Analysis)
 - `Branchlet/R/SA for branchlet (with experiment order).R`
 - `Branchlet/R/SA for branchlet (without experiment order).R`
+- `Branchlet/R/combined_histogram.R` — Combined 3-panel V/SA histogram (Leaves, No leaves/Branchlet, Twigs)
 - `Stringybark/R/SA for stringybark.R`
 - `Candlebark/R/SA for candlebark.R`
 

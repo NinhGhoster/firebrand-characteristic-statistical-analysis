@@ -5,8 +5,9 @@ This repository contains firebrand data analysis for multiple samples under diff
 - **Bark density/**
 - **Branchlet/** (Contains `branchlet raw data.xlsx` and analysis scripts)
 - **Bulk density/**
-- **Candle bark/** (Contains `candlebark.xlsx` and density scripts)
+- **Candlebark/** (Contains `candlebark.xlsx` and density scripts)
 - **Stringybark/** (Contains `stringybark.xlsx`, heatmaps, and density scripts)
+- **Results_Draft.md** — Draft results section with sample counts, EMM descriptions, and figure write-ups
 
 ## Data Analysis & Findings
 ### Branchlet
@@ -17,20 +18,24 @@ This repository contains firebrand data analysis for multiple samples under diff
 ### Stringybark
 - **File**: `Stringybark/stringybark.xlsx`
 - **Density Analysis**:
-  - Focuses on "E  obliqua 0% char T5" and "E  radiata 0% char T8".
+  - Focuses on *E. obliqua* (4 trees by hazard rating) and *E. radiata*.
   - **E. obliqua**: Mean Density ~180 kg/m³.
   - **E. radiata**: Mean Density ~344 kg/m³.
+- **Sample Counts**: 1,556 total — 34 *E. radiata* (9 trunk sections), 1,522 *E. obliqua*: Extreme (322, 35 sections), Very High (696, 41 sections), High (203, 27 sections), Moderate (301, 16 sections).
+- **Condition Labels**: Hazard ratings — Extreme (0% char), Very High (10–50% char), High (50–90% char), Moderate (90% char). Species comparison uses E. obliqua vs E. radiata.
 - **Heatmap Analysis**:
   - Visualizes firebrand distribution across trunk height.
-  - E. obliqua 10-50% char T9 has the highest reach (S44).
+  - Very High (10-50% char T9) has the highest reach (S44).
 
 ### Candlebark
 - **File**: `Candlebark/candlebark.xlsx`
+- **Sample Counts**: 2,316 total — 1,053 flat, 1,263 cylindrical. Fire intensities: 50 kW (671), 100 kW (967), 150 kW (678). Sample lengths: 20 cm (171), 40 cm (356), 60 cm (1,789).
 - **Density Analysis**: 
   - Analyzes sheets with "Density (kg/m3)" columns (excludes _AUTO sheets).
   - Primarily "Flat" samples (Cylindrical samples lacked density data).
 - **Statistical Models**: Automated model selection (Gamma/GAM, AIC/RMSE) for 7 parameters × 3 datasets (Fire Intensity, Shape, Sample Length). Curve relabelled to "Cylindrical". Publication-ready EMM plots with compact dimensions.
   - **Candlebark**: Mean Density ~263 kg/m³.
+- **Note**: Duplicate `*_fire_intensity.png` figures have been removed.
 
 ### Combined Bark Analysis
 - **Script**: `density_combined_bark.py` (Root directory)
@@ -92,6 +97,19 @@ This repository contains firebrand data analysis for multiple samples under diff
             - Per-parameter EMM plots: by condition and fire_intensity.
             - Removed combined log-scale overlaid figures.
             - Publication-ready: compact 5×2.5 dims, EMM labels with units, Type y-axis, no titles.
+    - **2026-03-02 to 2026-03-24**:
+        - **Results Draft**:
+            - Created `Results_Draft.md` with sample count summary for all three fuel types.
+            - Added EMM table and description for Leave vs No Leave, Leave vs Twig comparisons.
+            - Added V/SA figure descriptions for Branchlet (fire intensity), Stringybark (Char Levels, Species), and Candlebark (Sample Length, Shape, Fire Intensity).
+        - **Branchlet**:
+            - Created `combined_histogram.R` — 3-panel V/SA ratio histogram (Leaves, No leaves/Branchlet, Twigs).
+        - **Stringybark**:
+            - Updated condition labels from char percentages to hazard ratings: Extreme (0% char), Very High (10–50%), High (50–90%), Moderate (90%).
+            - Species comparison labels: E. obliqua vs E. radiata (instead of O_0% vs R_0%).
+            - Regenerated all Stringybark figures with new labels.
+        - **Candlebark**:
+            - Removed 21 duplicate `*_fire_intensity.png` figures.
 
 ## Environment
 - **Conda Environment**: `stas_test` (contains `pandas`, `openpyxl`, `matplotlib`).
@@ -101,12 +119,14 @@ This repository contains firebrand data analysis for multiple samples under diff
 - `Branchlet/density boxplot.py`: Branchlet density analysis.
 - `Branchlet/R/SA for branchlet (with experiment order).R`: Automated branchlet statistical analysis (with experiment order).
 - `Branchlet/R/SA for branchlet (without experiment order).R`: Automated branchlet statistical analysis (without experiment order).
+- `Branchlet/R/combined_histogram.R`: Combined 3-panel V/SA ratio histogram (Leaves, No leaves/Branchlet, Twigs).
 - `Stringybark/density_stringybark_boxplot.py`: Stringybark density analysis.
 - `Stringybark/create_firebrands_heatmap.py`: Stringybark heatmap.
 - `Stringybark/R/SA for stringybark.R`: Automated Stringybark model selection + per-parameter EMM figures.
 - `Candlebark/R/SA for candlebark.R`: Automated Candlebark model selection + per-parameter EMM figures.
 - `Candlebark/density_candlebark_boxplot.py`: Candlebark density analysis.
 - `density_combined_bark.py`: **MASTER SCRIPT** for combined Bark density (Stringybark + Candlebark).
+- `Results_Draft.md`: Draft results section for the paper.
 
 ## Output Locations
 - `Branchlet/R/model_selection_report.txt` — Branchlet report (with experiment order)
