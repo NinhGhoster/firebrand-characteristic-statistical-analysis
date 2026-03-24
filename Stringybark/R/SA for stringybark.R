@@ -10,11 +10,11 @@ library(broom)
 ## Load data from Excel and assign condition for each sheet
 excel_path <- "/Users/firecaster/Library/CloudStorage/OneDrive-TheUniversityofMelbourne/Documents/Chapter 2/Chapter 2 data/Stringybark/stringybark.xlsx"
 
-df_T17 <- read_excel(excel_path, sheet = "E  obliqua 90% char T17") %>% mutate(condition = "90%")
-df_T16 <- read_excel(excel_path, sheet = "E  obliqua 50-90% char T16") %>% mutate(condition = "50-90%")
-df_T9 <- read_excel(excel_path, sheet = "E  obliqua 10-50% char T9") %>% mutate(condition = "10-50%")
-df_T5 <- read_excel(excel_path, sheet = "E  obliqua 0% char T5") %>% mutate(condition = "O_0%")
-df_T8 <- read_excel(excel_path, sheet = "E  radiata 0% char T8") %>% mutate(condition = "R_0%")
+df_T17 <- read_excel(excel_path, sheet = "E  obliqua 90% char T17") %>% mutate(condition = "Moderate")
+df_T16 <- read_excel(excel_path, sheet = "E  obliqua 50-90% char T16") %>% mutate(condition = "High")
+df_T9 <- read_excel(excel_path, sheet = "E  obliqua 10-50% char T9") %>% mutate(condition = "Very High")
+df_T5 <- read_excel(excel_path, sheet = "E  obliqua 0% char T5") %>% mutate(condition = "Extreme")
+df_T8 <- read_excel(excel_path, sheet = "E  radiata 0% char T8") %>% mutate(condition = "E. radiata")
 
 ## Combine them
 obliqua <- bind_rows(df_T17, df_T16, df_T9, df_T5) # use this for hazard level comparision
@@ -22,7 +22,7 @@ species <- bind_rows(df_T5, df_T8) # use this for species comparison
 
 ## Remove unwanted data, only apply for ones which have density column, run each test from here
 df1 <- obliqua
-df2 <- species
+df2 <- species %>% mutate(condition = ifelse(condition == "Extreme", "E. obliqua", condition))
 
 ## Check that the data looks as expected
 glimpse(df1)
@@ -59,7 +59,7 @@ df1 <- df1 %>%
   mutate(
     ## Extract Height from Source.Name (e.g. "S13.csv" -> 13)
     height_section = as.numeric(str_extract(`Source.Name`, "(?<=S)\\d+")),
-    condition = factor(condition, levels = c("O_0%", "10-50%", "50-90%", "90%")),
+    condition = factor(condition, levels = c("Extreme", "Very High", "High", "Moderate")),
 
     ## Derive Fire Intensity based on section number (repeating pattern 1, 2, 0 mod 3)
     fire_intensity = factor(case_when(
@@ -89,7 +89,7 @@ df2 <- df2 %>%
   mutate(
     ## Extract Height from Source.Name (e.g. "S13.csv" -> 13)
     height_section = as.numeric(str_extract(`Source.Name`, "(?<=S)\\d+")),
-    condition = factor(condition, levels = c("O_0%", "R_0%")),
+    condition = factor(condition, levels = c("E. obliqua", "E. radiata")),
 
     ## Derive Fire Intensity based on section number (repeating pattern 1, 2, 0 mod 3)
     fire_intensity = factor(case_when(
