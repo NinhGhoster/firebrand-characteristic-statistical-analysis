@@ -70,7 +70,7 @@ ordered_data_map = {
     "Individual\ntwigs": twigs_2_data,
     "Acacia": acacia_data,
     "Pine": pine_data,
-    "Total": total_data
+    "Combined all": total_data
 }
 
 density_data_for_boxplot = list(ordered_data_map.values())
@@ -80,7 +80,7 @@ labels = [
     "Eucalyptus",
     "Acacia",
     "Pine",
-    "Total"
+    "Combined all"
 ]
 
 # --- Define Colors ---

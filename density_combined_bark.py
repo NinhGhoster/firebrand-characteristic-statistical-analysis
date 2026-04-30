@@ -50,7 +50,7 @@ else:
 sb_total = pd.concat([sb_obliqua, sb_radiata], ignore_index=True)
 
 # 2. Candlebark
-cb_file = 'Candle bark/candlebark.xlsx'
+cb_file = 'Candlebark/candlebark.xlsx'
 candlebark_all = pd.Series([], dtype=float)
 
 if os.path.exists(cb_file):
@@ -76,9 +76,9 @@ grand_total = pd.concat([sb_total, candlebark_all], ignore_index=True)
 ordered_data_map = {
     "Stringybark\nE. obliqua": sb_obliqua,
     "Stringybark\nE. radiata": sb_radiata,
-    "Stringybark\nCombined": sb_total,
+    "Combined\nStringybark": sb_total,
     "Candlebark": candlebark_all,
-    "Total": grand_total
+    "Combined\nall bark": grand_total
 }
 
 density_data = list(ordered_data_map.values())
