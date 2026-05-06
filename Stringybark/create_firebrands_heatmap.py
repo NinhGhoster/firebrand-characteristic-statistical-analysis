@@ -40,13 +40,23 @@ combined_df = pd.concat(all_data, ignore_index=True)
 # Prepare data for heatmap - pivot to get trees as columns and sections as rows
 heatmap_data = combined_df.pivot_table(index='Section_num', columns='Tree', values='Count', fill_value=0)
 
-# Reorder columns: T8, T5, T9, T16, T17
-tree_order = ['E  radiata 0% char T8', 'E  obliqua 0% char T5', 'E  obliqua 10-50% char T9', 
-              'E  obliqua 50-90% char T16', 'E  obliqua 90% char T17']
+# Rename tree columns to the requested labels
+rename_dict = {
+    'E  obliqua 0% char T5': 'Extreme-obliqua',
+    'E  radiata 0% char T8': 'Extreme-radiata',
+    'E  obliqua 10-50% char T9': 'Very_high',
+    'E  obliqua 50-90% char T16': 'High',
+    'E  obliqua 90% char T17': 'Moderate'
+}
+heatmap_data.rename(columns=rename_dict, inplace=True)
+
+# Reorder columns: Extreme-radiata, Extreme-obliqua, Very_high, High, Moderate
+tree_order = ['Extreme-radiata', 'Extreme-obliqua', 'Very_high', 'High', 'Moderate']
 heatmap_data = heatmap_data[tree_order]
 
 # Find the maximum section number for each tree
 tree_max_sections = combined_df.groupby('Tree')['Section_num'].max()
+tree_max_sections.rename(rename_dict, inplace=True)
 
 # Create a range from 1 to max of all sections
 max_section = heatmap_data.index.max()
@@ -85,8 +95,6 @@ plt.tight_layout()
 plt.savefig('/Users/firecaster/OneDrive - The University of Melbourne/Documents/Chapter 2/Chapter 2 data/Stringybark/firebrands_heatmap.png', 
             dpi=300, bbox_inches='tight')
 print("Firebrands heatmap saved to: firebrands_heatmap.png")
-
-plt.show()
 
 # Print summary
 print("\nFirebrands Heatmap Summary:")
