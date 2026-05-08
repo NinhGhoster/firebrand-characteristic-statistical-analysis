@@ -10,6 +10,7 @@ The project is organized by the type of firebrand material being analyzed:
 - **Stringybark/**: Contains data (`stringybark.xlsx`), density analysis, and heatmap visualization scripts for *Eucalyptus obliqua* and *Eucalyptus radiata* stringybark firebrands. Condition labels use hazard ratings: Extreme (0% char), Very High (10–50% char), High (50–90% char), Moderate (90% char).
 - **Candlebark/**: Contains data (`candlebark.xlsx`) and density analysis scripts analyzing flat (1,053 samples) and cylindrical (1,263 samples) Candlebark across three fire intensities and three sample lengths.
 - **Bark density/** & **Bulk density/**: Directories containing additional density-related data.
+- **MC and material density/**: Contains data and scripts for calculating and plotting Moisture Content (MC) and Material Density for Stringybark, Candlebark, and Twigs/Branchlets.
 - **Results_Draft.md**: Draft results section for Chapter 2, containing sample counts, EMM descriptions, and figure-specific write-ups for all three fuel types.
 
 ## Key Findings & Data Analysis
@@ -65,6 +66,10 @@ Both V/SA (volume ÷ surface area) and SA/V (surface area ÷ volume) are mathema
 - `Stringybark/density_stringybark_boxplot.py`: Stringybark density boxplots.
 - `Stringybark/create_firebrands_heatmap.py`: Generates firebrand distribution heatmaps.
 - `Candlebark/density_candlebark_boxplot.py`: Candlebark density boxplots.
+- `MC and material density/candle bark bulk density.py`: MC and material density plots for Candlebark.
+- `MC and material density/stringybark bulk density.py`: MC and material density plots for Stringybark.
+- `MC and material density/twig bulk density.py`: Material density plots for Twigs/Branchlets.
+- `MC and material density/twigs MC.py`: Moisture Content plots for Twigs/Branchlets (data hardcoded in script).
 - Various utilities for standardizing dataset headers and formatting (e.g., `standardize_csv_headers.py`, `safe_standardize_xlsx.py`, `verify_formulas.py`).
 
 ## Environment Setup
