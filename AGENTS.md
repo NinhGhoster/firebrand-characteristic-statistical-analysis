@@ -6,6 +6,7 @@ This repository contains firebrand data analysis for multiple samples under diff
 - **Branchlet/** (Contains `branchlet raw data.xlsx` and analysis scripts)
 - **Bulk density/**
 - **Candlebark/** (Contains `candlebark.xlsx` and density scripts)
+- **MC and material density/** (Contains data and scripts for calculating Moisture Content and Material Density)
 - **Stringybark/** (Contains `stringybark.xlsx`, heatmaps, and density scripts)
 - **Results_Draft.md** — Draft results section with sample counts, EMM descriptions, and figure write-ups
 
@@ -47,6 +48,16 @@ This repository contains firebrand data analysis for multiple samples under diff
   - Candlebark
   - Grand Total
 - **Style**: All white notched boxplots, Mean (Red Diamond) & Median (Black Line) stats annotated right of the boxes.
+
+### Moisture Content (MC) & Material Density
+- **Folder**: `MC and material density/`
+- **Data**: Contains Fresh Mass, Dried Mass, and Volume data for Stringybark, Candlebark, and Twigs/Branchlets. MC data for twigs is hardcoded in arrays.
+- **Scripts**: 
+  - `candle bark bulk density.py`
+  - `stringybark bulk density.py`
+  - `twig bulk density.py`
+  - `twigs MC.py`
+- **Analysis**: Calculates and plots Moisture Content (%) and Material Density (kg/m³) comparing Sample Types or Hazard Ratings.
 
 ## History of Changes
 - **2026-01-24**: 
@@ -110,6 +121,23 @@ This repository contains firebrand data analysis for multiple samples under diff
             - Regenerated all Stringybark figures with new labels.
         - **Candlebark**:
             - Removed 21 duplicate `*_fire_intensity.png` figures.
+    - **2026-05-08**:
+        - **MC and material density**:
+            - Standardized all plots to use `figsize=(12, 6)` (or proportional), `width=0.5`, 14/16pt fonts, and `$\mathrm{kg/m^3}$` upright math text for density units.
+            - Updated Stringybark plots to use two-line x-axis labels (Species + Hazard Rating) and changed the axis title from "Group" to "Tree with Hazard Rating".
+            - Renamed "Curve" to "Cylindrical" in Candlebark plots.
+
+## Plot Styling Standards (MC & Material Density figures)
+All plots in the `MC and material density/` folder MUST follow these rules:
+- **Font sizes**: `plt.rcParams.update({'font.size': 14, 'axes.labelsize': 16, 'xtick.labelsize': 14, 'ytick.labelsize': 14, 'legend.fontsize': 14, 'axes.titlesize': 16})`
+- **Units in regular/upright font (mathtext)**: All axis labels with units must use `$\mathrm{kg/m^3}$` for upright rendering — NOT italic `$kg/m^3$` and NOT literal `kg/m³`. Use raw strings: `r'Material Density ($\mathrm{kg/m^3}$)'`
+- **DPI**: All figures saved at `dpi=150`
+- **Notched boxplots**: All boxplots use `notch=True`
+- **Grid**: `grid(True, linestyle='--', alpha=0.7)` or `alpha=0.6`
+- **Legend**: Compact, no spacer lines (`labelspacing=0.2` if needed), `framealpha=0.9`
+- **Standard figure (reference)**: `twigs MC.py` — `figsize=(12, 6)`, 9pt legend font, 1-column legend in lower-left
+- **Consistency**: When creating or editing any plot in this project, always check these standards first.
+- **Capitalization**: All axis labels, titles, and legends must use Title Case (e.g., `Material Density`, `Sample Type`, `Fresh Density`). Never use lowercase for label words.
 
 ## Environment
 - **Conda Environment**: `stas_test` (contains `pandas`, `openpyxl`, `matplotlib`).
@@ -125,6 +153,7 @@ This repository contains firebrand data analysis for multiple samples under diff
 - `Stringybark/R/SA for stringybark.R`: Automated Stringybark model selection + per-parameter EMM figures.
 - `Candlebark/R/SA for candlebark.R`: Automated Candlebark model selection + per-parameter EMM figures.
 - `Candlebark/density_candlebark_boxplot.py`: Candlebark density analysis.
+- `MC and material density/*.py`: Scripts for plotting MC and Material Density for different materials.
 - `density_combined_bark.py`: **MASTER SCRIPT** for combined Bark density (Stringybark + Candlebark).
 - `Results_Draft.md`: Draft results section for the paper.
 
