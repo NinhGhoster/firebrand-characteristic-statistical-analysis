@@ -8,8 +8,8 @@ library(ggplot2)
 ## Load data
 excel_path <- "/Users/firecaster/Library/CloudStorage/OneDrive-TheUniversityofMelbourne/Documents/Chapter 2/Chapter 2 data/Branchlet/branchlet raw data.xlsx"
 
-df_leave <- read_excel(excel_path, sheet = "leave") %>% mutate(condition = "Leaves")
-df_noleave <- read_excel(excel_path, sheet = "no leave - branchlet") %>% mutate(condition = "No leaves/Branchlet")
+df_leave <- read_excel(excel_path, sheet = "leave") %>% mutate(condition = "BL (leafy)")
+df_noleave <- read_excel(excel_path, sheet = "no leave - branchlet") %>% mutate(condition = "BL (leafless)")
 df_twig <- read_excel(excel_path, sheet = "twigs (2)") %>% mutate(condition = "Twigs")
 
 ## Combine all three
@@ -19,7 +19,7 @@ df_all <- bind_rows(df_leave, df_noleave, df_twig)
 df_all <- df_all %>%
     mutate(
         vol_sa_ratio = `Volume (mm3)` / `Surface Area (mm2)`,
-        condition = factor(condition, levels = c("Leaves", "No leaves/Branchlet", "Twigs"))
+        condition = factor(condition, levels = c("BL (leafy)", "BL (leafless)", "Twigs"))
     )
 
 ## Freedman-Diaconis bin width
@@ -31,9 +31,9 @@ x_upper <- quantile(df_all$vol_sa_ratio, 0.99, na.rm = TRUE) * 1.1
 ## Build the combined 3-panel histogram
 combined_hist <- ggplot(df_all, aes(x = vol_sa_ratio)) +
     geom_histogram(binwidth = fd_bw, fill = "grey40", color = "white") +
-    facet_wrap(~condition, ncol = 1, scales = "free_y") +
-    coord_cartesian(xlim = c(0, x_upper)) +
-    labs(x = "Volume/surface area ratio", y = "Count") +
+    facet_wrap(~condition, ncol = 1, scales = "fixed") +
+    coord_cartesian(xlim = c(0, x_upper), ylim = c(0, 100)) +
+    labs(x = "V/Sa (mm)", y = "Count") +
     theme_bw(base_size = 10) +
     theme(plot.margin = margin(5, 10, 5, 5))
 

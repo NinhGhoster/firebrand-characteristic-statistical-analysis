@@ -107,7 +107,7 @@ df2 <- df2 %>%
 glimpse(df2)
 
 ## ------------------------------------------------------------------
-## V/SA Histogram
+## V/Sa Histogram
 ## ------------------------------------------------------------------
 
 figures_dir <- "Stringybark/R/figures"
@@ -119,10 +119,12 @@ for (ds_info in list(
 )) {
   fd_bw <- 2 * IQR(ds_info$df$vol_sa_ratio, na.rm = TRUE) / sum(!is.na(ds_info$df$vol_sa_ratio))^(1 / 3)
 
+  x_upper <- quantile(ds_info$df$vol_sa_ratio, 0.99, na.rm = TRUE) * 1.1
   hist_plot <- ggplot(ds_info$df, aes(x = vol_sa_ratio)) +
     geom_histogram(binwidth = fd_bw, fill = "grey40", color = "white") +
-    facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1) +
-    labs(x = "Volume/surface area ratio", y = "Count") +
+    facet_wrap(as.formula(paste("~", ds_info$group)), ncol = 1, scales = "fixed") +
+    coord_cartesian(xlim = c(0, x_upper), ylim = c(0, 100)) +
+    labs(x = "V/Sa (mm)", y = "Count") +
     theme_bw(base_size = 10) +
     theme(plot.margin = margin(5, 10, 5, 5))
 
@@ -302,8 +304,8 @@ select_best_model <- function(df, param_name, dataset_name) {
     "width"        = "EMM width (mm)",
     "height"       = "EMM height (mm)",
     "mass"         = "EMM mass (g)",
-    "vol_sa_ratio" = "EMM volume/surface area ratio",
-    "sa_vol_ratio" = "EMM surface area/volume ratio"
+    "vol_sa_ratio" = "EMM V/Sa (mm)",
+    "sa_vol_ratio" = "EMM Sa/V"
   )
   x_label <- if (param_name %in% names(param_labels)) param_labels[[param_name]] else paste("EMM", param_name)
 
@@ -558,6 +560,67 @@ analyze_counts <- function(df, dataset_name) {
   filename <- paste0(figures_dir, "/", safe_dataset_name, "_count.png")
   ggsave(filename, plot = p, width = 5, height = 2.5)
   cat(paste0("  -> Plot saved to: ", filename, "\n"))
+
+  
+  
+  ## Generate and save count emmeans plot (by fire_intensity)
+  tryCatch(
+    {
+      emm_fi <- emmeans(best_model, ~fire_intensity, type = "response")
+      emm_fi_df <- as.data.frame(emm_fi)
+      fi_mean_col <- if ("rate" %in% names(emm_fi_df)) "rate" else if ("response" %in% names(emm_fi_df)) "response" else "emmean"
+      fi_lcl_col <- if ("asymp.LCL" %in% names(emm_fi_df)) "asymp.LCL" else "lower.CL"
+      fi_ucl_col <- if ("asymp.UCL" %in% names(emm_fi_df)) "asymp.UCL" else "upper.CL"
+
+      emm_fi_plot <- ggplot(emm_fi_df, aes(x = .data[[fi_mean_col]], y = fire_intensity)) +
+        geom_point(size = 2) +
+        geom_errorbarh(aes(xmin = .data[[fi_lcl_col]], xmax = .data[[fi_ucl_col]]), height = 0.2) +
+        labs(x = "EMM count", y = "Type") +
+        theme_bw(base_size = 10) +
+        theme(
+          axis.title.y = element_text(angle = 90, vjust = 0.5),
+          plot.margin = margin(5, 10, 5, 5)
+        )
+
+      filename_fi <- paste0(figures_dir, "/", safe_dataset_name, "_count_fire_intensity.png")
+      ggsave(filename_fi, plot = emm_fi_plot, width = 5, height = 2.5)
+      cat(paste0("  -> Plot saved to: ", filename_fi, "
+"))
+    },
+    error = function(e) cat("  Fire intensity count emmeans error:", e$message, "
+")
+  )
+
+  ## Generate and save count emmeans plot (by height_section)
+  tryCatch(
+    {
+      emm_hs <- emmeans(best_model, ~height_section,
+        at = list(height_section = seq(1, 44, 0.5)),
+        type = "response"
+      )
+      emm_hs_df <- as.data.frame(emm_hs)
+      hs_mean_col <- if ("rate" %in% names(emm_hs_df)) "rate" else if ("response" %in% names(emm_hs_df)) "response" else "emmean"
+      hs_lcl_col <- if ("asymp.LCL" %in% names(emm_hs_df)) "asymp.LCL" else "lower.CL"
+      hs_ucl_col <- if ("asymp.UCL" %in% names(emm_hs_df)) "asymp.UCL" else "upper.CL"
+
+      emm_hs_plot <- ggplot(emm_hs_df, aes(x = height_section, y = .data[[hs_mean_col]])) +
+        geom_line() +
+        geom_ribbon(aes(ymin = .data[[hs_lcl_col]], ymax = .data[[hs_ucl_col]]),
+          alpha = 0.2
+        ) +
+        scale_x_continuous(limits = c(0, 45), expand = c(0, 0)) +
+        labs(x = "Trunk section", y = "EMM count") +
+        theme_bw(base_size = 10) +
+        theme(plot.margin = margin(5, 10, 5, 5))
+
+      filename_hs <- paste0(figures_dir, "/", safe_dataset_name, "_count_height_section.png")
+      ggsave(filename_hs, plot = emm_hs_plot, width = 5, height = 2.5)
+      cat(paste0("  -> Plot saved to: ", filename_hs, "
+"))
+    },
+    error = function(e) cat("  Trunk section count emmeans error:", e$message, "
+")
+  )
 
   return(paste0(best_model_name, " ", get_sig_string(pw_p)))
 }

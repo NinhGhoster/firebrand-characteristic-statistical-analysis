@@ -6,7 +6,7 @@ This repository contains the data, analysis scripts, and statistical findings fo
 
 The project is organized by the type of firebrand material being analyzed:
 
-- **Branchlet/**: Contains raw data (`branchlet raw data.xlsx`) and statistical analysis scripts (`R/`) for Branchlet firebrands. Analyzes properties under different conditions such as Leaves, No Leaves, Twigs, Acacia, and Pine. Includes a combined 3-panel histogram of V/SA ratio distributions.
+- **Branchlet/**: Contains raw data (`branchlet raw data.xlsx`) and statistical analysis scripts (`R/`) for Branchlet firebrands. Analyzes properties under different conditions such as Leaves, No Leaves, Twigs, Acacia, and Pine. Includes a combined 3-panel histogram of V/Sa distributions.
 - **Stringybark/**: Contains data (`stringybark.xlsx`), density analysis, and heatmap visualization scripts for *Eucalyptus obliqua* and *Eucalyptus radiata* stringybark firebrands. Condition labels use hazard ratings: Extreme (0% char), Very High (10–50% char), High (50–90% char), Moderate (90% char).
 - **Candlebark/**: Contains data (`candlebark.xlsx`) and density analysis scripts analyzing flat (1,053 samples) and cylindrical (1,263 samples) Candlebark across three fire intensities and three sample lengths.
 - **Bark density/** & **Bulk density/**: Directories containing additional density-related data.
@@ -44,19 +44,16 @@ The model with the lower AIC is selected per parameter. This means **different p
 
 Count data (`n_points`) is analyzed separately using Poisson vs. Negative Binomial GLMs, with overdispersion testing to select the appropriate distribution.
 
-### Why V/SA Ratio (Not SA/V)
-Both V/SA (volume ÷ surface area) and SA/V (surface area ÷ volume) are mathematical reciprocals containing the same information. However, **V/SA is used** because:
-
-1. **Better statistical properties** — V/SA is bounded in a narrow, well-behaved range (typically 0.2–0.8 for firebrands). SA/V can explode to extreme values for thin particles (e.g., >2000), creating heavy-tailed distributions that violate model assumptions.
-2. **Clearer trends** — V/SA shows clear, monotonic trends across trunk sections and conditions with tight confidence intervals. SA/V produces flat, noisy patterns with large CI blowouts due to extreme outlier influence.
-3. **Physical interpretability** — V/SA captures firebrand "compactness" or "thickness": higher V/SA = bulkier particle. This relates directly to burning time and transport potential.
+1. **Better statistical properties** — V/Sa is bounded in a narrow, well-behaved range (typically 0.2–0.8 for firebrands). Sa/V can explode to extreme values for thin particles (e.g., >2000), creating heavy-tailed distributions that violate model assumptions.
+2. **Clearer trends** — V/Sa shows clear, monotonic trends across trunk sections and conditions with tight confidence intervals. Sa/V produces flat, noisy patterns with large CI blowouts due to extreme outlier influence.
+3. **Physical interpretability** — V/Sa captures firebrand "compactness" or "thickness": higher V/Sa = bulkier particle. This relates directly to burning time and transport potential.
 
 ## Available Scripts
 
 ### R Scripts (Statistical Analysis)
 - `Branchlet/R/SA for branchlet (with experiment order).R`
 - `Branchlet/R/SA for branchlet (without experiment order).R`
-- `Branchlet/R/combined_histogram.R` — Combined 3-panel V/SA histogram (Leaves, No leaves/Branchlet, Twigs)
+- `Branchlet/R/combined_histogram.R` — Combined 3-panel V/Sa histogram (Leaves, No leaves/Branchlet, Twigs)
 - `Stringybark/R/SA for stringybark.R`
 - `Candlebark/R/SA for candlebark.R`
 

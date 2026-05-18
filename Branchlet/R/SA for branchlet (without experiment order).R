@@ -251,8 +251,8 @@ select_best_model <- function(df, param_name, dataset_name) {
 
   ## Relabel condition levels for publication
   label_map <- c(
-    "leave"              = "Leaves",
-    "noleave_branchlet"  = "No leaves",
+    "leave"              = "BL (leafy)",
+    "noleave_branchlet"  = "BL (leafless)",
     "twig_2"             = "150 kW",
     "50kW"               = "50 kW",
     "100kW"              = "100 kW"
@@ -262,7 +262,7 @@ select_best_model <- function(df, param_name, dataset_name) {
   for (old_lab in names(label_map)) {
     emm_df$condition[emm_df$condition == old_lab] <- label_map[[old_lab]]
   }
-  emm_df$condition <- factor(emm_df$condition)
+  emm_df$condition <- factor(emm_df$condition, levels = unique(c(unname(label_map), unique(as.character(emm_df$condition)))))
 
   ## Generate and Save Plot (no title, no caption)
   ## Detect column names dynamically (varies by model family/link)
@@ -277,8 +277,8 @@ select_best_model <- function(df, param_name, dataset_name) {
     "length"       = "EMM length (mm)",
     "width"        = "EMM width (mm)",
     "height"       = "EMM height (mm)",
-    "vol_sa_ratio" = "EMM volume/surface area ratio",
-    "sa_vol_ratio" = "EMM surface area/volume ratio"
+    "vol_sa_ratio" = "EMM V/Sa (mm)",
+    "sa_vol_ratio" = "EMM Sa/V"
   )
   x_label <- if (param_name %in% names(param_labels)) param_labels[[param_name]] else paste("EMM", param_name)
 

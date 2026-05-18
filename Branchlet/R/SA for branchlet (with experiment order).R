@@ -100,7 +100,7 @@ glimpse(df5)
 glimpse(df6)
 
 ## ------------------------------------------------------------------
-## V/SA Histogram
+## V/Sa Histogram
 ## ------------------------------------------------------------------
 
 figures_dir <- "Branchlet/R/figures"
@@ -120,8 +120,8 @@ for (ds_info in hist_datasets) {
   is_species <- grepl("Eucalyptus|Acacia|Pine", ds_info$name)
   is_leave_vs_noleave <- grepl("Leave_vs_No_Leave", ds_info$name, ignore.case = TRUE)
   label_map <- c(
-    "leave"              = "Leaves",
-    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "No leaves", "Branchlet"),
+    "leave"              = "BL (leafy)",
+    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "BL (leafless)", "BL (leafless)"),
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   plot_df <- ds_info$df
@@ -138,7 +138,7 @@ for (ds_info in hist_datasets) {
     geom_histogram(binwidth = fd_bw, fill = "grey40", color = "white") +
     facet_wrap(~condition, ncol = 1) +
     coord_cartesian(xlim = c(0, x_upper)) +
-    labs(x = "Volume/surface area ratio", y = "Count") +
+    labs(x = "V/Sa (mm)", y = "Count") +
     theme_bw(base_size = 10) +
     theme(plot.margin = margin(5, 10, 5, 5))
 
@@ -322,8 +322,8 @@ select_best_model <- function(df, param_name, dataset_name) {
   is_species <- grepl("Eucalyptus", dataset_name, ignore.case = TRUE)
   is_leave_vs_noleave <- grepl("Leave vs No Leave", dataset_name, ignore.case = TRUE)
   label_map <- c(
-    "leave"              = "Leaves",
-    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "No leaves", "Branchlet"),
+    "leave"              = "BL (leafy)",
+    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "BL (leafless)", "BL (leafless)"),
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   emm_df <- as.data.frame(emm)
@@ -331,7 +331,7 @@ select_best_model <- function(df, param_name, dataset_name) {
   for (old_lab in names(label_map)) {
     emm_df$condition[emm_df$condition == old_lab] <- label_map[[old_lab]]
   }
-  emm_df$condition <- factor(emm_df$condition)
+  emm_df$condition <- factor(emm_df$condition, levels = unique(c(unname(label_map), unique(as.character(emm_df$condition)))))
 
   ## Generate and Save Plot (no title, no caption)
   ## Detect column names dynamically (varies by model family/link)
@@ -347,8 +347,8 @@ select_best_model <- function(df, param_name, dataset_name) {
     "width"        = "EMM width (mm)",
     "height"       = "EMM height (mm)",
     "mass"         = "EMM mass (g)",
-    "vol_sa_ratio" = "EMM volume/surface area ratio",
-    "sa_vol_ratio" = "EMM surface area/volume ratio"
+    "vol_sa_ratio" = "EMM V/Sa (mm)",
+    "sa_vol_ratio" = "EMM Sa/V"
   )
   x_label <- if (param_name %in% names(param_labels)) param_labels[[param_name]] else paste("EMM", param_name)
 
@@ -514,8 +514,8 @@ analyze_counts <- function(df, dataset_name) {
   is_species <- grepl("Eucalyptus", dataset_name, ignore.case = TRUE)
   is_leave_vs_noleave <- grepl("Leave vs No Leave", dataset_name, ignore.case = TRUE)
   label_map <- c(
-    "leave"              = "Leaves",
-    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "No leaves", "Branchlet"),
+    "leave"              = "BL (leafy)",
+    "noleave_branchlet"  = ifelse(is_leave_vs_noleave, "BL (leafless)", "BL (leafless)"),
     "twig_2"             = ifelse(is_species, "Eucalyptus", "Twigs")
   )
   emm_df <- as.data.frame(emm)
@@ -523,7 +523,7 @@ analyze_counts <- function(df, dataset_name) {
   for (old_lab in names(label_map)) {
     emm_df$condition[emm_df$condition == old_lab] <- label_map[[old_lab]]
   }
-  emm_df$condition <- factor(emm_df$condition)
+  emm_df$condition <- factor(emm_df$condition, levels = unique(c(unname(label_map), unique(as.character(emm_df$condition)))))
 
   ## Detect column names dynamically (varies by model family/link)
   mean_col <- if ("rate" %in% names(emm_df)) "rate" else if ("response" %in% names(emm_df)) "response" else "emmean"

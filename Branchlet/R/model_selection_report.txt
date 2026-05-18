@@ -1,52 +1,52 @@
 Model Selection Report
-Generated on: 2026-03-02 02:01:01.689259 
+Generated on: 2026-05-15 01:09:47.947755 
 
 
 ======================================================
 Testing Parameter: volume | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: 19938.34
+  -> AIC: 20150.05
  Family: lognormal  ( log )
 Formula:          volume ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  19938.3   19959.5   -9965.2   19930.3      1450 
+  20150.1   20171.2  -10071.0   20142.1      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.04186  0.2046  
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.04268  0.2066  
+Number of obs: 1468, groups:  experiment, 20
 
 Dispersion parameter for lognormal family ():  908 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 6.06467    0.08134   74.56   <2e-16 ***
-conditionnoleave_branchlet  0.07154    0.09880    0.72    0.469    
+(Intercept)                 6.06568    0.08163   74.30   <2e-16 ***
+conditionnoleave_branchlet  0.07844    0.09987    0.79    0.432    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
- condition         response SE  df asymp.LCL asymp.UCL
- leave                  430 35 Inf       367       505
- noleave_branchlet      462 38 Inf       393       543
+ condition         response   SE  df asymp.LCL asymp.UCL
+ leave                  431 35.2 Inf       367       506
+ noleave_branchlet      466 38.6 Inf       396       548
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast                  ratio    SE  df null z.ratio p.value
- leave / noleave_branchlet 0.931 0.092 Inf    1  -0.724  0.4690
+ contrast                  ratio     SE  df null z.ratio p.value
+ leave / noleave_branchlet 0.925 0.0923 Inf    1  -0.785  0.4322
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast                  ratio    SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet 0.931 0.092 Inf     0.767      1.13
+ contrast                  ratio     SE  df asymp.LCL asymp.UCL
+ leave / noleave_branchlet 0.925 0.0923 Inf      0.76      1.12
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -55,47 +55,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: surface_area | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: 20371.97
+  -> AIC: 20583.12
  Family: lognormal  ( log )
 Formula:          surface_area ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  20372.0   20393.1  -10182.0   20364.0      1450 
+  20583.1   20604.3  -10287.6   20575.1      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.0209   0.1446  
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.02123  0.1457  
+Number of obs: 1468, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  480 
+Dispersion parameter for lognormal family ():  482 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 6.14846    0.05423  113.39   <2e-16 ***
-conditionnoleave_branchlet  0.02476    0.07085    0.35    0.727    
+(Intercept)                 6.15096    0.05443  113.00   <2e-16 ***
+conditionnoleave_branchlet  0.02918    0.07153    0.41    0.683    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response   SE  df asymp.LCL asymp.UCL
- leave                  468 25.4 Inf       421       520
- noleave_branchlet      480 26.8 Inf       430       535
+ leave                  469 25.5 Inf       422       522
+ noleave_branchlet      483 27.1 Inf       433       539
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                  ratio     SE  df null z.ratio p.value
- leave / noleave_branchlet 0.976 0.0691 Inf    1  -0.349  0.7267
+ leave / noleave_branchlet 0.971 0.0695 Inf    1  -0.408  0.6833
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                  ratio     SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet 0.976 0.0691 Inf     0.849      1.12
+ leave / noleave_branchlet 0.971 0.0695 Inf     0.844      1.12
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -104,48 +104,48 @@ Intervals are back-transformed from the log scale
 Testing Parameter: vol_sa_ratio | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod1a
-  -> AIC: 1123.78
+  -> AIC: 1131.3
  Family: Gamma  ( inverse )
 Formula:          vol_sa_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   1123.8    1144.9    -557.9    1115.8      1450 
+   1131.3    1152.5    -561.7    1123.3      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.07216  0.2686  
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.0712   0.2668  
+Number of obs: 1468, groups:  experiment, 20
 
-Dispersion estimate for Gamma family (sigma^2): 0.34 
+Dispersion estimate for Gamma family (sigma^2): 0.338 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 1.44622    0.09067  15.951   <2e-16 ***
-conditionnoleave_branchlet  0.00324    0.12955   0.025     0.98    
+(Intercept)                 1.45195    0.08983   16.16   <2e-16 ***
+conditionnoleave_branchlet -0.01536    0.12772   -0.12    0.904    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response     SE  df asymp.LCL asymp.UCL
- leave                0.691 0.0433 Inf     0.616     0.788
- noleave_branchlet    0.690 0.0441 Inf     0.613     0.789
+ leave                0.689 0.0426 Inf     0.614     0.784
+ noleave_branchlet    0.696 0.0443 Inf     0.619     0.795
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the inverse scale 
 
 Pairwise Comparisons:
- contrast                  estimate   SE  df z.ratio p.value
- leave - noleave_branchlet -0.00324 0.13 Inf  -0.025  0.9800
+ contrast                  estimate    SE  df z.ratio p.value
+ leave - noleave_branchlet   0.0154 0.128 Inf   0.120  0.9042
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
 
 Confidence Intervals:
- contrast                  estimate   SE  df asymp.LCL asymp.UCL
- leave - noleave_branchlet -0.00324 0.13 Inf    -0.257     0.251
+ contrast                  estimate    SE  df asymp.LCL asymp.UCL
+ leave - noleave_branchlet   0.0154 0.128 Inf    -0.235     0.266
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
@@ -155,47 +155,47 @@ Confidence level used: 0.95
 Testing Parameter: sa_vol_ratio | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: 4520.17
+  -> AIC: 4545.69
  Family: lognormal  ( log )
 Formula:          sa_vol_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   4520.2    4541.3   -2256.1    4512.2      1450 
+   4545.7    4566.9   -2268.8    4537.7      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.0154   0.1241  
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.01527  0.1236  
+Number of obs: 1468, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 1.52 
+Dispersion parameter for lognormal family (): 1.51 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 0.75104    0.04512  16.646   <2e-16 ***
-conditionnoleave_branchlet -0.01082    0.06076  -0.178    0.859    
+(Intercept)                 0.75154    0.04425  16.982   <2e-16 ***
+conditionnoleave_branchlet -0.02132    0.05895  -0.362    0.718    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response     SE  df asymp.LCL asymp.UCL
- leave                 2.12 0.0956 Inf      1.94      2.32
- noleave_branchlet     2.10 0.0961 Inf      1.92      2.29
+ leave                 2.12 0.0938 Inf      1.94      2.31
+ noleave_branchlet     2.08 0.0939 Inf      1.90      2.27
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                  ratio     SE  df null z.ratio p.value
- leave / noleave_branchlet  1.01 0.0614 Inf    1   0.178  0.8587
+ leave / noleave_branchlet  1.02 0.0602 Inf    1   0.362  0.7177
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                  ratio     SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet  1.01 0.0614 Inf     0.897      1.14
+ leave / noleave_branchlet  1.02 0.0602 Inf      0.91      1.15
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -204,47 +204,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: length | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: 12215.54
+  -> AIC: 12344.31
  Family: lognormal  ( log )
 Formula:          length ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  12215.5   12236.7   -6103.8   12207.5      1450 
+  12344.3   12365.5   -6168.2   12336.3      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.009515 0.09755 
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.009277 0.09632 
+Number of obs: 1468, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 21.6 
+Dispersion parameter for lognormal family (): 21.7 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 3.47132    0.03724   93.22   <2e-16 ***
-conditionnoleave_branchlet  0.01141    0.05001    0.23     0.82    
+(Intercept)                 3.47462    0.03683   94.33   <2e-16 ***
+conditionnoleave_branchlet  0.01246    0.04964    0.25    0.802    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response   SE  df asymp.LCL asymp.UCL
- leave                 32.2 1.20 Inf      29.9      34.6
- noleave_branchlet     32.5 1.26 Inf      30.2      35.1
+ leave                 32.3 1.19 Inf      30.0      34.7
+ noleave_branchlet     32.7 1.26 Inf      30.3      35.3
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast                  ratio     SE  df null z.ratio p.value
- leave / noleave_branchlet 0.989 0.0494 Inf    1  -0.228  0.8195
+ contrast                  ratio    SE  df null z.ratio p.value
+ leave / noleave_branchlet 0.988 0.049 Inf    1  -0.251  0.8017
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast                  ratio     SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet 0.989 0.0494 Inf     0.896      1.09
+ contrast                  ratio    SE  df asymp.LCL asymp.UCL
+ leave / noleave_branchlet 0.988 0.049 Inf     0.896      1.09
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -253,47 +253,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: width | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: 9175.34
+  -> AIC: 9269.62
  Family: lognormal  ( log )
 Formula:          width ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   9175.3    9196.5   -4583.7    9167.3      1450 
+   9269.6    9290.8   -4630.8    9261.6      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.002879 0.05366 
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.002938 0.0542  
+Number of obs: 1468, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 7.72 
+Dispersion parameter for lognormal family (): 7.73 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                2.399678   0.027359   87.71   <2e-16 ***
-conditionnoleave_branchlet 0.001585   0.033833    0.05    0.963    
+(Intercept)                2.401339   0.027292   87.99   <2e-16 ***
+conditionnoleave_branchlet 0.002227   0.034015    0.07    0.948    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response    SE  df asymp.LCL asymp.UCL
- leave                   11 0.301 Inf      10.4      11.6
- noleave_branchlet       11 0.323 Inf      10.4      11.7
+ leave                 11.0 0.301 Inf      10.5      11.6
+ noleave_branchlet     11.1 0.325 Inf      10.4      11.7
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                  ratio     SE  df null z.ratio p.value
- leave / noleave_branchlet 0.998 0.0338 Inf    1  -0.047  0.9626
+ leave / noleave_branchlet 0.998 0.0339 Inf    1  -0.065  0.9478
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                  ratio     SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet 0.998 0.0338 Inf     0.934      1.07
+ leave / noleave_branchlet 0.998 0.0339 Inf     0.933      1.07
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -302,47 +302,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: height | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: 7124.73
+  -> AIC: 7218.42
  Family: lognormal  ( log )
 Formula:          height ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   7124.7    7145.9   -3558.4    7116.7      1450 
+   7218.4    7239.6   -3605.2    7210.4      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.006636 0.08146 
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.006647 0.08153 
+Number of obs: 1468, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 3.45 
+Dispersion parameter for lognormal family (): 3.48 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 1.81992    0.03137   58.02   <2e-16 ***
-conditionnoleave_branchlet  0.02610    0.04260    0.61     0.54    
+(Intercept)                 1.82368    0.03136   58.15   <2e-16 ***
+conditionnoleave_branchlet  0.02856    0.04278    0.67    0.504    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response    SE  df asymp.LCL asymp.UCL
- leave                 6.17 0.194 Inf      5.80      6.56
- noleave_branchlet     6.33 0.207 Inf      5.94      6.75
+ leave                 6.19 0.194 Inf      5.83      6.59
+ noleave_branchlet     6.37 0.209 Inf      5.98      6.80
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                  ratio     SE  df null z.ratio p.value
- leave / noleave_branchlet 0.974 0.0415 Inf    1  -0.613  0.5401
+ leave / noleave_branchlet 0.972 0.0416 Inf    1  -0.668  0.5043
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                  ratio     SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet 0.974 0.0415 Inf     0.896      1.06
+ leave / noleave_branchlet 0.972 0.0416 Inf     0.894      1.06
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -351,47 +351,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: mass | Dataset: Leave vs No Leave
 ======================================================
   -> WINNER: mod2
-  -> AIC: -3433.46
+  -> AIC: -3447.97
  Family: lognormal  ( log )
 Formula:          mass ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  -3433.5   -3412.3    1720.7   -3441.5      1450 
+  -3448.0   -3426.8    1728.0   -3456.0      1464 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.051    0.2258  
-Number of obs: 1454, groups:  experiment, 20
+ experiment (Intercept) 0.05151  0.227   
+Number of obs: 1468, groups:  experiment, 20
 
 Dispersion parameter for lognormal family (): 0.314 
 
 Conditional model:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                -1.94908    0.08728 -22.332   <2e-16 ***
-conditionnoleave_branchlet  0.08419    0.10783   0.781    0.435    
+(Intercept)                -1.94964    0.08739 -22.310   <2e-16 ***
+conditionnoleave_branchlet  0.09333    0.10860   0.859     0.39    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response     SE  df asymp.LCL asymp.UCL
- leave                0.142 0.0124 Inf      0.12     0.169
- noleave_branchlet    0.155 0.0137 Inf      0.13     0.184
+ leave                0.142 0.0124 Inf     0.120     0.169
+ noleave_branchlet    0.156 0.0138 Inf     0.131     0.186
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                  ratio     SE  df null z.ratio p.value
- leave / noleave_branchlet 0.919 0.0991 Inf    1  -0.781  0.4350
+ leave / noleave_branchlet 0.911 0.0989 Inf    1  -0.859  0.3901
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                  ratio     SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet 0.919 0.0991 Inf     0.744      1.14
+ leave / noleave_branchlet 0.911 0.0989 Inf     0.736      1.13
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -400,47 +400,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: volume | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 16766.25
+  -> AIC: 16969.48
  Family: lognormal  ( log )
 Formula:          volume ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  16766.3   16786.7   -8379.1   16758.3      1215 
+  16969.5   16990.0   -8480.7   16961.5      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.02585  0.1608  
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.02734  0.1653  
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 1.2e+03 
+Dispersion parameter for lognormal family (): 1.19e+03 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.21350    0.07853   79.12   <2e-16 ***
-conditiontwig_2 -0.18044    0.08379   -2.15   0.0313 *  
+(Intercept)      6.21732    0.07895   78.75   <2e-16 ***
+conditiontwig_2 -0.19077    0.08542   -2.23   0.0255 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- leave          499 39.2 Inf       428       583
- twig_2         417 34.8 Inf       354       491
+ leave          501 39.6 Inf       429       585
+ twig_2         414 34.8 Inf       351       488
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast       ratio  SE  df null z.ratio p.value
- leave / twig_2   1.2 0.1 Inf    1   2.153  0.0313
+ contrast       ratio    SE  df null z.ratio p.value
+ leave / twig_2  1.21 0.103 Inf    1   2.233  0.0255
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast       ratio  SE  df asymp.LCL asymp.UCL
- leave / twig_2   1.2 0.1 Inf      1.02      1.41
+ contrast       ratio    SE  df asymp.LCL asymp.UCL
+ leave / twig_2  1.21 0.103 Inf      1.02      1.43
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -449,47 +449,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: surface_area | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 16972.39
+  -> AIC: 17179.24
  Family: lognormal  ( log )
 Formula:          surface_area ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  16972.4   16992.8   -8482.2   16964.4      1215 
+  17179.2   17199.7   -8585.6   17171.2      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.008612 0.0928  
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.009095 0.09537 
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  445 
+Dispersion parameter for lognormal family ():  447 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.10723    0.04250  143.71   <2e-16 ***
-conditiontwig_2 -0.08567    0.05137   -1.67   0.0954 .  
+(Intercept)      6.11379    0.04284  142.71   <2e-16 ***
+conditiontwig_2 -0.08990    0.05220   -1.72    0.085 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- leave          449 19.1 Inf       413       488
- twig_2         412 18.7 Inf       377       451
+ leave          452 19.4 Inf       416       492
+ twig_2         413 18.9 Inf       378       452
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast       ratio    SE  df null z.ratio p.value
- leave / twig_2  1.09 0.056 Inf    1   1.668  0.0954
+ contrast       ratio     SE  df null z.ratio p.value
+ leave / twig_2  1.09 0.0571 Inf    1   1.722  0.0850
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast       ratio    SE  df asymp.LCL asymp.UCL
- leave / twig_2  1.09 0.056 Inf     0.985       1.2
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ leave / twig_2  1.09 0.0571 Inf     0.988      1.21
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -498,48 +498,48 @@ Intervals are back-transformed from the log scale
 Testing Parameter: vol_sa_ratio | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod1a
-  -> AIC: 1250.28
+  -> AIC: 1263.34
  Family: Gamma  ( inverse )
 Formula:          vol_sa_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   1250.3    1270.7    -621.1    1242.3      1215 
+   1263.3    1283.8    -627.7    1255.3      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.07859  0.2803  
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.07844  0.2801  
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion estimate for Gamma family (sigma^2): 0.459 
+Dispersion estimate for Gamma family (sigma^2): 0.458 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.44686    0.09597   15.07   <2e-16 ***
-conditiontwig_2 -0.05504    0.13776   -0.40    0.689    
+(Intercept)      1.44240    0.09567  15.077   <2e-16 ***
+conditiontwig_2 -0.04832    0.13749  -0.351    0.725    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response     SE  df asymp.LCL asymp.UCL
- leave        0.691 0.0458 Inf     0.612     0.794
- twig_2       0.718 0.0511 Inf     0.631     0.835
+ leave        0.693 0.0460 Inf     0.614     0.797
+ twig_2       0.717 0.0509 Inf     0.630     0.833
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the inverse scale 
 
 Pairwise Comparisons:
  contrast       estimate    SE  df z.ratio p.value
- leave - twig_2    0.055 0.138 Inf   0.400  0.6895
+ leave - twig_2   0.0483 0.137 Inf   0.351  0.7253
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
 
 Confidence Intervals:
  contrast       estimate    SE  df asymp.LCL asymp.UCL
- leave - twig_2    0.055 0.138 Inf    -0.215     0.325
+ leave - twig_2   0.0483 0.137 Inf    -0.221     0.318
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
@@ -549,47 +549,47 @@ Confidence level used: 0.95
 Testing Parameter: sa_vol_ratio | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 4433.2
+  -> AIC: 4487.47
  Family: lognormal  ( log )
 Formula:          sa_vol_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   4433.2    4453.6   -2212.6    4425.2      1215 
+   4487.5    4507.9   -2239.7    4479.5      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.01165  0.1079  
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.01144  0.107   
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  2.3 
+Dispersion parameter for lognormal family (): 2.31 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      0.93489    0.04402  21.236   <2e-16 ***
-conditiontwig_2 -0.10807    0.05645  -1.914   0.0556 .  
+(Intercept)      0.93447    0.04370  21.383   <2e-16 ***
+conditiontwig_2 -0.10765    0.05605  -1.921   0.0548 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- leave         2.55 0.112 Inf      2.34      2.78
- twig_2        2.29 0.112 Inf      2.08      2.52
+ leave         2.55 0.111 Inf      2.34      2.77
+ twig_2        2.29 0.111 Inf      2.08      2.51
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast       ratio     SE  df null z.ratio p.value
- leave / twig_2  1.11 0.0629 Inf    1   1.914  0.0556
+ leave / twig_2  1.11 0.0624 Inf    1   1.921  0.0548
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast       ratio     SE  df asymp.LCL asymp.UCL
- leave / twig_2  1.11 0.0629 Inf     0.997      1.24
+ leave / twig_2  1.11 0.0624 Inf     0.998      1.24
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -598,47 +598,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: length | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 10046.49
+  -> AIC: 10171.04
  Family: lognormal  ( log )
 Formula:          length ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  10046.5   10066.9   -5019.2   10038.5      1215 
+  10171.0   10191.5   -5081.5   10163.0      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.006374 0.07984 
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.006101 0.07811 
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():   20 
+Dispersion parameter for lognormal family (): 20.1 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      3.43846    0.03321  103.54  < 2e-16 ***
-conditiontwig_2 -0.18258    0.04402   -4.15 3.36e-05 ***
+(Intercept)      3.44377    0.03268   105.4  < 2e-16 ***
+conditiontwig_2 -0.18615    0.04334    -4.3 1.74e-05 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- leave         31.1 1.030 Inf      29.2      33.2
- twig_2        25.9 0.945 Inf      24.2      27.9
+ leave         31.3 1.020 Inf      29.4      33.4
+ twig_2        26.0 0.936 Inf      24.2      27.9
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast       ratio     SE  df null z.ratio p.value
- leave / twig_2   1.2 0.0528 Inf    1   4.148 <0.0001
+ leave / twig_2   1.2 0.0522 Inf    1   4.296 <0.0001
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast       ratio     SE  df asymp.LCL asymp.UCL
- leave / twig_2   1.2 0.0528 Inf       1.1      1.31
+ leave / twig_2   1.2 0.0522 Inf      1.11      1.31
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -647,47 +647,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: width | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 7233.57
+  -> AIC: 7326.65
  Family: lognormal  ( log )
 Formula:          width ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   7233.6    7254.0   -3612.8    7225.6      1215 
+   7326.6    7347.1   -3659.3    7318.6      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.002104 0.04587 
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.002228 0.0472  
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 5.83 
+Dispersion parameter for lognormal family (): 5.86 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      2.28472    0.02485   91.93   <2e-16 ***
-conditiontwig_2  0.03382    0.03098    1.09    0.275    
+(Intercept)      2.28832    0.02496   91.69   <2e-16 ***
+conditiontwig_2  0.03236    0.03127    1.03    0.301    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- leave         9.82 0.244 Inf      9.36      10.3
- twig_2       10.16 0.259 Inf      9.67      10.7
+ leave         9.86 0.246 Inf      9.39      10.4
+ twig_2       10.18 0.262 Inf      9.68      10.7
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast       ratio   SE  df null z.ratio p.value
- leave / twig_2 0.967 0.03 Inf    1  -1.092  0.2750
+ contrast       ratio     SE  df null z.ratio p.value
+ leave / twig_2 0.968 0.0303 Inf    1  -1.035  0.3007
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast       ratio   SE  df asymp.LCL asymp.UCL
- leave / twig_2 0.967 0.03 Inf      0.91      1.03
+ contrast       ratio     SE  df asymp.LCL asymp.UCL
+ leave / twig_2 0.968 0.0303 Inf     0.911      1.03
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -696,47 +696,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: height | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 5846.48
+  -> AIC: 5939.44
  Family: lognormal  ( log )
 Formula:          height ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   5846.5    5866.9   -2919.2    5838.5      1215 
+   5939.4    5959.9   -2965.7    5931.4      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.002395 0.04894 
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.002378 0.04877 
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 3.23 
+Dispersion parameter for lognormal family (): 3.27 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.79258    0.02389   75.04   <2e-16 ***
-conditiontwig_2 -0.03957    0.03141   -1.26    0.208    
+(Intercept)      1.79884    0.02383   75.50   <2e-16 ***
+conditiontwig_2 -0.04040    0.03133   -1.29    0.197    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- leave         6.00 0.143 Inf      5.73      6.29
- twig_2        5.77 0.151 Inf      5.48      6.07
+ leave         6.04 0.144 Inf      5.77      6.33
+ twig_2        5.80 0.151 Inf      5.51      6.11
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast       ratio     SE  df null z.ratio p.value
- leave / twig_2  1.04 0.0327 Inf    1   1.260  0.2077
+ leave / twig_2  1.04 0.0326 Inf    1   1.290  0.1972
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast       ratio     SE  df asymp.LCL asymp.UCL
- leave / twig_2  1.04 0.0327 Inf     0.978      1.11
+ leave / twig_2  1.04 0.0326 Inf     0.979      1.11
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -745,47 +745,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: mass | Dataset: Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: -2948.53
+  -> AIC: -2971.78
  Family: lognormal  ( log )
 Formula:          mass ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  -2948.5   -2928.1    1478.3   -2956.5      1215 
+  -2971.8   -2951.3    1489.9   -2979.8      1229 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.01848  0.1359  
-Number of obs: 1219, groups:  experiment, 20
+ experiment (Intercept) 0.01942  0.1394  
+Number of obs: 1233, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 0.35 
+Dispersion parameter for lognormal family (): 0.348 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)     -1.89484    0.07263 -26.089   <2e-16 ***
-conditiontwig_2 -0.16003    0.07406  -2.161   0.0307 *  
+(Intercept)     -1.89036    0.07272  -25.99   <2e-16 ***
+conditiontwig_2 -0.16990    0.07518   -2.26   0.0238 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response      SE  df asymp.LCL asymp.UCL
- leave        0.150 0.01090 Inf      0.13     0.173
- twig_2       0.128 0.00988 Inf      0.11     0.149
+ leave        0.151 0.01100 Inf     0.131     0.174
+ twig_2       0.127 0.00985 Inf     0.110     0.148
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast       ratio     SE  df null z.ratio p.value
- leave / twig_2  1.17 0.0869 Inf    1   2.161  0.0307
+ leave / twig_2  1.19 0.0891 Inf    1   2.260  0.0238
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast       ratio     SE  df asymp.LCL asymp.UCL
- leave / twig_2  1.17 0.0869 Inf      1.01      1.36
+ leave / twig_2  1.19 0.0891 Inf      1.02      1.37
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -794,47 +794,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: volume | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 16601.39
+  -> AIC: 16629.02
  Family: lognormal  ( log )
 Formula:          volume ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  16601.4   16621.8   -8296.7   16593.4      1195 
+  16629.0   16649.4   -8310.5   16621.0      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.04221  0.2055  
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.04309  0.2076  
+Number of obs: 1201, groups:  experiment, 21
 
 Dispersion parameter for lognormal family (): 1.32e+03 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.33891    0.08954   70.80   <2e-16 ***
-conditiontwig_2 -0.24988    0.10252   -2.44   0.0148 *  
+(Intercept)      6.34834    0.09007   70.48   <2e-16 ***
+conditiontwig_2 -0.26003    0.10349   -2.51    0.012 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response   SE  df asymp.LCL asymp.UCL
- noleave_branchlet      566 50.7 Inf       475       675
- twig_2                 441 41.1 Inf       367       529
+ noleave_branchlet      572 51.5 Inf       479       682
+ twig_2                 441 41.3 Inf       367       529
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                   ratio    SE  df null z.ratio p.value
- noleave_branchlet / twig_2  1.28 0.132 Inf    1   2.437  0.0148
+ noleave_branchlet / twig_2   1.3 0.134 Inf    1   2.513  0.0120
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio    SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2  1.28 0.132 Inf      1.05      1.57
+ noleave_branchlet / twig_2   1.3 0.134 Inf      1.06      1.59
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -843,47 +843,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: surface_area | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 16867.01
+  -> AIC: 16897.3
  Family: lognormal  ( log )
 Formula:          surface_area ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  16867.0   16887.4   -8429.5   16859.0      1195 
+  16897.3   16917.7   -8444.6   16889.3      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.01564  0.125   
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.01577  0.1256  
+Number of obs: 1201, groups:  experiment, 21
 
-Dispersion parameter for lognormal family ():  523 
+Dispersion parameter for lognormal family ():  524 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.21350    0.05274  117.80   <2e-16 ***
-conditiontwig_2 -0.10987    0.06501   -1.69    0.091 .  
+(Intercept)      6.21782    0.05299  117.35   <2e-16 ***
+conditiontwig_2 -0.11345    0.06534   -1.74   0.0825 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response   SE  df asymp.LCL asymp.UCL
- noleave_branchlet      499 26.3 Inf       450       554
- twig_2                 447 24.0 Inf       403       497
+ noleave_branchlet      502 26.6 Inf       452       557
+ twig_2                 448 24.1 Inf       403       498
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                   ratio     SE  df null z.ratio p.value
- noleave_branchlet / twig_2  1.12 0.0726 Inf    1   1.690  0.0910
+ noleave_branchlet / twig_2  1.12 0.0732 Inf    1   1.736  0.0825
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio     SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2  1.12 0.0726 Inf     0.983      1.27
+ noleave_branchlet / twig_2  1.12 0.0732 Inf     0.985      1.27
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -892,48 +892,48 @@ Intervals are back-transformed from the log scale
 Testing Parameter: vol_sa_ratio | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod1a
-  -> AIC: 1170.52
+  -> AIC: 1177.41
  Family: Gamma  ( inverse )
 Formula:          vol_sa_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   1170.5    1190.9    -581.3    1162.5      1195 
+   1177.4    1197.8    -584.7    1169.4      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.06333  0.2517  
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.06346  0.2519  
+Number of obs: 1201, groups:  experiment, 21
 
-Dispersion estimate for Gamma family (sigma^2): 0.426 
+Dispersion estimate for Gamma family (sigma^2): 0.429 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.44659    0.08926  16.206   <2e-16 ***
-conditiontwig_2 -0.05740    0.12665  -0.453     0.65    
+(Intercept)      1.43974    0.08887  16.201   <2e-16 ***
+conditiontwig_2 -0.04826    0.12657  -0.381    0.703    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response     SE  df asymp.LCL asymp.UCL
- noleave_branchlet    0.691 0.0427 Inf     0.617     0.786
- twig_2               0.720 0.0467 Inf     0.639     0.825
+ noleave_branchlet    0.695 0.0429 Inf     0.620     0.790
+ twig_2               0.719 0.0466 Inf     0.638     0.823
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the inverse scale 
 
 Pairwise Comparisons:
  contrast                   estimate    SE  df z.ratio p.value
- noleave_branchlet - twig_2   0.0574 0.127 Inf   0.453  0.6504
+ noleave_branchlet - twig_2   0.0483 0.127 Inf   0.381  0.7030
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
 
 Confidence Intervals:
  contrast                   estimate    SE  df asymp.LCL asymp.UCL
- noleave_branchlet - twig_2   0.0574 0.127 Inf    -0.191     0.306
+ noleave_branchlet - twig_2   0.0483 0.127 Inf      -0.2     0.296
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
@@ -943,47 +943,47 @@ Confidence level used: 0.95
 Testing Parameter: sa_vol_ratio | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 4328.77
+  -> AIC: 4356.72
  Family: lognormal  ( log )
 Formula:          sa_vol_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   4328.8    4349.1   -2160.4    4320.8      1195 
+   4356.7    4377.1   -2174.4    4348.7      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.01008  0.1004  
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.009832 0.09916 
+Number of obs: 1201, groups:  experiment, 21
 
-Dispersion parameter for lognormal family (): 2.32 
+Dispersion parameter for lognormal family (): 2.36 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      0.92477    0.04309  21.459   <2e-16 ***
-conditiontwig_2 -0.09169    0.05445  -1.684   0.0922 .  
+(Intercept)      0.92933    0.04281  21.706   <2e-16 ***
+conditiontwig_2 -0.08975    0.05389  -1.666   0.0958 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response    SE  df asymp.LCL asymp.UCL
- noleave_branchlet     2.52 0.109 Inf      2.32      2.74
- twig_2                2.30 0.109 Inf      2.10      2.52
+ noleave_branchlet     2.53 0.108 Inf      2.33      2.75
+ twig_2                2.32 0.109 Inf      2.11      2.54
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                   ratio     SE  df null z.ratio p.value
- noleave_branchlet / twig_2   1.1 0.0597 Inf    1   1.684  0.0922
+ noleave_branchlet / twig_2  1.09 0.0589 Inf    1   1.666  0.0958
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio     SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2   1.1 0.0597 Inf     0.985      1.22
+ noleave_branchlet / twig_2  1.09 0.0589 Inf     0.984      1.22
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -992,33 +992,33 @@ Intervals are back-transformed from the log scale
 Testing Parameter: length | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 9972.17
+  -> AIC: 9989.77
  Family: lognormal  ( log )
 Formula:          length ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   9972.2    9992.5   -4982.1    9964.2      1195 
+   9989.8   10010.1   -4990.9    9981.8      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.008486 0.09212 
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.008578 0.09262 
+Number of obs: 1201, groups:  experiment, 21
 
 Dispersion parameter for lognormal family (): 21.7 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      3.48311    0.03837   90.78  < 2e-16 ***
-conditiontwig_2 -0.19055    0.04981   -3.83  0.00013 ***
+(Intercept)      3.48623    0.03859   90.34  < 2e-16 ***
+conditiontwig_2 -0.19356    0.05007   -3.87 0.000111 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response   SE  df asymp.LCL asymp.UCL
- noleave_branchlet     32.6 1.25 Inf      30.2      35.1
+ noleave_branchlet     32.7 1.26 Inf      30.3      35.2
  twig_2                26.9 1.07 Inf      24.9      29.1
 
 Confidence level used: 0.95 
@@ -1026,13 +1026,13 @@ Intervals are back-transformed from the log scale
 
 Pairwise Comparisons:
  contrast                   ratio     SE  df null z.ratio p.value
- noleave_branchlet / twig_2  1.21 0.0603 Inf    1   3.826  0.0001
+ noleave_branchlet / twig_2  1.21 0.0608 Inf    1   3.866  0.0001
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio     SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2  1.21 0.0603 Inf       1.1      1.33
+ noleave_branchlet / twig_2  1.21 0.0608 Inf       1.1      1.34
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1041,47 +1041,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: width | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 7401.01
+  -> AIC: 7416.21
  Family: lognormal  ( log )
 Formula:          width ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   7401.0    7421.4   -3696.5    7393.0      1195 
+   7416.2    7436.6   -3704.1    7408.2      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.001395 0.03735 
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.00143  0.03782 
+Number of obs: 1201, groups:  experiment, 21
 
-Dispersion parameter for lognormal family (): 6.91 
+Dispersion parameter for lognormal family (): 6.92 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      2.34692    0.02671   87.87   <2e-16 ***
-conditiontwig_2  0.03337    0.03051    1.09    0.274    
+(Intercept)      2.34861    0.02684   87.51   <2e-16 ***
+conditiontwig_2  0.03267    0.03069    1.06    0.287    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response    SE  df asymp.LCL asymp.UCL
- noleave_branchlet     10.5 0.279 Inf      9.92      11.0
- twig_2                10.8 0.273 Inf     10.29      11.4
+ noleave_branchlet     10.5 0.281 Inf      9.93      11.0
+ twig_2                10.8 0.274 Inf     10.29      11.4
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                   ratio     SE  df null z.ratio p.value
- noleave_branchlet / twig_2 0.967 0.0295 Inf    1  -1.094  0.2740
+ noleave_branchlet / twig_2 0.968 0.0297 Inf    1  -1.065  0.2870
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio     SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2 0.967 0.0295 Inf     0.911      1.03
+ noleave_branchlet / twig_2 0.968 0.0297 Inf     0.911      1.03
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1090,47 +1090,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: height | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: 5911.84
+  -> AIC: 5925.24
  Family: lognormal  ( log )
 Formula:          height ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   5911.8    5932.2   -2951.9    5903.8      1195 
+   5925.2    5945.6   -2958.6    5917.2      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.006537 0.08085 
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.006541 0.08088 
+Number of obs: 1201, groups:  experiment, 21
 
 Dispersion parameter for lognormal family (): 3.54 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.85545    0.03305   56.13   <2e-16 ***
-conditiontwig_2 -0.06684    0.04382   -1.53    0.127    
+(Intercept)      1.85844    0.03317   56.04   <2e-16 ***
+conditiontwig_2 -0.06865    0.04391   -1.56    0.118    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition         response    SE  df asymp.LCL asymp.UCL
- noleave_branchlet     6.39 0.211 Inf      5.99      6.82
- twig_2                5.98 0.201 Inf      5.60      6.39
+ noleave_branchlet     6.41 0.213 Inf      6.01      6.84
+ twig_2                5.99 0.201 Inf      5.61      6.40
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast                   ratio     SE  df null z.ratio p.value
- noleave_branchlet / twig_2  1.07 0.0468 Inf    1   1.525  0.1272
+ contrast                   ratio    SE  df null z.ratio p.value
+ noleave_branchlet / twig_2  1.07 0.047 Inf    1   1.564  0.1179
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast                   ratio     SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2  1.07 0.0468 Inf     0.981      1.17
+ contrast                   ratio    SE  df asymp.LCL asymp.UCL
+ noleave_branchlet / twig_2  1.07 0.047 Inf     0.983      1.17
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1139,47 +1139,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: mass | Dataset: No Leave vs Twig
 ======================================================
   -> WINNER: mod2
-  -> AIC: -2743.55
+  -> AIC: -2747.55
  Family: lognormal  ( log )
 Formula:          mass ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  -2743.5   -2723.2    1375.8   -2751.5      1195 
+  -2747.6   -2727.2    1377.8   -2755.6      1197 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.04292  0.2072  
-Number of obs: 1199, groups:  experiment, 20
+ experiment (Intercept) 0.0436   0.2088  
+Number of obs: 1201, groups:  experiment, 21
 
-Dispersion parameter for lognormal family (): 0.41 
+Dispersion parameter for lognormal family (): 0.412 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)     -1.71860    0.08943 -19.218   <2e-16 ***
-conditiontwig_2 -0.24343    0.10305  -2.362   0.0182 *  
+(Intercept)     -1.70940    0.08986 -19.023   <2e-16 ***
+conditiontwig_2 -0.25295    0.10382  -2.436   0.0148 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
- condition         response    SE  df asymp.LCL asymp.UCL
- noleave_branchlet    0.179 0.016 Inf     0.150     0.214
- twig_2               0.141 0.013 Inf     0.117     0.168
+ condition         response     SE  df asymp.LCL asymp.UCL
+ noleave_branchlet    0.181 0.0163 Inf     0.152     0.216
+ twig_2               0.141 0.0130 Inf     0.117     0.168
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                   ratio    SE  df null z.ratio p.value
- noleave_branchlet / twig_2  1.28 0.131 Inf    1   2.362  0.0182
+ noleave_branchlet / twig_2  1.29 0.134 Inf    1   2.436  0.0148
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio    SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2  1.28 0.131 Inf      1.04      1.56
+ noleave_branchlet / twig_2  1.29 0.134 Inf      1.05      1.58
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1188,47 +1188,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: volume | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 10595.29
+  -> AIC: 10631.37
  Family: lognormal  ( log )
 Formula:          volume ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  10595.3   10613.7   -5293.6   10587.3       737 
+  10631.4   10649.8   -5311.7   10623.4       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.02475  0.1573  
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.02536  0.1593  
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 2.86e+03 
+Dispersion parameter for lognormal family (): 2.85e+03 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.77554    0.11410   59.38  < 2e-16 ***
-conditiontwig_2 -0.25246    0.09342   -2.70  0.00688 ** 
+(Intercept)      6.77229    0.11397   59.42  < 2e-16 ***
+conditiontwig_2 -0.25561    0.09391   -2.72  0.00649 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
- condition response    SE  df asymp.LCL asymp.UCL
- Pine           876 100.0 Inf       701      1096
- twig_2         681  73.9 Inf       550       842
+ condition response   SE  df asymp.LCL asymp.UCL
+ Pine           873 99.5 Inf       698      1092
+ twig_2         676 73.5 Inf       547       837
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast      ratio   SE  df null z.ratio p.value
- Pine / twig_2  1.29 0.12 Inf    1   2.703  0.0069
+ contrast      ratio    SE  df null z.ratio p.value
+ Pine / twig_2  1.29 0.121 Inf    1   2.722  0.0065
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast      ratio   SE  df asymp.LCL asymp.UCL
- Pine / twig_2  1.29 0.12 Inf      1.07      1.55
+ contrast      ratio    SE  df asymp.LCL asymp.UCL
+ Pine / twig_2  1.29 0.121 Inf      1.07      1.55
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1237,47 +1237,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: surface_area | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 10556.35
+  -> AIC: 10595.15
  Family: lognormal  ( log )
 Formula:          surface_area ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  10556.4   10574.8   -5274.2   10548.4       737 
+  10595.2   10613.6   -5293.6   10587.2       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.005891 0.07676 
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.00586  0.07655 
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  582 
+Dispersion parameter for lognormal family ():  579 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.31435    0.05379  117.38  < 2e-16 ***
-conditiontwig_2 -0.15637    0.05281   -2.96  0.00307 ** 
+(Intercept)      6.31092    0.05352  117.91  < 2e-16 ***
+conditiontwig_2 -0.15538    0.05262   -2.95  0.00315 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Pine           552 29.7 Inf       497       614
- twig_2         472 23.4 Inf       429       521
+ Pine           551 29.5 Inf       496       611
+ twig_2         471 23.2 Inf       428       519
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2  1.17 0.0617 Inf    1   2.961  0.0031
+ Pine / twig_2  1.17 0.0615 Inf    1   2.953  0.0031
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Pine / twig_2  1.17 0.0617 Inf      1.05       1.3
+ Pine / twig_2  1.17 0.0615 Inf      1.05       1.3
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1286,48 +1286,48 @@ Intervals are back-transformed from the log scale
 Testing Parameter: vol_sa_ratio | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod1a
-  -> AIC: 983.07
+  -> AIC: 987.45
  Family: Gamma  ( inverse )
 Formula:          vol_sa_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-    983.1    1001.5    -487.5     975.1       737 
+    987.4    1005.9    -489.7     979.4       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.04367  0.209   
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.0439   0.2095  
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion estimate for Gamma family (sigma^2): 0.551 
+Dispersion estimate for Gamma family (sigma^2): 0.555 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.17454    0.08554  13.730   <2e-16 ***
-conditiontwig_2  0.20662    0.11801   1.751     0.08 .  
+(Intercept)      1.17603    0.08565  13.730   <2e-16 ***
+conditiontwig_2  0.20747    0.11826   1.754   0.0794 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response     SE  df asymp.LCL asymp.UCL
- Pine         0.851 0.0620 Inf     0.745     0.993
- twig_2       0.724 0.0428 Inf     0.649     0.819
+ Pine         0.850 0.0619 Inf     0.744     0.992
+ twig_2       0.723 0.0427 Inf     0.648     0.818
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the inverse scale 
 
 Pairwise Comparisons:
  contrast      estimate    SE  df z.ratio p.value
- Pine - twig_2   -0.207 0.118 Inf  -1.751  0.0800
+ Pine - twig_2   -0.207 0.118 Inf  -1.754  0.0794
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
 
 Confidence Intervals:
  contrast      estimate    SE  df asymp.LCL asymp.UCL
- Pine - twig_2   -0.207 0.118 Inf    -0.438    0.0247
+ Pine - twig_2   -0.207 0.118 Inf    -0.439    0.0243
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
@@ -1337,47 +1337,47 @@ Confidence level used: 0.95
 Testing Parameter: sa_vol_ratio | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 2921.16
+  -> AIC: 2947.2
  Family: lognormal  ( log )
 Formula:          sa_vol_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   2921.2    2939.6   -1456.6    2913.2       737 
+   2947.2    2965.7   -1469.6    2939.2       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.003775 0.06144 
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.003622 0.06018 
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  3.6 
+Dispersion parameter for lognormal family (): 3.68 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      0.99086    0.05477  18.091   <2e-16 ***
-conditiontwig_2  0.08024    0.04971   1.614    0.106    
+(Intercept)      1.00189    0.05470  18.316   <2e-16 ***
+conditiontwig_2  0.07931    0.04941   1.605    0.108    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Pine          2.69 0.148 Inf      2.42      3.00
- twig_2        2.92 0.148 Inf      2.64      3.22
+ Pine          2.72 0.149 Inf      2.45      3.03
+ twig_2        2.95 0.150 Inf      2.67      3.26
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2 0.923 0.0459 Inf    1  -1.614  0.1064
+ Pine / twig_2 0.924 0.0456 Inf    1  -1.605  0.1084
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Pine / twig_2 0.923 0.0459 Inf     0.837      1.02
+ Pine / twig_2 0.924 0.0456 Inf     0.839      1.02
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1386,47 +1386,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: length | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 6176.19
+  -> AIC: 6196.77
  Family: lognormal  ( log )
 Formula:          length ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   6176.2    6194.6   -3084.1    6168.2       737 
+   6196.8    6215.2   -3094.4    6188.8       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.006439 0.08024 
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.006488 0.08055 
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 22.7 
+Dispersion parameter for lognormal family (): 22.6 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      3.40215    0.04488    75.8   <2e-16 ***
-conditiontwig_2 -0.09004    0.05008    -1.8   0.0722 .  
+(Intercept)      3.39951    0.04477   75.93   <2e-16 ***
+conditiontwig_2 -0.08946    0.05008   -1.79    0.074 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Pine          30.0 1.35 Inf      27.5      32.8
- twig_2        27.4 1.11 Inf      25.4      29.7
+ Pine          29.9 1.34 Inf      27.4      32.7
+ twig_2        27.4 1.11 Inf      25.3      29.6
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2  1.09 0.0548 Inf    1   1.798  0.0722
+ Pine / twig_2  1.09 0.0548 Inf    1   1.786  0.0740
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Pine / twig_2  1.09 0.0548 Inf     0.992      1.21
+ Pine / twig_2  1.09 0.0548 Inf     0.991      1.21
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1435,41 +1435,41 @@ Intervals are back-transformed from the log scale
 Testing Parameter: width | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 4165.38
+  -> AIC: 4180.83
  Family: lognormal  ( log )
 Formula:          width ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   4165.4    4183.8   -2078.7    4157.4       737 
+   4180.8    4199.3   -2086.4    4172.8       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance  Std.Dev.
- experiment (Intercept) 1.972e-05 0.004441
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 6.175e-05 0.007858
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 4.71 
+Dispersion parameter for lognormal family ():  4.7 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      2.29315    0.02478   92.54   <2e-16 ***
-conditiontwig_2 -0.04675    0.02678   -1.75   0.0809 .  
+(Intercept)      2.29312    0.02475   92.66   <2e-16 ***
+conditiontwig_2 -0.04659    0.02685   -1.73   0.0828 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
  Pine          9.91 0.245 Inf      9.44     10.40
- twig_2        9.45 0.193 Inf      9.08      9.84
+ twig_2        9.45 0.194 Inf      9.08      9.84
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2  1.05 0.0281 Inf    1   1.745  0.0809
+ Pine / twig_2  1.05 0.0281 Inf    1   1.735  0.0828
 
 Tests are performed on the log scale 
 
@@ -1484,47 +1484,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: height | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 3540.99
+  -> AIC: 3554.62
  Family: lognormal  ( log )
 Formula:          height ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   3541.0    3559.4   -1766.5    3533.0       737 
+   3554.6    3573.1   -1773.3    3546.6       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.00186  0.04312 
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.00181  0.04254 
+Number of obs: 744, groups:  experiment, 20
 
 Dispersion parameter for lognormal family (): 3.12 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.89418    0.02812   67.35  < 2e-16 ***
-conditiontwig_2 -0.15350    0.03367   -4.56 5.15e-06 ***
+(Intercept)      1.89494    0.02791   67.91  < 2e-16 ***
+conditiontwig_2 -0.15413    0.03343   -4.61 4.01e-06 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Pine          6.65 0.187 Inf      6.29      7.02
- twig_2        5.70 0.150 Inf      5.41      6.00
+ Pine          6.65 0.186 Inf      6.30      7.03
+ twig_2        5.70 0.149 Inf      5.42      6.00
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2  1.17 0.0393 Inf    1   4.559 <0.0001
+ contrast      ratio    SE  df null z.ratio p.value
+ Pine / twig_2  1.17 0.039 Inf    1   4.611 <0.0001
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast      ratio     SE  df asymp.LCL asymp.UCL
- Pine / twig_2  1.17 0.0393 Inf      1.09      1.25
+ contrast      ratio    SE  df asymp.LCL asymp.UCL
+ Pine / twig_2  1.17 0.039 Inf      1.09      1.25
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1533,47 +1533,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: mass | Dataset: Eucalyptus vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: -1513.72
+  -> AIC: -1524.5
  Family: lognormal  ( log )
 Formula:          mass ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  -1513.7   -1495.3     760.9   -1521.7       737 
+  -1524.5   -1506.1     766.2   -1532.5       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.01283  0.1132  
-Number of obs: 741, groups:  experiment, 20
+ experiment (Intercept) 0.01323  0.115   
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 0.652 
+Dispersion parameter for lognormal family (): 0.647 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)     -1.51940    0.10213 -14.877   <2e-16 ***
-conditiontwig_2 -0.18790    0.07759  -2.422   0.0154 *  
+(Intercept)     -1.52086    0.10187 -14.929   <2e-16 ***
+conditiontwig_2 -0.19231    0.07792  -2.468   0.0136 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response     SE  df asymp.LCL asymp.UCL
- Pine         0.219 0.0224 Inf     0.179     0.267
- twig_2       0.181 0.0175 Inf     0.150     0.219
+ Pine         0.219 0.0223 Inf     0.179     0.267
+ twig_2       0.180 0.0174 Inf     0.149     0.218
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2  1.21 0.0936 Inf    1   2.422  0.0154
+ Pine / twig_2  1.21 0.0944 Inf    1   2.468  0.0136
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Pine / twig_2  1.21 0.0936 Inf      1.04       1.4
+ Pine / twig_2  1.21 0.0944 Inf      1.04      1.41
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1582,47 +1582,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: volume | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: 10351.31
+  -> AIC: 10360.78
  Family: lognormal  ( log )
 Formula:          volume ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  10351.3   10369.8   -5171.7   10343.3       739 
+  10360.8   10379.2   -5176.4   10352.8       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.0316   0.1778  
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.03228  0.1797  
+Number of obs: 744, groups:  experiment, 20
 
 Dispersion parameter for lognormal family (): 2.26e+03 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.41080    0.11665   54.96   <2e-16 ***
-conditiontwig_2 -0.01849    0.10110   -0.18    0.855    
+(Intercept)      6.41216    0.11702   54.79   <2e-16 ***
+conditiontwig_2 -0.02112    0.10180   -0.21    0.836    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Acacia         608 71.0 Inf       484       765
- twig_2         597 66.6 Inf       480       743
+ Acacia         609 71.3 Inf       484       766
+ twig_2         596 66.7 Inf       479       743
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast        ratio    SE  df null z.ratio p.value
- Acacia / twig_2  1.02 0.103 Inf    1   0.183  0.8549
+ Acacia / twig_2  1.02 0.104 Inf    1   0.207  0.8356
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast        ratio    SE  df asymp.LCL asymp.UCL
- Acacia / twig_2  1.02 0.103 Inf     0.836      1.24
+ Acacia / twig_2  1.02 0.104 Inf     0.837      1.25
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1631,33 +1631,33 @@ Intervals are back-transformed from the log scale
 Testing Parameter: surface_area | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: 10418.38
+  -> AIC: 10431.43
  Family: lognormal  ( log )
 Formula:          surface_area ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  10418.4   10436.8   -5205.2   10410.4       739 
+  10431.4   10449.9   -5211.7   10423.4       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.005579 0.07469 
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.005561 0.07457 
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  522 
+Dispersion parameter for lognormal family ():  521 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      6.05510    0.05550  109.09   <2e-16 ***
-conditiontwig_2  0.04694    0.05297    0.89    0.375    
+(Intercept)      6.05425    0.05545  109.19   <2e-16 ***
+conditiontwig_2  0.04731    0.05291    0.89    0.371    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Acacia         426 23.7 Inf       382       475
+ Acacia         426 23.6 Inf       382       475
  twig_2         447 22.1 Inf       405       492
 
 Confidence level used: 0.95 
@@ -1665,7 +1665,7 @@ Intervals are back-transformed from the log scale
 
 Pairwise Comparisons:
  contrast        ratio     SE  df null z.ratio p.value
- Acacia / twig_2 0.954 0.0505 Inf    1  -0.886  0.3754
+ Acacia / twig_2 0.954 0.0505 Inf    1  -0.894  0.3713
 
 Tests are performed on the log scale 
 
@@ -1680,48 +1680,48 @@ Intervals are back-transformed from the log scale
 Testing Parameter: vol_sa_ratio | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod1a
-  -> AIC: 894.6
+  -> AIC: 897.35
  Family: Gamma  ( inverse )
 Formula:          vol_sa_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-    894.6     913.0    -443.3     886.6       739 
+    897.3     915.8    -444.7     889.3       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.05157  0.2271  
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.05192  0.2279  
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion estimate for Gamma family (sigma^2): 0.542 
+Dispersion estimate for Gamma family (sigma^2): 0.547 
 
 Conditional model:
                  Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.389286   0.096322  14.423   <2e-16 ***
-conditiontwig_2 -0.004794   0.128889  -0.037     0.97    
+(Intercept)      1.389406   0.096706   14.37   <2e-16 ***
+conditiontwig_2 -0.002558   0.129406   -0.02    0.984    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response     SE  df asymp.LCL asymp.UCL
- Acacia       0.720 0.0499 Inf     0.634     0.833
- twig_2       0.722 0.0449 Inf     0.644     0.823
+ Acacia       0.720 0.0501 Inf     0.633     0.833
+ twig_2       0.721 0.0450 Inf     0.643     0.821
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the inverse scale 
 
 Pairwise Comparisons:
  contrast        estimate    SE  df z.ratio p.value
- Acacia - twig_2  0.00479 0.129 Inf   0.037  0.9703
+ Acacia - twig_2  0.00256 0.129 Inf   0.020  0.9842
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
 
 Confidence Intervals:
  contrast        estimate    SE  df asymp.LCL asymp.UCL
- Acacia - twig_2  0.00479 0.129 Inf    -0.248     0.257
+ Acacia - twig_2  0.00256 0.129 Inf    -0.251     0.256
 
 Note: contrasts are still on the inverse scale. Consider using
       regrid() if you want contrasts of back-transformed estimates. 
@@ -1731,47 +1731,47 @@ Confidence level used: 0.95
 Testing Parameter: sa_vol_ratio | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: 2949.45
+  -> AIC: 2971.04
  Family: lognormal  ( log )
 Formula:          sa_vol_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   2949.5    2967.9   -1470.7    2941.5       739 
+   2971.0    2989.5   -1481.5    2963.0       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.004178 0.06463 
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.004037 0.06354 
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 3.41 
+Dispersion parameter for lognormal family (): 3.49 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.07482    0.05175  20.768   <2e-16 ***
-conditiontwig_2 -0.03305    0.04937  -0.669    0.503    
+(Intercept)      1.08619    0.05190  20.928   <2e-16 ***
+conditiontwig_2 -0.03290    0.04921  -0.668    0.504    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Acacia        2.93 0.152 Inf      2.65      3.24
- twig_2        2.83 0.140 Inf      2.57      3.12
+ Acacia        2.96 0.154 Inf      2.68      3.28
+ twig_2        2.87 0.143 Inf      2.60      3.16
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast        ratio    SE  df null z.ratio p.value
- Acacia / twig_2  1.03 0.051 Inf    1   0.669  0.5032
+ contrast        ratio     SE  df null z.ratio p.value
+ Acacia / twig_2  1.03 0.0509 Inf    1   0.668  0.5039
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast        ratio    SE  df asymp.LCL asymp.UCL
- Acacia / twig_2  1.03 0.051 Inf     0.938      1.14
+ contrast        ratio     SE  df asymp.LCL asymp.UCL
+ Acacia / twig_2  1.03 0.0509 Inf     0.938      1.14
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1780,27 +1780,27 @@ Intervals are back-transformed from the log scale
 Testing Parameter: length | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: 6094.07
+  -> AIC: 6100.7
  Family: lognormal  ( log )
 Formula:          length ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   6094.1    6112.5   -3043.0    6086.1       739 
+   6100.7    6119.1   -3046.3    6092.7       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.00649  0.08056 
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.006522 0.08076 
+Number of obs: 744, groups:  experiment, 20
 
 Dispersion parameter for lognormal family ():   21 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      3.25781    0.04566   71.35   <2e-16 ***
-conditiontwig_2  0.02015    0.05051    0.40     0.69    
+(Intercept)      3.25724    0.04568   71.31   <2e-16 ***
+conditiontwig_2  0.01992    0.05056    0.39    0.694    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -1814,13 +1814,13 @@ Intervals are back-transformed from the log scale
 
 Pairwise Comparisons:
  contrast        ratio     SE  df null z.ratio p.value
- Acacia / twig_2  0.98 0.0495 Inf    1  -0.399  0.6899
+ Acacia / twig_2  0.98 0.0496 Inf    1  -0.394  0.6936
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast        ratio     SE  df asymp.LCL asymp.UCL
- Acacia / twig_2  0.98 0.0495 Inf     0.888      1.08
+ Acacia / twig_2  0.98 0.0496 Inf     0.888      1.08
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1829,47 +1829,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: width | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: 4168.15
+  -> AIC: 4174.52
  Family: lognormal  ( log )
 Formula:          width ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   4168.2    4186.6   -2080.1    4160.2       739 
+   4174.5    4193.0   -2083.3    4166.5       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance  Std.Dev.
- experiment (Intercept) 8.546e-05 0.009244
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.0001274 0.01129 
+Number of obs: 744, groups:  experiment, 20
 
 Dispersion parameter for lognormal family (): 4.71 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      2.22012    0.02622   84.68   <2e-16 ***
-conditiontwig_2  0.02660    0.02773    0.96    0.337    
+(Intercept)      2.22019    0.02631   84.40   <2e-16 ***
+conditiontwig_2  0.02728    0.02788    0.98    0.328    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Acacia        9.21 0.241 Inf      8.75      9.69
- twig_2        9.46 0.196 Inf      9.08      9.85
+ Acacia        9.21 0.242 Inf      8.75      9.70
+ twig_2        9.46 0.197 Inf      9.09      9.86
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast        ratio    SE  df null z.ratio p.value
- Acacia / twig_2 0.974 0.027 Inf    1  -0.959  0.3374
+ contrast        ratio     SE  df null z.ratio p.value
+ Acacia / twig_2 0.973 0.0271 Inf    1  -0.979  0.3277
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast        ratio    SE  df asymp.LCL asymp.UCL
- Acacia / twig_2 0.974 0.027 Inf     0.922      1.03
+ contrast        ratio     SE  df asymp.LCL asymp.UCL
+ Acacia / twig_2 0.973 0.0271 Inf     0.921      1.03
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1878,47 +1878,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: height | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: 3586.19
+  -> AIC: 3591.97
  Family: lognormal  ( log )
 Formula:          height ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   3586.2    3604.6   -1789.1    3578.2       739 
+   3592.0    3610.4   -1792.0    3584.0       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.007254 0.08517 
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.00714  0.0845  
+Number of obs: 744, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 3.29 
+Dispersion parameter for lognormal family ():  3.3 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      1.72885    0.03988   43.35   <2e-16 ***
-conditiontwig_2  0.03372    0.04885    0.69     0.49    
+(Intercept)      1.72909    0.03974   43.51   <2e-16 ***
+conditiontwig_2  0.03430    0.04861    0.71     0.48    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Acacia        5.63 0.225 Inf      5.21      6.09
- twig_2        5.83 0.208 Inf      5.43      6.25
+ Acacia        5.64 0.224 Inf      5.21      6.09
+ twig_2        5.83 0.207 Inf      5.44      6.25
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast        ratio     SE  df null z.ratio p.value
- Acacia / twig_2 0.967 0.0472 Inf    1  -0.690  0.4900
+ contrast        ratio    SE  df null z.ratio p.value
+ Acacia / twig_2 0.966 0.047 Inf    1  -0.706  0.4804
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast        ratio     SE  df asymp.LCL asymp.UCL
- Acacia / twig_2 0.967 0.0472 Inf     0.879      1.06
+ contrast        ratio    SE  df asymp.LCL asymp.UCL
+ Acacia / twig_2 0.966 0.047 Inf     0.878      1.06
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1927,47 +1927,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: mass | Dataset: Eucalyptus vs Acacia
 ======================================================
   -> WINNER: mod2
-  -> AIC: -1771.27
+  -> AIC: -1777.47
  Family: lognormal  ( log )
 Formula:          mass ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  -1771.3   -1752.8     889.6   -1779.3       739 
+  -1777.5   -1759.0     892.7   -1785.5       740 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.01251  0.1118  
-Number of obs: 743, groups:  experiment, 20
+ experiment (Intercept) 0.01304  0.1142  
+Number of obs: 744, groups:  experiment, 20
 
 Dispersion parameter for lognormal family (): 0.537 
 
 Conditional model:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)     -1.84149    0.10180 -18.088   <2e-16 ***
-conditiontwig_2  0.02666    0.07791   0.342    0.732    
+(Intercept)     -1.84162    0.10207 -18.042   <2e-16 ***
+conditiontwig_2  0.02467    0.07861   0.314    0.754    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response     SE  df asymp.LCL asymp.UCL
- Acacia       0.159 0.0161 Inf     0.130     0.194
- twig_2       0.163 0.0157 Inf     0.135     0.197
+ Acacia       0.159 0.0162 Inf     0.130     0.194
+ twig_2       0.163 0.0157 Inf     0.134     0.196
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast        ratio     SE  df null z.ratio p.value
- Acacia / twig_2 0.974 0.0759 Inf    1  -0.342  0.7322
+ Acacia / twig_2 0.976 0.0767 Inf    1  -0.314  0.7537
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast        ratio     SE  df asymp.LCL asymp.UCL
- Acacia / twig_2 0.974 0.0759 Inf     0.836      1.13
+ Acacia / twig_2 0.976 0.0767 Inf     0.836      1.14
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -1976,47 +1976,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: volume | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 7555.35
+  -> AIC: 7582.01
  Family: lognormal  ( log )
 Formula:          volume ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   7555.4    7572.4   -3773.7    7547.4       516 
+     7582      7599     -3787      7574       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
  experiment (Intercept) 0.03463  0.1861  
-Number of obs: 520, groups:  experiment, 20
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 2.97e+03 
+Dispersion parameter for lognormal family (): 2.93e+03 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)     6.5629     0.1307   50.20   <2e-16 ***
-conditionPine   0.2331     0.1094    2.13    0.033 *  
+(Intercept)     6.5560     0.1303   50.32   <2e-16 ***
+conditionPine   0.2335     0.1092    2.14   0.0324 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Acacia         708  92.6 Inf       548       915
- Pine           894 117.0 Inf       692      1156
+ Acacia         703  91.6 Inf       545       908
+ Pine           888 116.0 Inf       688      1147
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine 0.792 0.0866 Inf    1  -2.132  0.0330
+ Acacia / Pine 0.792 0.0864 Inf    1  -2.139  0.0324
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine 0.792 0.0866 Inf     0.639     0.981
+ Acacia / Pine 0.792 0.0864 Inf     0.639     0.981
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2025,47 +2025,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: surface_area | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 7497.95
+  -> AIC: 7523.87
  Family: lognormal  ( log )
 Formula:          surface_area ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-     7498      7515     -3745      7490       516 
+   7523.9    7540.9   -3757.9    7515.9       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
  experiment (Intercept) 0.01172  0.1083  
-Number of obs: 520, groups:  experiment, 20
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family ():  667 
+Dispersion parameter for lognormal family ():  663 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    6.18637    0.06709   92.21  < 2e-16 ***
-conditionPine  0.20071    0.06804    2.95  0.00318 ** 
+(Intercept)    6.18335    0.06695   92.35  < 2e-16 ***
+conditionPine  0.20006    0.06793    2.95  0.00323 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Acacia         486 32.6 Inf       426       554
- Pine           594 38.7 Inf       523       675
+ Acacia         485 32.4 Inf       425       553
+ Pine           592 38.4 Inf       521       672
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine 0.818 0.0557 Inf    1  -2.950  0.0032
+ Acacia / Pine 0.819 0.0556 Inf    1  -2.945  0.0032
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine 0.818 0.0557 Inf     0.716     0.935
+ Acacia / Pine 0.819 0.0556 Inf     0.717     0.935
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2074,39 +2074,39 @@ Intervals are back-transformed from the log scale
 Testing Parameter: vol_sa_ratio | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod1c
-  -> AIC: 659.48
+  -> AIC: 660.76
  Family: Gamma  ( identity )
 Formula:          vol_sa_ratio ~ condition
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-    659.5     672.2    -326.7     653.5       517 
+    660.8     673.5    -327.4     654.8       519 
 
 
-Dispersion estimate for Gamma family (sigma^2): 0.464 
+Dispersion estimate for Gamma family (sigma^2): 0.462 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    0.73107    0.03082  23.723  < 2e-16 ***
-conditionPine  0.12739    0.04764   2.674  0.00749 ** 
+(Intercept)    0.73107    0.03076  23.764  < 2e-16 ***
+conditionPine  0.12668    0.04743   2.671  0.00756 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition emmean     SE  df asymp.LCL asymp.UCL
  Acacia     0.731 0.0308 Inf     0.671     0.791
- Pine       0.858 0.0363 Inf     0.787     0.930
+ Pine       0.858 0.0361 Inf     0.787     0.929
 
 Confidence level used: 0.95 
 
 Pairwise Comparisons:
  contrast      estimate     SE  df z.ratio p.value
- Acacia - Pine   -0.127 0.0476 Inf  -2.674  0.0075
+ Acacia - Pine   -0.127 0.0474 Inf  -2.671  0.0076
 
 
 Confidence Intervals:
  contrast      estimate     SE  df asymp.LCL asymp.UCL
- Acacia - Pine   -0.127 0.0476 Inf    -0.221    -0.034
+ Acacia - Pine   -0.127 0.0474 Inf     -0.22   -0.0337
 
 Confidence level used: 0.95 
 
@@ -2114,47 +2114,47 @@ Confidence level used: 0.95
 Testing Parameter: sa_vol_ratio | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 1811.51
+  -> AIC: 1815.78
  Family: lognormal  ( log )
 Formula:          sa_vol_ratio ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   1811.5    1828.5    -901.8    1803.5       516 
+   1815.8    1832.8    -903.9    1807.8       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance  Std.Dev. 
- experiment (Intercept) 1.386e-10 1.177e-05
-Number of obs: 520, groups:  experiment, 20
+ experiment (Intercept) 1.687e-10 1.299e-05
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 2.37 
+Dispersion parameter for lognormal family (): 2.36 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    0.89832    0.04688  19.161  < 2e-16 ***
-conditionPine -0.11744    0.04280  -2.744  0.00607 ** 
+(Intercept)    0.89628    0.04676  19.167  < 2e-16 ***
+conditionPine -0.11672    0.04267  -2.736  0.00623 ** 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Acacia        2.46 0.115 Inf      2.24      2.69
- Pine          2.18 0.108 Inf      1.98      2.41
+ Acacia        2.45 0.115 Inf      2.24      2.69
+ Pine          2.18 0.107 Inf      1.98      2.40
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
- contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine  1.12 0.0481 Inf    1   2.744  0.0061
+ contrast      ratio    SE  df null z.ratio p.value
+ Acacia / Pine  1.12 0.048 Inf    1   2.736  0.0062
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
- contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine  1.12 0.0481 Inf      1.03      1.22
+ contrast      ratio    SE  df asymp.LCL asymp.UCL
+ Acacia / Pine  1.12 0.048 Inf      1.03      1.22
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2163,47 +2163,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: length | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 4453.07
+  -> AIC: 4467.27
  Family: lognormal  ( log )
 Formula:          length ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   4453.1    4470.1   -2222.5    4445.1       516 
+   4467.3    4484.3   -2229.6    4459.3       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.008871 0.09419 
-Number of obs: 520, groups:  experiment, 20
+ experiment (Intercept) 0.008909 0.09439 
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 26.5 
+Dispersion parameter for lognormal family (): 26.4 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    3.36804    0.05262   64.01   <2e-16 ***
-conditionPine  0.10681    0.05907    1.81   0.0706 .  
+(Intercept)    3.36607    0.05258   64.02   <2e-16 ***
+conditionPine  0.10599    0.05905    1.79   0.0727 .  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Acacia        29.0 1.53 Inf      26.2      32.2
- Pine          32.3 1.66 Inf      29.2      35.7
+ Acacia        29.0 1.52 Inf      26.1      32.1
+ Pine          32.2 1.65 Inf      29.1      35.6
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine 0.899 0.0531 Inf    1  -1.808  0.0706
+ Acacia / Pine 0.899 0.0531 Inf    1  -1.795  0.0727
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine 0.899 0.0531 Inf       0.8      1.01
+ Acacia / Pine 0.899 0.0531 Inf     0.801      1.01
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2212,47 +2212,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: width | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 2976.03
+  -> AIC: 2985.26
  Family: lognormal  ( log )
 Formula:          width ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-     2976      2993     -1484      2968       516 
+   2985.3    3002.3   -1488.6    2977.3       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance  Std.Dev. 
- experiment (Intercept) 1.356e-10 1.164e-05
-Number of obs: 520, groups:  experiment, 20
+ experiment (Intercept) 2.182e-10 1.477e-05
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 5.01 
+Dispersion parameter for lognormal family ():    5 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    2.24181    0.02799   80.10   <2e-16 ***
-conditionPine  0.07183    0.03138    2.29   0.0221 *  
+(Intercept)    2.24080    0.02794   80.21   <2e-16 ***
+conditionPine  0.07230    0.03128    2.31   0.0208 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
- Acacia        9.41 0.263 Inf      8.91      9.94
- Pine         10.11 0.271 Inf      9.59     10.66
+ Acacia         9.4 0.263 Inf      8.90      9.93
+ Pine          10.1 0.269 Inf      9.59     10.65
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine 0.931 0.0292 Inf    1  -2.289  0.0221
+ Acacia / Pine  0.93 0.0291 Inf    1  -2.311  0.0208
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine 0.931 0.0292 Inf     0.875      0.99
+ Acacia / Pine  0.93 0.0291 Inf     0.875     0.989
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2261,47 +2261,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: height | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: 2491.04
+  -> AIC: 2498.88
  Family: lognormal  ( log )
 Formula:          height ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-   2491.0    2508.1   -1241.5    2483.0       516 
+   2498.9    2515.9   -1245.4    2490.9       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.008284 0.09102 
-Number of obs: 520, groups:  experiment, 20
+ experiment (Intercept) 0.008365 0.09146 
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 3.07 
+Dispersion parameter for lognormal family (): 3.06 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    1.70361    0.04160   40.95  < 2e-16 ***
-conditionPine  0.18622    0.05231    3.56 0.000371 ***
+(Intercept)    1.70260    0.04167   40.86  < 2e-16 ***
+conditionPine  0.18740    0.05239    3.58 0.000347 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response    SE  df asymp.LCL asymp.UCL
  Acacia        5.49 0.229 Inf      5.06      5.96
- Pine          6.62 0.256 Inf      6.13      7.14
+ Pine          6.62 0.256 Inf      6.14      7.14
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine  0.83 0.0434 Inf    1  -3.560  0.0004
+ Acacia / Pine 0.829 0.0434 Inf    1  -3.577  0.0003
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine  0.83 0.0434 Inf     0.749      0.92
+ Acacia / Pine 0.829 0.0434 Inf     0.748     0.919
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2310,47 +2310,47 @@ Intervals are back-transformed from the log scale
 Testing Parameter: mass | Dataset: Acacia vs Pine
 ======================================================
   -> WINNER: mod2
-  -> AIC: -1009.89
+  -> AIC: -1014.43
  Family: lognormal  ( log )
 Formula:          mass ~ condition + (1 | experiment)
 Data: df
 
       AIC       BIC    logLik -2*log(L)  df.resid 
-  -1009.9    -992.9     508.9   -1017.9       516 
+  -1014.4    -997.4     511.2   -1022.4       518 
 
 Random effects:
 
 Conditional model:
  Groups     Name        Variance Std.Dev.
- experiment (Intercept) 0.0255   0.1597  
-Number of obs: 520, groups:  experiment, 20
+ experiment (Intercept) 0.02543  0.1595  
+Number of obs: 522, groups:  experiment, 20
 
-Dispersion parameter for lognormal family (): 0.669 
+Dispersion parameter for lognormal family (): 0.662 
 
 Conditional model:
               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    -1.7187     0.1211 -14.189   <2e-16 ***
-conditionPine   0.2143     0.0989   2.167   0.0302 *  
+(Intercept)   -1.72393    0.12067 -14.287   <2e-16 ***
+conditionPine  0.21682    0.09863   2.198   0.0279 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Estimated Marginal Means:
  condition response     SE  df asymp.LCL asymp.UCL
- Acacia       0.179 0.0217 Inf     0.141     0.227
- Pine         0.222 0.0269 Inf     0.175     0.282
+ Acacia       0.178 0.0215 Inf     0.141     0.226
+ Pine         0.222 0.0267 Inf     0.175     0.281
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Acacia / Pine 0.807 0.0798 Inf    1  -2.167  0.0302
+ Acacia / Pine 0.805 0.0794 Inf    1  -2.198  0.0279
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Acacia / Pine 0.807 0.0798 Inf     0.665      0.98
+ Acacia / Pine 0.805 0.0794 Inf     0.664     0.977
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2361,47 +2361,47 @@ Testing Counts (n_points) | Dataset: Leave vs No Leave
   -> WINNER: mod3b (Poisson Overdispersed)
 
 Call:
-glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 5.102060439, 
+glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 5.193469305, 
     link = log)
 
 Coefficients:
                            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                 4.30000    0.14476  29.703   <2e-16 ***
-conditionnoleave_branchlet -0.02751    0.20482  -0.134    0.893    
+(Intercept)                 4.31882    0.14348  30.101   <2e-16 ***
+conditionnoleave_branchlet -0.04633    0.20307  -0.228     0.82    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for Negative Binomial(5.1021) family taken to be 1)
+(Dispersion parameter for Negative Binomial(5.1935) family taken to be 1)
 
-    Null deviance: 20.814  on 19  degrees of freedom
-Residual deviance: 20.796  on 18  degrees of freedom
-AIC: 200.33
+    Null deviance: 20.860  on 19  degrees of freedom
+Residual deviance: 20.808  on 18  degrees of freedom
+AIC: 200.43
 
 Number of Fisher Scoring iterations: 1
 
 
-              Theta:  5.10 
-          Std. Err.:  1.70 
+              Theta:  5.19 
+          Std. Err.:  1.74 
 
- 2 x log-likelihood:  -194.331 
+ 2 x log-likelihood:  -194.433 
 
 Estimated Marginal Means:
  condition         response   SE  df asymp.LCL asymp.UCL
- leave                 73.7 10.7 Inf      55.5      97.9
- noleave_branchlet     71.7 10.4 Inf      54.0      95.2
+ leave                 75.1 10.8 Inf      56.7      99.5
+ noleave_branchlet     71.7 10.3 Inf      54.1      95.0
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                  ratio    SE  df null z.ratio p.value
- leave / noleave_branchlet  1.03 0.211 Inf    1   0.134  0.8931
+ leave / noleave_branchlet  1.05 0.213 Inf    1   0.228  0.8195
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                  ratio    SE  df asymp.LCL asymp.UCL
- leave / noleave_branchlet  1.03 0.211 Inf     0.688      1.54
+ leave / noleave_branchlet  1.05 0.213 Inf     0.704      1.56
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2412,47 +2412,47 @@ Testing Counts (n_points) | Dataset: Leave vs Twig
   -> WINNER: mod3b (Poisson Overdispersed)
 
 Call:
-glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 15.96749856, 
+glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 16.83815806, 
     link = log)
 
 Coefficients:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      4.30000    0.08729  49.261  < 2e-16 ***
-conditiontwig_2 -0.42464    0.12632  -3.362 0.000775 ***
+(Intercept)      4.31749    0.08528   50.63  < 2e-16 ***
+conditiontwig_2 -0.44006    0.12362   -3.56 0.000371 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for Negative Binomial(15.9675) family taken to be 1)
+(Dispersion parameter for Negative Binomial(16.8382) family taken to be 1)
 
-    Null deviance: 31.628  on 19  degrees of freedom
-Residual deviance: 20.354  on 18  degrees of freedom
-AIC: 174.93
+    Null deviance: 33.078  on 19  degrees of freedom
+Residual deviance: 20.435  on 18  degrees of freedom
+AIC: 174.58
 
 Number of Fisher Scoring iterations: 1
 
 
-              Theta:  15.97 
-          Std. Err.:  6.44 
+              Theta:  16.84 
+          Std. Err.:  6.89 
 
- 2 x log-likelihood:  -168.932 
+ 2 x log-likelihood:  -168.584 
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- leave         73.7 6.43 Inf      62.1      87.5
- twig_2        48.2 4.40 Inf      40.3      57.6
+ leave         75.0 6.40 Inf      63.5      88.6
+ twig_2        48.3 4.32 Inf      40.5      57.6
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast       ratio    SE  df null z.ratio p.value
- leave / twig_2  1.53 0.193 Inf    1   3.362  0.0008
+ leave / twig_2  1.55 0.192 Inf    1   3.560  0.0004
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast       ratio    SE  df asymp.LCL asymp.UCL
- leave / twig_2  1.53 0.193 Inf      1.19      1.96
+ leave / twig_2  1.55 0.192 Inf      1.22      1.98
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2463,47 +2463,47 @@ Testing Counts (n_points) | Dataset: No Leave vs Twig
   -> WINNER: mod3b (Poisson Overdispersed)
 
 Call:
-glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 5.297284136, 
+glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 2.575687936, 
     link = log)
 
 Coefficients:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)       4.2725     0.1424  30.007   <2e-16 ***
-conditiontwig_2  -0.3971     0.2030  -1.956   0.0505 .  
+(Intercept)       4.1786     0.1915  21.816   <2e-16 ***
+conditiontwig_2  -0.3011     0.2785  -1.081     0.28    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for Negative Binomial(5.2973) family taken to be 1)
+(Dispersion parameter for Negative Binomial(2.5757) family taken to be 1)
 
-    Null deviance: 24.398  on 19  degrees of freedom
-Residual deviance: 20.591  on 18  degrees of freedom
-AIC: 191.44
+    Null deviance: 24.642  on 20  degrees of freedom
+Residual deviance: 23.482  on 19  degrees of freedom
+AIC: 210.72
 
 Number of Fisher Scoring iterations: 1
 
 
-              Theta:  5.30 
-          Std. Err.:  1.79 
+              Theta:  2.576 
+          Std. Err.:  0.843 
 
- 2 x log-likelihood:  -185.444 
+ 2 x log-likelihood:  -204.718 
 
 Estimated Marginal Means:
  condition         response    SE  df asymp.LCL asymp.UCL
- noleave_branchlet     71.7 10.20 Inf      54.2      94.8
- twig_2                48.2  6.98 Inf      36.3      64.0
+ noleave_branchlet     65.3 12.50 Inf      44.8      95.0
+ twig_2                48.3  9.77 Inf      32.5      71.8
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast                   ratio    SE  df null z.ratio p.value
- noleave_branchlet / twig_2  1.49 0.302 Inf    1   1.956  0.0505
+ noleave_branchlet / twig_2  1.35 0.376 Inf    1   1.081  0.2796
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast                   ratio    SE  df asymp.LCL asymp.UCL
- noleave_branchlet / twig_2  1.49 0.302 Inf     0.999      2.21
+ noleave_branchlet / twig_2  1.35 0.376 Inf     0.783      2.33
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2514,47 +2514,47 @@ Testing Counts (n_points) | Dataset: Eucalyptus vs Pine
   -> WINNER: mod3b (Poisson Overdispersed)
 
 Call:
-glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 28.0480636, 
+glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 28.94166847, 
     link = log)
 
 Coefficients:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      3.25424    0.08618  37.763  < 2e-16 ***
-conditiontwig_2  0.62112    0.11431   5.434 5.52e-08 ***
+(Intercept)      3.26194    0.08536  38.213  < 2e-16 ***
+conditiontwig_2  0.61550    0.11319   5.438  5.4e-08 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for Negative Binomial(28.0481) family taken to be 1)
+(Dispersion parameter for Negative Binomial(28.9417) family taken to be 1)
 
-    Null deviance: 49.819  on 19  degrees of freedom
-Residual deviance: 20.041  on 18  degrees of freedom
-AIC: 149.95
+    Null deviance: 49.723  on 19  degrees of freedom
+Residual deviance: 19.894  on 18  degrees of freedom
+AIC: 149.63
 
 Number of Fisher Scoring iterations: 1
 
 
-              Theta:  28.0 
-          Std. Err.:  15.9 
+              Theta:  28.9 
+          Std. Err.:  16.5 
 
- 2 x log-likelihood:  -143.95 
+ 2 x log-likelihood:  -143.631 
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Pine          25.9 2.23 Inf      21.9      30.7
- twig_2        48.2 3.62 Inf      41.6      55.8
+ Pine          26.1 2.23 Inf      22.1      30.9
+ twig_2        48.3 3.59 Inf      41.8      55.9
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio     SE  df null z.ratio p.value
- Pine / twig_2 0.537 0.0614 Inf    1  -5.434 <0.0001
+ Pine / twig_2  0.54 0.0612 Inf    1  -5.438 <0.0001
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio     SE  df asymp.LCL asymp.UCL
- Pine / twig_2 0.537 0.0614 Inf     0.429     0.672
+ Pine / twig_2  0.54 0.0612 Inf     0.433     0.675
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2565,47 +2565,47 @@ Testing Counts (n_points) | Dataset: Eucalyptus vs Acacia
   -> WINNER: mod3b (Poisson Overdispersed)
 
 Call:
-glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 21.78691711, 
+glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 21.41633933, 
     link = log)
 
 Coefficients:
                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)      3.26194    0.09177  35.546  < 2e-16 ***
-conditiontwig_2  0.61342    0.12282   4.994  5.9e-07 ***
+(Intercept)       3.2619     0.0922  35.379  < 2e-16 ***
+conditiontwig_2   0.6155     0.1235   4.986 6.17e-07 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for Negative Binomial(21.7869) family taken to be 1)
+(Dispersion parameter for Negative Binomial(21.4163) family taken to be 1)
 
-    Null deviance: 45.751  on 19  degrees of freedom
-Residual deviance: 20.692  on 18  degrees of freedom
-AIC: 153.47
+    Null deviance: 45.626  on 19  degrees of freedom
+Residual deviance: 20.659  on 18  degrees of freedom
+AIC: 153.67
 
 Number of Fisher Scoring iterations: 1
 
 
-              Theta:  21.8 
-          Std. Err.:  11.4 
+              Theta:  21.4 
+          Std. Err.:  11.2 
 
- 2 x log-likelihood:  -147.469 
+ 2 x log-likelihood:  -147.673 
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Acacia        26.1 2.40 Inf      21.8      31.2
- twig_2        48.2 3.93 Inf      41.1      56.6
+ Acacia        26.1 2.41 Inf      21.8      31.3
+ twig_2        48.3 3.97 Inf      41.1      56.7
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast        ratio     SE  df null z.ratio p.value
- Acacia / twig_2 0.541 0.0665 Inf    1  -4.994 <0.0001
+ Acacia / twig_2  0.54 0.0667 Inf    1  -4.986 <0.0001
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast        ratio     SE  df asymp.LCL asymp.UCL
- Acacia / twig_2 0.541 0.0665 Inf     0.426     0.689
+ Acacia / twig_2  0.54 0.0667 Inf     0.424     0.688
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2616,47 +2616,47 @@ Testing Counts (n_points) | Dataset: Acacia vs Pine
   -> WINNER: mod3b (Poisson Overdispersed)
 
 Call:
-glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 33.69075048, 
+glm.nb(formula = n_points ~ condition, data = df_npoints, init.theta = 36.9819018, 
     link = log)
 
 Coefficients:
-               Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    3.261935   0.082460  39.558   <2e-16 ***
-conditionPine -0.007692   0.116742  -0.066    0.947    
+                Estimate Std. Error z value Pr(>|z|)    
+(Intercept)    3.262e+00  8.084e-02   40.35   <2e-16 ***
+conditionPine -3.965e-16  1.143e-01    0.00        1    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter for Negative Binomial(33.6908) family taken to be 1)
+(Dispersion parameter for Negative Binomial(36.9819) family taken to be 1)
 
-    Null deviance: 20.448  on 19  degrees of freedom
-Residual deviance: 20.443  on 18  degrees of freedom
-AIC: 139.13
+    Null deviance: 20.457  on 19  degrees of freedom
+Residual deviance: 20.457  on 18  degrees of freedom
+AIC: 138.5
 
 Number of Fisher Scoring iterations: 1
 
 
-              Theta:  33.7 
-          Std. Err.:  25.0 
+              Theta:  37.0 
+          Std. Err.:  28.9 
 
- 2 x log-likelihood:  -133.129 
+ 2 x log-likelihood:  -132.499 
 
 Estimated Marginal Means:
  condition response   SE  df asymp.LCL asymp.UCL
- Acacia        26.1 2.15 Inf      22.2      30.7
- Pine          25.9 2.14 Inf      22.0      30.5
+ Acacia        26.1 2.11 Inf      22.3      30.6
+ Pine          26.1 2.11 Inf      22.3      30.6
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
 
 Pairwise Comparisons:
  contrast      ratio    SE  df null z.ratio p.value
- Acacia / Pine  1.01 0.118 Inf    1   0.066  0.9475
+ Acacia / Pine     1 0.114 Inf    1   0.000  1.0000
 
 Tests are performed on the log scale 
 
 Confidence Intervals:
  contrast      ratio    SE  df asymp.LCL asymp.UCL
- Acacia / Pine  1.01 0.118 Inf     0.802      1.27
+ Acacia / Pine     1 0.114 Inf     0.799      1.25
 
 Confidence level used: 0.95 
 Intervals are back-transformed from the log scale 
@@ -2666,65 +2666,65 @@ Intervals are back-transformed from the log scale
 Summary of Pairwise Comparisons (P-Values)
 Signif. codes:  ns (p >= 0.05); * (p < 0.05); ** (p < 0.01); *** (p < 0.001)
 ======================================================
-             Leave vs No Leave                           
-volume       mod2 ns (p = 0.469)                         
-surface_area mod2 ns (p = 0.727)                         
-vol_sa_ratio mod1a ns (p = 0.98)                         
-sa_vol_ratio mod2 ns (p = 0.859)                         
-length       mod2 ns (p = 0.82)                          
-width        mod2 ns (p = 0.963)                         
-height       mod2 ns (p = 0.54)                          
-mass         mod2 ns (p = 0.435)                         
-n_points     mod3b (Poisson Overdispersed) ns (p = 0.893)
+             Leave vs No Leave                          
+volume       mod2 ns (p = 0.432)                        
+surface_area mod2 ns (p = 0.683)                        
+vol_sa_ratio mod1a ns (p = 0.904)                       
+sa_vol_ratio mod2 ns (p = 0.718)                        
+length       mod2 ns (p = 0.802)                        
+width        mod2 ns (p = 0.948)                        
+height       mod2 ns (p = 0.504)                        
+mass         mod2 ns (p = 0.39)                         
+n_points     mod3b (Poisson Overdispersed) ns (p = 0.82)
              Leave vs Twig                                
-volume       mod2 * (p = 0.031)                           
-surface_area mod2 ns (p = 0.095)                          
-vol_sa_ratio mod1a ns (p = 0.689)                         
-sa_vol_ratio mod2 ns (p = 0.056)                          
+volume       mod2 * (p = 0.026)                           
+surface_area mod2 ns (p = 0.085)                          
+vol_sa_ratio mod1a ns (p = 0.725)                         
+sa_vol_ratio mod2 ns (p = 0.055)                          
 length       mod2 *** (p < 0.001)                         
-width        mod2 ns (p = 0.275)                          
-height       mod2 ns (p = 0.208)                          
-mass         mod2 * (p = 0.031)                           
+width        mod2 ns (p = 0.301)                          
+height       mod2 ns (p = 0.197)                          
+mass         mod2 * (p = 0.024)                           
 n_points     mod3b (Poisson Overdispersed) *** (p < 0.001)
              No Leave vs Twig                           
-volume       mod2 * (p = 0.015)                         
-surface_area mod2 ns (p = 0.091)                        
-vol_sa_ratio mod1a ns (p = 0.65)                        
-sa_vol_ratio mod2 ns (p = 0.092)                        
+volume       mod2 * (p = 0.012)                         
+surface_area mod2 ns (p = 0.083)                        
+vol_sa_ratio mod1a ns (p = 0.703)                       
+sa_vol_ratio mod2 ns (p = 0.096)                        
 length       mod2 *** (p < 0.001)                       
-width        mod2 ns (p = 0.274)                        
-height       mod2 ns (p = 0.127)                        
-mass         mod2 * (p = 0.018)                         
-n_points     mod3b (Poisson Overdispersed) ns (p = 0.05)
+width        mod2 ns (p = 0.287)                        
+height       mod2 ns (p = 0.118)                        
+mass         mod2 * (p = 0.015)                         
+n_points     mod3b (Poisson Overdispersed) ns (p = 0.28)
              Eucalyptus vs Pine                           
-volume       mod2 ** (p = 0.007)                          
+volume       mod2 ** (p = 0.006)                          
 surface_area mod2 ** (p = 0.003)                          
-vol_sa_ratio mod1a ns (p = 0.08)                          
-sa_vol_ratio mod2 ns (p = 0.106)                          
-length       mod2 ns (p = 0.072)                          
-width        mod2 ns (p = 0.081)                          
+vol_sa_ratio mod1a ns (p = 0.079)                         
+sa_vol_ratio mod2 ns (p = 0.108)                          
+length       mod2 ns (p = 0.074)                          
+width        mod2 ns (p = 0.083)                          
 height       mod2 *** (p < 0.001)                         
-mass         mod2 * (p = 0.015)                           
+mass         mod2 * (p = 0.014)                           
 n_points     mod3b (Poisson Overdispersed) *** (p < 0.001)
              Eucalyptus vs Acacia                         
-volume       mod2 ns (p = 0.855)                          
-surface_area mod2 ns (p = 0.375)                          
-vol_sa_ratio mod1a ns (p = 0.97)                          
-sa_vol_ratio mod2 ns (p = 0.503)                          
-length       mod2 ns (p = 0.69)                           
-width        mod2 ns (p = 0.337)                          
-height       mod2 ns (p = 0.49)                           
-mass         mod2 ns (p = 0.732)                          
+volume       mod2 ns (p = 0.836)                          
+surface_area mod2 ns (p = 0.371)                          
+vol_sa_ratio mod1a ns (p = 0.984)                         
+sa_vol_ratio mod2 ns (p = 0.504)                          
+length       mod2 ns (p = 0.694)                          
+width        mod2 ns (p = 0.328)                          
+height       mod2 ns (p = 0.48)                           
+mass         mod2 ns (p = 0.754)                          
 n_points     mod3b (Poisson Overdispersed) *** (p < 0.001)
-             Acacia vs Pine                              
-volume       mod2 * (p = 0.033)                          
-surface_area mod2 ** (p = 0.003)                         
-vol_sa_ratio mod1c ** (p = 0.007)                        
-sa_vol_ratio mod2 ** (p = 0.006)                         
-length       mod2 ns (p = 0.071)                         
-width        mod2 * (p = 0.022)                          
-height       mod2 *** (p < 0.001)                        
-mass         mod2 * (p = 0.03)                           
-n_points     mod3b (Poisson Overdispersed) ns (p = 0.947)
+             Acacia vs Pine                          
+volume       mod2 * (p = 0.032)                      
+surface_area mod2 ** (p = 0.003)                     
+vol_sa_ratio mod1c ** (p = 0.008)                    
+sa_vol_ratio mod2 ** (p = 0.006)                     
+length       mod2 ns (p = 0.073)                     
+width        mod2 * (p = 0.021)                      
+height       mod2 *** (p < 0.001)                    
+mass         mod2 * (p = 0.028)                      
+n_points     mod3b (Poisson Overdispersed) ns (p = 1)
 
 End of Report
